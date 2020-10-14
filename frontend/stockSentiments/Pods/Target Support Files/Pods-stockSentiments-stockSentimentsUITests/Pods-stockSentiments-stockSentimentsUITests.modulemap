@@ -1,0 +1,6 @@
+framework module Pods_stockSentiments_stockSentimentsUITests {
+  umbrella header "Pods-stockSentiments-stockSentimentsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
