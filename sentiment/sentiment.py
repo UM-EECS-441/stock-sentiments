@@ -16,6 +16,7 @@ from nltk.corpus import stopwords
 import os.path
 from os import path
 from sklearn.metrics import f1_score
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 from nltk.classify.scikitlearn import SklearnClassifier
 from sklearn.naive_bayes import MultinomialNB,BernoulliNB
@@ -60,7 +61,7 @@ all_words = nltk.FreqDist(all_words)
 
 # listing the 5000 most frequent words
 word_features = list(all_words.keys())[:5000]
-pickle.dump(word_features, open("word_features.pkl", "wb"))
+# pickle.dump(word_features, open("word_features.pkl", "wb"))
 # function to create a dictionary of features for each review in the list document.
 # The keys are the words in word_features 
 # The values of each key are either true or false for wether that feature appears in the review or not
@@ -137,4 +138,20 @@ if(path.exists("svc.model") == False):
     print("SVC Classifier accuracy percent: ",(nltk.classify.accuracy(svc_classifier , testing_set))*100)
     getF1(svc_classifier)
     pickle.dump(classifier, open("svc.model", "wb"))
+# VADER 
+preds = []
+actuals = []
+sid = SentimentIntensityAnalyzer()
+for document,score in documents:
+    ss = sid.polarity_scores(document)
+    sscore = ss['compound']
+    if(sscore == 0):
+        continue
+    elif sscore > 0:
+        sscore = 1
+    elif sscore < 0:
+        sscore = -1
+    preds.append(sscore)
+    actuals.append(score)
+print("VADER F1 SCORE: ", f1_score(actuals, preds, labels = [-1, 1], average = 'micro'))
 
