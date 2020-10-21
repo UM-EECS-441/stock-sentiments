@@ -60,7 +60,7 @@ all_words = nltk.FreqDist(all_words)
 
 # listing the 5000 most frequent words
 word_features = list(all_words.keys())[:5000]
-
+pickle.dump(word_features, open("word_features.pkl", "wb"))
 # function to create a dictionary of features for each review in the list document.
 # The keys are the words in word_features 
 # The values of each key are either true or false for wether that feature appears in the review or not
