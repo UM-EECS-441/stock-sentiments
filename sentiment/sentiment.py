@@ -77,7 +77,7 @@ featuresets = [(find_features(rev), category) for (rev, category) in documents]
 
 # Shuffling the documents 
 random.shuffle(featuresets)
-print(int(.8*len(featuresets)))
+# print(int(.8*len(featuresets)))
 train_split = int(.8*len(featuresets))
 
 training_set = featuresets[:train_split]
@@ -99,7 +99,7 @@ if(path.exists("naiveBayes.model") == False):
 
     classifier.show_most_informative_features(15)
     getF1(classifier)
-    pickle.dump(documents, open("naiveBayes.model", "wb"))
+    pickle.dump(classifier, open("naiveBayes.model", "wb"))
 
 
 # training various models by passing in the sklearn models into the SklearnClassifier from NLTK 
@@ -108,33 +108,33 @@ if(path.exists("mnb.model") == False):
     multinomial_classifier = MNB_clf.train(training_set)
     print("MNB Classifier accuracy percent: ",(nltk.classify.accuracy(multinomial_classifier , testing_set))*100)
     getF1(multinomial_classifier)
-    pickle.dump(documents, open("mnb.model", "wb"))
+    pickle.dump(classifier, open("mnb.model", "wb"))
 
 if(path.exists("bnb.model") == False):
     BNB_clf = SklearnClassifier(BernoulliNB())
     bnb_classifier = BNB_clf.train(training_set)
     print("BNB Classifier accuracy percent: ",(nltk.classify.accuracy(bnb_classifier , testing_set))*100)
     getF1(bnb_classifier)
-    pickle.dump(documents, open("bnb.model", "wb"))
+    pickle.dump(classifier, open("bnb.model", "wb"))
 
 if(path.exists("logreg.model") == False):
     LogReg_clf = SklearnClassifier(LogisticRegression())
     log_classifier = LogReg_clf.train(training_set)
     print("Logistic Regression Classifier accuracy percent: ",(nltk.classify.accuracy(log_classifier , testing_set))*100)
     getF1(log_classifier)
-    pickle.dump(documents, open("logreg.model", "wb"))
+    pickle.dump(classifier, open("logreg.model", "wb"))
 
 if(path.exists("sgd.model") == False):
     SGD_clf = SklearnClassifier(SGDClassifier())
     sgd_classifier = SGD_clf.train(training_set)
     print("Stochastic Grad. Descent Classifier accuracy percent: ",(nltk.classify.accuracy(sgd_classifier , testing_set))*100)
     getF1(sgd_classifier)
-    pickle.dump(documents, open("sgd.model", "wb"))
+    pickle.dump(classifier, open("sgd.model", "wb"))
 
 if(path.exists("svc.model") == False):
     SVC_clf = SklearnClassifier(SVC())
     svc_classifier = SVC_clf.train(training_set)
     print("SVC Classifier accuracy percent: ",(nltk.classify.accuracy(svc_classifier , testing_set))*100)
     getF1(svc_classifier)
-    pickle.dump(documents, open("svc.model", "wb"))
+    pickle.dump(classifier, open("svc.model", "wb"))
 
