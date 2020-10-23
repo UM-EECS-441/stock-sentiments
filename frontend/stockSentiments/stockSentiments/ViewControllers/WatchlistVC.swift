@@ -7,6 +7,8 @@
 
 import UIKit
 
+let watchlistStoryboard: UIStoryboard = UIStoryboard(name: "Watchlist", bundle: nil)
+
 class WatchlistVC: UITableViewController {
 
     override func viewDidLoad() {
