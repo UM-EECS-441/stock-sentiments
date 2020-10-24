@@ -16,16 +16,14 @@ Most Informative Features
                   strong = True                1 : -1     =      7.3 : 1.0
                    entry = True                1 : -1     =      7.3 : 1.0
 F1 SCORE:  0.6980155306298533
-MNB Classifier accuracy percent:  72.38999137187231
-F1 SCORE:  0.7238999137187231
-BNB Classifier accuracy percent:  69.11130284728215
-F1 SCORE:  0.6911130284728214
-/Users/vishnunair/opt/anaconda3/lib/python3.7/site-packages/sklearn/linear_model/logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-  FutureWarning)
-Logistic Regression Classifier accuracy percent:  72.64883520276099
-F1 SCORE:  0.72648835202761
-Stochastic Grad. Descent Classifier accuracy percent:  70.92320966350302
-F1 SCORE:  0.7092320966350302
+MNB Classifier accuracy percent:  71.69974115616911
+F1 SCORE:  0.7169974115616912
+BNB Classifier accuracy percent:  70.23295944779983
+F1 SCORE:  0.7023295944779983
+Logistic Regression Classifier accuracy percent:  73.4253666954271
+F1 SCORE:  0.734253666954271
+Stochastic Grad. Descent Classifier accuracy percent:  72.21742881794651
+F1 SCORE:  0.722174288179465
 SVC Classifier accuracy percent:  72.38999137187231
 F1 SCORE:  0.7238999137187231
 

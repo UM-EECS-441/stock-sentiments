@@ -20,8 +20,6 @@ from sklearn.metrics import f1_score
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 from nltk.classify.scikitlearn import SklearnClassifier
-from sklearn.naive_bayes import MultinomialNB,BernoulliNB
-from sklearn.linear_model import LogisticRegression,SGDClassifier
 from sklearn.svm import SVC
 
 LIMIT = 200
@@ -31,8 +29,8 @@ all_posts = reddit.subreddit('all')
 posts = []
 for post in all_posts.search('Tesla', sort='top', time_filter = 'hour', limit=LIMIT):
     # print(post.title, post.subreddit, post.url, post.created)
-    posts.append([post.title, post.subreddit, post.url, post.created])
-posts = pd.DataFrame(posts, columns=['comment', 'subreddit', 'url', 'created'])
+    posts.append([post.title, post.selftext, post.subreddit, post.url, post.created])
+posts = pd.DataFrame(posts, columns=['comment', 'body', 'subreddit', 'url', 'created'])
 # print(posts)
 posts.to_csv('reddit.csv', index=False) 
 
@@ -48,7 +46,7 @@ overall_sentiment = []
 our_sum = 0
 vader_sum = 0
 sid = SentimentIntensityAnalyzer()
-for i in range(0,int(posts.size/4)):
+for i in range(0,int(posts.size/5)):
     comment = posts['comment'].iloc[i]
     sentiment = classifier.classify(find_features(comment))
     scores = sid.polarity_scores(comment)
