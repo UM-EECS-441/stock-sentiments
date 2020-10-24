@@ -62,6 +62,7 @@ all_words = nltk.FreqDist(all_words)
 # listing the 5000 most frequent words
 word_features = list(all_words.keys())[:5000]
 # pickle.dump(word_features, open("word_features.pkl", "wb"))
+
 # function to create a dictionary of features for each review in the list document.
 # The keys are the words in word_features 
 # The values of each key are either true or false for wether that feature appears in the review or not
@@ -109,35 +110,36 @@ if(path.exists("mnb.model") == False):
     multinomial_classifier = MNB_clf.train(training_set)
     print("MNB Classifier accuracy percent: ",(nltk.classify.accuracy(multinomial_classifier , testing_set))*100)
     getF1(multinomial_classifier)
-    pickle.dump(classifier, open("mnb.model", "wb"))
+    pickle.dump(multinomial_classifier, open("mnb.model", "wb"))
 
 if(path.exists("bnb.model") == False):
     BNB_clf = SklearnClassifier(BernoulliNB())
     bnb_classifier = BNB_clf.train(training_set)
     print("BNB Classifier accuracy percent: ",(nltk.classify.accuracy(bnb_classifier , testing_set))*100)
     getF1(bnb_classifier)
-    pickle.dump(classifier, open("bnb.model", "wb"))
+    pickle.dump(bnb_classifier, open("bnb.model", "wb"))
 
 if(path.exists("logreg.model") == False):
     LogReg_clf = SklearnClassifier(LogisticRegression())
     log_classifier = LogReg_clf.train(training_set)
     print("Logistic Regression Classifier accuracy percent: ",(nltk.classify.accuracy(log_classifier , testing_set))*100)
     getF1(log_classifier)
-    pickle.dump(classifier, open("logreg.model", "wb"))
+    pickle.dump(log_classifier, open("logreg.model", "wb"))
 
 if(path.exists("sgd.model") == False):
     SGD_clf = SklearnClassifier(SGDClassifier())
     sgd_classifier = SGD_clf.train(training_set)
     print("Stochastic Grad. Descent Classifier accuracy percent: ",(nltk.classify.accuracy(sgd_classifier , testing_set))*100)
     getF1(sgd_classifier)
-    pickle.dump(classifier, open("sgd.model", "wb"))
+    pickle.dump(sgd_classifier, open("sgd.model", "wb"))
 
-if(path.exists("svc.model") == False):
-    SVC_clf = SklearnClassifier(SVC())
-    svc_classifier = SVC_clf.train(training_set)
-    print("SVC Classifier accuracy percent: ",(nltk.classify.accuracy(svc_classifier , testing_set))*100)
-    getF1(svc_classifier)
-    pickle.dump(classifier, open("svc.model", "wb"))
+# SLOW!!!!!!
+# if(path.exists("svc.model") == False):
+#     SVC_clf = SklearnClassifier(SVC())
+#     svc_classifier = SVC_clf.train(training_set)
+#     print("SVC Classifier accuracy percent: ",(nltk.classify.accuracy(svc_classifier , testing_set))*100)
+#     getF1(svc_classifier)
+#     pickle.dump(svc_classifier, open("svc.model", "wb"))
 # VADER 
 preds = []
 actuals = []
