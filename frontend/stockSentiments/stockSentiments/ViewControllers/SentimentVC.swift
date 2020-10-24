@@ -7,6 +7,7 @@
 
 import UIKit
 
+let sentimentStoryboard: UIStoryboard = UIStoryboard(name: "Sentiment", bundle: nil)
 class SentimentVC: UIViewController {
 
     override func viewDidLoad() {

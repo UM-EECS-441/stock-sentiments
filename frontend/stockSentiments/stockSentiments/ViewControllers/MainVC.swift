@@ -13,6 +13,7 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    let nav = UINavigationController()
     
     @IBAction func guestTapped() {
         print("tapped")
@@ -21,7 +22,7 @@ class MainVC: UIViewController {
             print("failed to load watchlistVC")
             return
         }
-        present(watchlistVC, animated: true)
+        self.present(watchlistVC, animated: true, completion: nil)
     }
 }
 

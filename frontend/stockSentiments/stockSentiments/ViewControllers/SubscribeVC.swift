@@ -7,6 +7,8 @@
 
 import UIKit
 
+let subscribeStoryboard: UIStoryboard = UIStoryboard(name: "Subscribe", bundle: nil)
+
 class SubscribeVC: UIViewController {
 
     override func viewDidLoad() {

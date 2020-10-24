@@ -7,6 +7,7 @@
 
 import UIKit
 
+let settingsStoryboard: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
 class SettingsVC: UIViewController {
 
     override func viewDidLoad() {

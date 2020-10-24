@@ -7,6 +7,8 @@
 
 import UIKit
 
+let searchStoryboard: UIStoryboard = UIStoryboard(name: "Search", bundle: nil)
+
 class SearchVC: UITableViewController {
 
     override func viewDidLoad() {
