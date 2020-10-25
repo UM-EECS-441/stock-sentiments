@@ -1,0 +1,28 @@
+{
+    "get_tickers": {
+      "data": [
+        {"FB": "Facebook"},
+        {"GOOGL": "Google"},
+        {"EXPE": "Expedia"}
+      ]
+    },
+    "get_watchlist_scores": {
+      "uid": "",
+      "data": [
+        {
+          "symbol": "FB",
+          "name": "Facebook",
+          "score": ".4",
+          "lastUpdated": "",
+          "timeseries": {}
+        },
+        {
+          "symbol": "EXPE",
+          "name": "Expedia",
+          "score": ".7",
+          "lastUpdated": "",
+          "timeseries": {}
+        }
+      ]
+    }
+  }
