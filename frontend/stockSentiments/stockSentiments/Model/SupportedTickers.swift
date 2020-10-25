@@ -10,27 +10,23 @@
  time. Stores both symbol and name as keys. This should be a singleton instance in SearchVC
  */
 class SupportedTickers {
-    let symbolToName: [String:String]
-    let nameToSymbol: [String:String]
+    var symbolToName: [String:String] = [:]
+    var nameToSymbol: [String:String] = [:]
 
-    init(response responseData : SupportedTickersResponseData) {
-        symbolToName = responseData.dictTickers
+    init(response responseData : [TickerResponse]) {
         
-        // store inverted as well
-        nameToSymbol = [:]
-        for (symbol, name) in symbolToName {
-            nameToSymbol[name] = symbol
+//        for dict in responseData {
+//            let symbol: String = dict.keys.first!
+//            let name: String = dict[symbol]!
+//
+//            // store both ways
+//            symbolToName[symbol] = name
+//            nameToSymbol[name] = symbol
+//        }
+        
+        for tickerResponse in responseData {
+            nameToSymbol[tickerResponse.name] = tickerResponse.symbol
+            symbolToName[tickerResponse.symbol] = tickerResponse.name
         }
     }
-}
-
-// Stores response of /get_tickers
-struct GetSupportedTickersResponse : Codable {
-    let status: String
-    let data: SupportedTickersResponseData
-}
-
-// array of {symbol:name} key-val pairs
-struct SupportedTickersResponseData : Codable {
-    let dictTickers: [String:String]
 }

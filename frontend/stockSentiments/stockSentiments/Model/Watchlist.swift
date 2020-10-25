@@ -8,5 +8,9 @@
 
 /* Stores a list of Ticker instances */
 class Watchlist {
+    var watchlist: [WatchlistItem]
     
+    init(watchlist: [WatchlistItem]) {
+        self.watchlist = watchlist
+    }
 }

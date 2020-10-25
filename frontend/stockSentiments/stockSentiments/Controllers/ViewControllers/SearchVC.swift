@@ -16,21 +16,23 @@ class SearchVC: UITableViewController {
 
     //TODO: include filter results function
 
-    var searchs = [search]() // array of search cells
+    var searchResults = [SearchResult]() // array of search results
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the  view.
         
-      /* TODO: Ibtida - add back in after merge conflicts resolve
         // completion handler has access to supportedTickers passed by delegator
         // https://stackoverflow.com/questions/30401439/how-could-i-create-a-function-with-a-completion-handler-in-swift
         requestSupportedTickers(completionHandler: { (supportedTickers) -> Void in
             self.supportedTickers = supportedTickers
+            
+            for (symbol, _) in self.supportedTickers!.symbolToName {
+                self.searchResults.append(SearchResult(tickerSymbol: symbol))
+            }
+            print("done")
         })
-*/
-        //getSearchs()
     }
 
     // MARK:- TableView handlers
@@ -42,7 +44,7 @@ class SearchVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // how many rows per section
-        return searchs.count
+        return searchResults.count
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -51,29 +53,31 @@ class SearchVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           // populate a single cell
-           guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? searchCell else {
-               fatalError("No reusable cell!")
-           }
+        // populate a single cell
+        print("hi")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchCell else {
+            fatalError("No reusable cell!")
+        }
 
-           let search = searchs[indexPath.row]
-        cell.tickerName.text = search.tickerName
+//        let search = searchs[indexPath.row]
+//        cell.tickerName.text = search.tickerName
+//        cell.tickerName.sizeToFit()
+        let searchResult = searchResults[indexPath.row]
+        cell.tickerName.text = searchResult.symbol
         cell.tickerName.sizeToFit()
-
-
-
-
-            cell.viewStock.isHidden = false
-            cell.renderSearch = {
-            () in
+        
+        cell.viewStock.isHidden = false
+        cell.renderSearch = { () in
             let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-                subscribeVC.search = self.searchs[indexPath.row]
+                subscribeVC.search = self.searchResults[indexPath.row]
 
             self.present(subscribeVC, animated: true, completion: nil)
-            }
+        }
 
-           return cell
-       }
+        return cell
+   }
+    
+    /*
     func getSearchs(){
         // retrieves all tickers
         let requestURL = ""
@@ -115,6 +119,6 @@ class SearchVC: UITableViewController {
             }
         }
         task.resume()
-    }
+    } */
     
 }
