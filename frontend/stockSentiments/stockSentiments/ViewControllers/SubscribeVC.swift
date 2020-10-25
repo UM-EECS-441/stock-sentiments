@@ -10,7 +10,7 @@ import UIKit
 let subscribeStoryboard: UIStoryboard = UIStoryboard(name: "Subscribe", bundle: nil)
 
 class SubscribeVC: UIViewController {
-    var search: search? = nil
+    var search: SearchResult? = nil
 
     @IBOutlet weak var messagetextView: UITextView!
 
@@ -32,7 +32,7 @@ class SubscribeVC: UIViewController {
 
         // TODO: set stock title to title from stock click or through a fetch api
         if (search != nil){
-            stockTitle.text = search?.tickerName
+            stockTitle.text = search?.symbol
         }
         // TODO: retrieve stock description from database and update stock description
         messagetextView.text = "This is the default stock description"

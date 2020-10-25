@@ -27,10 +27,12 @@ func requestSupportedTickers(completionHandler: @escaping (SupportedTickers) -> 
         do {
             decodedResponse = try JSONDecoder().decode(GetSupportedTickersResponse.self, from: data!)
         } catch {
-            print("something went wrong in decoding get_tickers/ response")
+//            print("something went wrong in decoding get_tickers/ response")
+            print("error in decoding \(error.localizedDescription)")
             return
         }
         
+        print("worked")
         // request is complete, call completion handler
         completionHandler(SupportedTickers(response: decodedResponse!.data))
     }
@@ -41,12 +43,14 @@ func requestSupportedTickers(completionHandler: @escaping (SupportedTickers) -> 
 
 // Stores response of /get_tickers
 struct GetSupportedTickersResponse : Codable {
-    let status: String
-    let data: SupportedTickersResponseData
+//    let status: String
+    var data: [TickerResponse]
 }
 
-// array of {symbol:name} key-val pairs
-struct SupportedTickersResponseData : Codable {
-    let dictTickers: [[String:String]]
+// stores base information for a ticker
+struct TickerResponse : Codable {
+//    var dictTickers: [[String:String]]
+    var symbol: String
+    var name: String
 }
 

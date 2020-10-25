@@ -9,12 +9,12 @@ import UIKit
 
 let sentimentStoryboard: UIStoryboard = UIStoryboard(name: "Sentiment", bundle: nil)
 class SentimentVC: UIViewController {
-    var watch: watch? = nil
+    var watchlistItem: WatchlistItem? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if (watch != nil){
+        if (self.watchlistItem != nil){
             // set button variables to text from watchlist and fetch stock sentiment details
         }
     }

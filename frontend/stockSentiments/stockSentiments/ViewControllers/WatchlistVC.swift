@@ -10,7 +10,7 @@ import UIKit
 let watchlistStoryboard: UIStoryboard = UIStoryboard(name: "Watchlist", bundle: nil)
 
 class WatchlistVC: UITableViewController, UITabBarDelegate {
-    var watchs = [watch]() // array of watchlist
+    var watchs = [WatchlistItem]() // array of watchlist
 
     @IBOutlet weak var tabBar: UITabBar!
     var viewController1: UIViewController?
@@ -101,7 +101,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
            }
 
            let watch = watchs[indexPath.row]
-        cell.stockName.text = watch.stockName
+        cell.stockName.text = watch.symbol
         cell.stockName.sizeToFit()
         cell.sentimentScore.text = watch.sentimentScore
         cell.sentimentScore.sizeToFit()
@@ -112,7 +112,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
             cell.renderChatt = {
             () in
             let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
-                sentimentVC.watch = self.watchs[indexPath.row]
+                sentimentVC.watchlistItem = self.watchs[indexPath.row]
 
             self.present(sentimentVC, animated: true, completion: nil)
             }
@@ -142,11 +142,11 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
             }
 
             do {
-                self.watchs = [watch]()
+                self.watchs = [WatchlistItem]()
                 let json = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
                 let watchsReceived = json["watchs"] as? [[String]] ?? []
                 for watchEntry in watchsReceived {
-                    let watcher = watch(stockName: watchEntry[0], sentimentScore: watchEntry[1])
+                    let watcher = WatchlistItem(tickerSymbol: watchEntry[0], sentimentScore: watchEntry[1])
                     self.watchs += [watcher]
                 }
                 DispatchQueue.main.async {
