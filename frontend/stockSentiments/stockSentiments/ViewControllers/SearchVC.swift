@@ -10,6 +10,9 @@ import UIKit
 let searchStoryboard: UIStoryboard = UIStoryboard(name: "Search", bundle: nil)
 
 class SearchVC: UITableViewController {
+    
+    // nil until SearchVC is instantiated for the first time
+    var supportedTickers: SupportedTickers? = nil
 
     //TODO: include filter results function
 
@@ -17,8 +20,16 @@ class SearchVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the  view.
 
+        // Do any additional setup after loading the  view.
+        
+      /* TODO: Ibtida - add back in after merge conflicts resolve
+        // completion handler has access to supportedTickers passed by delegator
+        // https://stackoverflow.com/questions/30401439/how-could-i-create-a-function-with-a-completion-handler-in-swift
+        requestSupportedTickers(completionHandler: { (supportedTickers) -> Void in
+            self.supportedTickers = supportedTickers
+        })
+*/
         //getSearchs()
     }
 
@@ -104,7 +115,6 @@ class SearchVC: UITableViewController {
             }
         }
         task.resume()
-
     }
     
 }

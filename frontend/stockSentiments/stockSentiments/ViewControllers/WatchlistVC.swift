@@ -60,8 +60,12 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tabBar.delegate = self
-
+        tabBar.delegate = self      
+              
+        // Set nav title and don't allow back functionality from the watchlist to signin page
+        self.navigationItem.title = "Watchlist"
+        self.navigationItem.setHidesBackButton(true, animated: false)
+      
         // setup refreshControl here later
         refreshControl?.addTarget(self, action: #selector(WatchlistVC.handleRefresh(_:)), for: UIControl.Event.valueChanged)
 
