@@ -7,15 +7,11 @@
 
 import Foundation
 
-let baseUrl = "http://161.35.6.60/"
-
-
-// MARK: Get Requests
 
 /* function takes in a completion handler to call after completing the request. This is a form of delegation
  to pass data back to the caller.
  */
-func requestSupportedTickers(completionHandler: (SupportedTickers) -> Void) -> Void {
+func requestSupportedTickers(completionHandler: @escaping (SupportedTickers) -> Void) -> Void {
     
     let requestUrl = baseUrl + "get_tickers/"
     let request = URLRequest(url: URL(string: requestUrl)!)
@@ -41,5 +37,16 @@ func requestSupportedTickers(completionHandler: (SupportedTickers) -> Void) -> V
     task.resume()
 }
 
+// MARK: Codable Helper Structs
 
-// MARK: Post Requests
+// Stores response of /get_tickers
+struct GetSupportedTickersResponse : Codable {
+    let status: String
+    let data: SupportedTickersResponseData
+}
+
+// array of {symbol:name} key-val pairs
+struct SupportedTickersResponseData : Codable {
+    let dictTickers: [[String:String]]
+}
+
