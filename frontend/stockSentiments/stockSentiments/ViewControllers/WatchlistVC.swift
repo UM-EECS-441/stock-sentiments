@@ -60,7 +60,11 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tabBar.delegate = self
-
+        
+        // Set nav title and don't allow back functionality from the watchlist to signin page
+        self.navigationItem.title = "Watchlist"
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        
     }
     
 }
