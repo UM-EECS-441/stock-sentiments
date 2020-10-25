@@ -28,23 +28,30 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ticker Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJn-cI-z1v">
-                                            <rect key="frame" x="20" y="38" width="96" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ticker Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJn-cI-z1v">
+                                            <rect key="frame" x="20" y="36" width="96" height="31"/>
                                             <accessibility key="accessibilityConfiguration" identifier="tickerName"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Yx-i1-5AR">
-                                            <rect key="frame" x="313" y="40" width="77" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Yx-i1-5AR">
+                                            <rect key="frame" x="317" y="36" width="77" height="31"/>
                                             <state key="normal" title="View Stock"/>
                                             <connections>
                                                 <action selector="stockTapped:" destination="Boo-Oe-sL0" eventType="touchUpInside" id="Esa-uP-Oho"/>
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5Yx-i1-5AR" firstAttribute="top" secondItem="hR9-jt-Rl4" secondAttribute="topMargin" constant="25" id="1gA-EJ-UyT"/>
+                                        <constraint firstItem="EJn-cI-z1v" firstAttribute="top" secondItem="hR9-jt-Rl4" secondAttribute="topMargin" constant="25" id="6H5-a0-R7y"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5Yx-i1-5AR" secondAttribute="bottom" constant="25" id="GoH-16-kvN"/>
+                                        <constraint firstItem="5Yx-i1-5AR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EJn-cI-z1v" secondAttribute="trailing" constant="10" id="nId-Zn-3fu"/>
+                                        <constraint firstItem="EJn-cI-z1v" firstAttribute="leading" secondItem="hR9-jt-Rl4" secondAttribute="leadingMargin" id="xAV-z4-ia0"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="EJn-cI-z1v" secondAttribute="bottom" constant="25" id="xyk-Cq-7bu"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5Yx-i1-5AR" secondAttribute="trailing" id="yWB-8S-Od8"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="YES"/>

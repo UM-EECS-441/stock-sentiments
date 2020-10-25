@@ -31,7 +31,11 @@ class SearchVC: UITableViewController {
             for (symbol, _) in self.supportedTickers!.symbolToName {
                 self.searchResults.append(SearchResult(tickerSymbol: symbol))
             }
-            print("done")
+            
+            // Reload data from main thread
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         })
     }
 
@@ -44,7 +48,9 @@ class SearchVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // how many rows per section
+        print(searchResults.count)
         return searchResults.count
+//        return 2
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -69,7 +75,7 @@ class SearchVC: UITableViewController {
         cell.viewStock.isHidden = false
         cell.renderSearch = { () in
             let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-                subscribeVC.search = self.searchResults[indexPath.row]
+            subscribeVC.search = self.searchResults[indexPath.row]
 
             self.present(subscribeVC, animated: true, completion: nil)
         }

@@ -15,7 +15,6 @@
 		8D40675D254344EA002760B1 /* Sentiment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40675C254344EA002760B1 /* Sentiment.storyboard */; };
 		8D40676325434501002760B1 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40676225434501002760B1 /* Settings.storyboard */; };
 		8D4067682543455F002760B1 /* Subscribe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4067672543455F002760B1 /* Subscribe.storyboard */; };
-		8D71A3922545299400F1B7EC /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A3912545299400F1B7EC /* Ticker.swift */; };
 		8D71A39A254529B100F1B7EC /* Watchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A399254529B100F1B7EC /* Watchlist.swift */; };
 		8D71A39F254529C700F1B7EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A39E254529C700F1B7EC /* User.swift */; };
 		8D71A3A4254530AD00F1B7EC /* GetTickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A3A3254530AD00F1B7EC /* GetTickers.swift */; };
@@ -68,7 +67,6 @@
 		8D40675C254344EA002760B1 /* Sentiment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sentiment.storyboard; sourceTree = "<group>"; };
 		8D40676225434501002760B1 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		8D4067672543455F002760B1 /* Subscribe.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Subscribe.storyboard; sourceTree = "<group>"; };
-		8D71A3912545299400F1B7EC /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		8D71A399254529B100F1B7EC /* Watchlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watchlist.swift; sourceTree = "<group>"; };
 		8D71A39E254529C700F1B7EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8D71A3A3254530AD00F1B7EC /* GetTickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTickers.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				8D7517212545F7A30017D8CD /* WatchlistItem.swift */,
-				8D71A3912545299400F1B7EC /* Ticker.swift */,
 				8D71A399254529B100F1B7EC /* Watchlist.swift */,
 				8D71A39E254529C700F1B7EC /* User.swift */,
 				8D71A3A82545446200F1B7EC /* SupportedTickers.swift */,
@@ -497,7 +494,6 @@
 				8D7EDB972543482600A59F10 /* SettingsVC.swift in Sources */,
 				8D75174E2546287D0017D8CD /* SearchResult.swift in Sources */,
 				8D7EDB83254347CA00A59F10 /* LaunchScreenVC.swift in Sources */,
-				8D71A3922545299400F1B7EC /* Ticker.swift in Sources */,
 				8D71A39F254529C700F1B7EC /* User.swift in Sources */,
 				8D71A3A92545446200F1B7EC /* SupportedTickers.swift in Sources */,
 				8D7517232545F7A30017D8CD /* WatchListCell.swift in Sources */,

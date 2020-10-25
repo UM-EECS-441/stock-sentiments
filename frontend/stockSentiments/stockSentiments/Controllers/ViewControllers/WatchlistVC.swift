@@ -17,6 +17,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
     var viewController2: UIViewController?
     var viewController3: UIViewController?
 
+    // TODO: put this code somewhere else
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
             print(item)
            switch item.tag {
@@ -35,9 +36,11 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
            case 2:
             print("watchlist")
                if viewController2 == nil {
-
-                // do nothing
+                
+                viewController2 = watchlistStoryboard.instantiateInitialViewController() as! WatchlistVC
+                print("watchlist")
            }
+               self.view.insertSubview(viewController2!.view!, belowSubview: self.tabBar)
                break
 
            case 3:

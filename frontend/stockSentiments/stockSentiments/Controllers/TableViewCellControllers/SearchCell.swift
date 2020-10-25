@@ -12,8 +12,9 @@ class SearchCell: UITableViewCell{
     @IBOutlet weak var viewStock: UIButton!
     @IBOutlet weak var tickerName: UILabel!
     
-    @IBAction func stockTapped(_ sender: Any) {
-    }
-
     var renderSearch: (() -> Void)? // a closure
+    
+    @IBAction func stockTapped(_ sender: Any) {
+        self.renderSearch?()
+    }
 }
