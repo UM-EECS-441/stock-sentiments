@@ -96,7 +96,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            // populate a single cell
-           guard let cell = tableView.dequeueReusableCell(withIdentifier: "watchListCell", for: indexPath) as? watchListCell else {
+           guard let cell = tableView.dequeueReusableCell(withIdentifier: "WatchListCell", for: indexPath) as? WatchListCell else {
                fatalError("No reusable cell!")
            }
 

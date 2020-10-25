@@ -20,7 +20,7 @@
 		8D71A39F254529C700F1B7EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A39E254529C700F1B7EC /* User.swift */; };
 		8D71A3A4254530AD00F1B7EC /* GetTickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A3A3254530AD00F1B7EC /* GetTickers.swift */; };
 		8D71A3A92545446200F1B7EC /* SupportedTickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A3A82545446200F1B7EC /* SupportedTickers.swift */; };
-		8D7517232545F7A30017D8CD /* watchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7517202545F7A30017D8CD /* watchListCell.swift */; };
+		8D7517232545F7A30017D8CD /* WatchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7517202545F7A30017D8CD /* WatchListCell.swift */; };
 		8D7517242545F7A30017D8CD /* WatchlistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7517212545F7A30017D8CD /* WatchlistItem.swift */; };
 		8D7517252545F7A30017D8CD /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7517222545F7A30017D8CD /* SearchCell.swift */; };
 		8D751731254604710017D8CD /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D751730254604710017D8CD /* Requests.swift */; };
@@ -73,7 +73,7 @@
 		8D71A39E254529C700F1B7EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8D71A3A3254530AD00F1B7EC /* GetTickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTickers.swift; sourceTree = "<group>"; };
 		8D71A3A82545446200F1B7EC /* SupportedTickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedTickers.swift; sourceTree = "<group>"; };
-		8D7517202545F7A30017D8CD /* watchListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = watchListCell.swift; sourceTree = "<group>"; };
+		8D7517202545F7A30017D8CD /* WatchListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchListCell.swift; sourceTree = "<group>"; };
 		8D7517212545F7A30017D8CD /* WatchlistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchlistItem.swift; sourceTree = "<group>"; };
 		8D7517222545F7A30017D8CD /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		8D751730254604710017D8CD /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
@@ -170,7 +170,16 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		8D40676C25434568002760B1 /* ViewControllers */ = {
+		8D40676C25434568002760B1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8D5E8278254630EE00CC18A5 /* ViewControllers */,
+				8D5E82792546310500CC18A5 /* TableViewCellControllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8D5E8278254630EE00CC18A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				8DE16D322534B4D300D5FBB8 /* MainVC.swift */,
@@ -180,10 +189,17 @@
 				8D7EDB912543481C00A59F10 /* SentimentVC.swift */,
 				8D7EDB962543482600A59F10 /* SettingsVC.swift */,
 				8D7EDB9B2543483200A59F10 /* SubscribeVC.swift */,
-				8D7517222545F7A30017D8CD /* SearchCell.swift */,
-				8D7517202545F7A30017D8CD /* watchListCell.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8D5E82792546310500CC18A5 /* TableViewCellControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8D7517222545F7A30017D8CD /* SearchCell.swift */,
+				8D7517202545F7A30017D8CD /* WatchListCell.swift */,
+			);
+			path = TableViewCellControllers;
 			sourceTree = "<group>";
 		};
 		8D71A3902545297100F1B7EC /* Model */ = {
@@ -235,7 +251,7 @@
 			children = (
 				8D75172F254604140017D8CD /* Requests */,
 				8D71A3902545297100F1B7EC /* Model */,
-				8D40676C25434568002760B1 /* ViewControllers */,
+				8D40676C25434568002760B1 /* Controllers */,
 				8D40674E2543444F002760B1 /* Storyboards */,
 				8DE16D2E2534B4D300D5FBB8 /* AppDelegate.swift */,
 				8DE16D302534B4D300D5FBB8 /* SceneDelegate.swift */,
@@ -484,7 +500,7 @@
 				8D71A3922545299400F1B7EC /* Ticker.swift in Sources */,
 				8D71A39F254529C700F1B7EC /* User.swift in Sources */,
 				8D71A3A92545446200F1B7EC /* SupportedTickers.swift in Sources */,
-				8D7517232545F7A30017D8CD /* watchListCell.swift in Sources */,
+				8D7517232545F7A30017D8CD /* WatchListCell.swift in Sources */,
 				8D7EDB922543481C00A59F10 /* SentimentVC.swift in Sources */,
 				8D7517242545F7A30017D8CD /* WatchlistItem.swift in Sources */,
 				8D71A39A254529B100F1B7EC /* Watchlist.swift in Sources */,

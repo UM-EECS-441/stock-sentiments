@@ -16,8 +16,7 @@ class SearchVC: UITableViewController {
 
     //TODO: include filter results function
 
-    var searchs = [SearchResult]() // array of search cells
-    var temp = [SearchResult]() // array of search cells
+    var searchResults = [SearchResult]() // array of search results
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +29,10 @@ class SearchVC: UITableViewController {
             self.supportedTickers = supportedTickers
             
             for (symbol, _) in self.supportedTickers!.symbolToName {
-                self.temp.append(SearchResult(tickerSymbol: symbol))
+                self.searchResults.append(SearchResult(tickerSymbol: symbol))
             }
-            print(self.temp)
+            print("done")
         })
-
-        //getSearchs()
     }
 
     // MARK:- TableView handlers
@@ -47,7 +44,7 @@ class SearchVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // how many rows per section
-        return searchs.count
+        return searchResults.count
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -65,14 +62,14 @@ class SearchVC: UITableViewController {
 //        let search = searchs[indexPath.row]
 //        cell.tickerName.text = search.tickerName
 //        cell.tickerName.sizeToFit()
-        let search = temp[indexPath.row]
-        cell.tickerName.text = search.symbol
+        let searchResult = searchResults[indexPath.row]
+        cell.tickerName.text = searchResult.symbol
         cell.tickerName.sizeToFit()
         
         cell.viewStock.isHidden = false
         cell.renderSearch = { () in
             let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-                subscribeVC.search = self.searchs[indexPath.row]
+                subscribeVC.search = self.searchResults[indexPath.row]
 
             self.present(subscribeVC, animated: true, completion: nil)
         }
