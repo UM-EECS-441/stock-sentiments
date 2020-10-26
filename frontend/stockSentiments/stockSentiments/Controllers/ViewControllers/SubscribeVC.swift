@@ -11,6 +11,7 @@ let subscribeStoryboard: UIStoryboard = UIStoryboard(name: "Subscribe", bundle: 
 
 class SubscribeVC: UIViewController {
     var search: SearchResult? = nil
+    var watchlistItem: WatchlistItem? = nil
 
     @IBOutlet weak var messagetextView: UITextView!
 
@@ -33,6 +34,9 @@ class SubscribeVC: UIViewController {
         // TODO: set stock title to title from stock click or through a fetch api
         if (search != nil){
             stockTitle.text = search?.symbol
+        }
+        else if(watchlistItem != nil){
+            stockTitle.text = watchlistItem?.name
         }
         // TODO: retrieve stock description from database and update stock description
         messagetextView.text = "This is the default stock description"

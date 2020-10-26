@@ -55,6 +55,6 @@ struct GetWatchlistResponse : Codable {
 struct WatchlistResponse : Codable {
     var symbol: String
     var name: String
-    var score: Int
+    var score: Double
     var timestamp: String
 }

@@ -9,10 +9,10 @@
 class WatchlistItem {
     var symbol: String
     var name: String
-    var sentimentScore: Int
+    var sentimentScore: Double
     var timestamp: String
 
-    init(tickerSymbol: String, tickerName: String, sentimentScore: Int, timestamp: String) {
+    init(tickerSymbol: String, tickerName: String, sentimentScore: Double, timestamp: String) {
         self.symbol = tickerSymbol
         self.name = tickerName
         self.sentimentScore = sentimentScore

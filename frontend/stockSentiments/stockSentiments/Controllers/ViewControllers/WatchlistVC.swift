@@ -75,7 +75,18 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         cell.stockName.sizeToFit()
         cell.sentimentScore.text = String(watchlistItem!.sentimentScore)
         cell.sentimentScore.sizeToFit()
-
+        if(watchlistItem!.sentimentScore > 0.33){
+            //green
+            cell.backgroundColor = .green
+        }
+        else if(watchlistItem!.sentimentScore < -0.33){
+            //red
+            cell.backgroundColor = .red
+        }
+        else{
+            //orange
+            cell.backgroundColor = .orange
+        }
         cell.sentimentButton.isHidden = false
         cell.renderChatt = { () in
             let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
