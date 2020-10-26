@@ -38,6 +38,14 @@ class SearchVC: UITableViewController {
             }
         })
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Set nav title and don't allow back functionality
+        self.tabBarController?.navigationItem.title = "Search"
+        self.tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
+    }
 
     // MARK:- TableView handlers
 
