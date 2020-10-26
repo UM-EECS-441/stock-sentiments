@@ -10,7 +10,7 @@ def ensemble_query(LIMIT, text_query):
     average = result.mean(axis =0)
     print("Our Ensemble score: ", average['our_model'])
     print("VADER's Ensemble score: ", average['vader'])
-    return result
+    return (average['our_model'], average['vader'])
 
 ensemble_query(100, 'TESLA')
     
