@@ -72,7 +72,7 @@ def twitter_func(LIMIT, text_query):
     tweets_df = tweets_df[past_fifteen_min]
 
     del tweets_df['time_created']
-    analyze_sentiment(tweets_df, "twitter_scores")
+    analyze_sentiment(tweets_df, "twitter_scores-" + text_query)
     return tweets_df
 
 # LIMIT = 100

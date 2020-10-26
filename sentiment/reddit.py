@@ -54,8 +54,8 @@ def analyze_sentiment(df, filename):
     df["our_model"] = our_calcs
     df["vader"] = vader_calcs
     df.to_csv(filename + '.csv', index=False)
-    print("Our Model's avg score: ", sum(our_calcs)/(total))
-    print("VADER's avg score: ", sum(vader_calcs)/total)
+    # print("Our Model's avg score: ", sum(our_calcs)/(total))
+    # print("VADER's avg score: ", sum(vader_calcs)/total)
 
 def reddit_func(LIMIT, text_query):
     reddit = praw.Reddit(client_id='GDOKPrBB4GK8CA', client_secret='h0duFt5U7GqKmjNXFe2CL45JJZ0', user_agent='StockSentiment')
@@ -76,7 +76,7 @@ def reddit_func(LIMIT, text_query):
     past_fifteen_min = posts['timestamp'] >= timestamp
     posts = posts[past_fifteen_min]
     
-    analyze_sentiment(posts, "reddit_scores")
+    analyze_sentiment(posts, "reddit_scores-" +text_query)
     return posts
 
 
