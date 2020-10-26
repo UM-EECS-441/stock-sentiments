@@ -19,7 +19,7 @@
 		8D71A39F254529C700F1B7EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A39E254529C700F1B7EC /* User.swift */; };
 		8D71A3A4254530AD00F1B7EC /* GetTickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A3A3254530AD00F1B7EC /* GetTickers.swift */; };
 		8D71A3A92545446200F1B7EC /* SupportedTickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A3A82545446200F1B7EC /* SupportedTickers.swift */; };
-		8D7517232545F7A30017D8CD /* WatchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7517202545F7A30017D8CD /* WatchListCell.swift */; };
+		8D7517232545F7A30017D8CD /* WatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7517202545F7A30017D8CD /* WatchlistCell.swift */; };
 		8D7517242545F7A30017D8CD /* WatchlistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7517212545F7A30017D8CD /* WatchlistItem.swift */; };
 		8D7517252545F7A30017D8CD /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7517222545F7A30017D8CD /* SearchCell.swift */; };
 		8D751731254604710017D8CD /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D751730254604710017D8CD /* Requests.swift */; };
@@ -38,6 +38,7 @@
 		8DE16D3B2534B4D600D5FBB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DE16D392534B4D600D5FBB8 /* LaunchScreen.storyboard */; };
 		8DE16D462534B4D700D5FBB8 /* stockSentimentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE16D452534B4D700D5FBB8 /* stockSentimentsTests.swift */; };
 		8DE16D512534B4D700D5FBB8 /* stockSentimentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE16D502534B4D700D5FBB8 /* stockSentimentsUITests.swift */; };
+		8DE7582C254643C70083993F /* GetWatchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7582B254643C70083993F /* GetWatchlist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +72,7 @@
 		8D71A39E254529C700F1B7EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8D71A3A3254530AD00F1B7EC /* GetTickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTickers.swift; sourceTree = "<group>"; };
 		8D71A3A82545446200F1B7EC /* SupportedTickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedTickers.swift; sourceTree = "<group>"; };
-		8D7517202545F7A30017D8CD /* WatchListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchListCell.swift; sourceTree = "<group>"; };
+		8D7517202545F7A30017D8CD /* WatchlistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchlistCell.swift; sourceTree = "<group>"; };
 		8D7517212545F7A30017D8CD /* WatchlistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchlistItem.swift; sourceTree = "<group>"; };
 		8D7517222545F7A30017D8CD /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		8D751730254604710017D8CD /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		8DE16D4C2534B4D700D5FBB8 /* stockSentimentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = stockSentimentsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE16D502534B4D700D5FBB8 /* stockSentimentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stockSentimentsUITests.swift; sourceTree = "<group>"; };
 		8DE16D522534B4D700D5FBB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DE7582B254643C70083993F /* GetWatchlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWatchlist.swift; sourceTree = "<group>"; };
 		8E4D126A5A3E898486DB3518 /* Pods_stockSentiments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentiments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BC1A62037218FD57DA028F /* Pods-stockSentiments-stockSentimentsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments-stockSentimentsUITests.release.xcconfig"; path = "Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C9C6198252DE5BA5CF4D2E83 /* Pods-stockSentimentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentimentsTests.release.xcconfig"; path = "Target Support Files/Pods-stockSentimentsTests/Pods-stockSentimentsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -195,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				8D7517222545F7A30017D8CD /* SearchCell.swift */,
-				8D7517202545F7A30017D8CD /* WatchListCell.swift */,
+				8D7517202545F7A30017D8CD /* WatchlistCell.swift */,
 			);
 			path = TableViewCellControllers;
 			sourceTree = "<group>";
@@ -215,8 +217,9 @@
 		8D75172F254604140017D8CD /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				8D71A3A3254530AD00F1B7EC /* GetTickers.swift */,
 				8D751730254604710017D8CD /* Requests.swift */,
+				8D71A3A3254530AD00F1B7EC /* GetTickers.swift */,
+				8DE7582B254643C70083993F /* GetWatchlist.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D7EDB8D2543481300A59F10 /* SearchVC.swift in Sources */,
+				8DE7582C254643C70083993F /* GetWatchlist.swift in Sources */,
 				8DE16D332534B4D300D5FBB8 /* MainVC.swift in Sources */,
 				8D7517252545F7A30017D8CD /* SearchCell.swift in Sources */,
 				8D751731254604710017D8CD /* Requests.swift in Sources */,
@@ -496,7 +500,7 @@
 				8D7EDB83254347CA00A59F10 /* LaunchScreenVC.swift in Sources */,
 				8D71A39F254529C700F1B7EC /* User.swift in Sources */,
 				8D71A3A92545446200F1B7EC /* SupportedTickers.swift in Sources */,
-				8D7517232545F7A30017D8CD /* WatchListCell.swift in Sources */,
+				8D7517232545F7A30017D8CD /* WatchlistCell.swift in Sources */,
 				8D7EDB922543481C00A59F10 /* SentimentVC.swift in Sources */,
 				8D7517242545F7A30017D8CD /* WatchlistItem.swift in Sources */,
 				8D71A39A254529B100F1B7EC /* Watchlist.swift in Sources */,

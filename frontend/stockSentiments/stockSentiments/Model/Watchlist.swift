@@ -8,9 +8,12 @@
 
 /* Stores a list of Ticker instances */
 class Watchlist {
-    var watchlist: [WatchlistItem]
+    var watchlist: [WatchlistItem] = []
     
-    init(watchlist: [WatchlistItem]) {
-        self.watchlist = watchlist
+    init(response responseData: [WatchlistResponse]) {
+        
+        for watchlistResponse in responseData {
+            watchlist.append(WatchlistItem(tickerSymbol: watchlistResponse.symbol, tickerName: watchlistResponse.name, sentimentScore: watchlistResponse.score, timestamp: watchlistResponse.timestamp))
+        }
     }
 }

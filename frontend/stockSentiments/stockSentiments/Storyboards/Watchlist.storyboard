@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <tabBar key="tableFooterView" contentMode="scaleToFill" id="yJp-9E-4Xy">
-                            <rect key="frame" x="0.0" y="135" width="414" height="49"/>
+                            <rect key="frame" x="0.0" y="159" width="414" height="49"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <items>
@@ -26,32 +26,22 @@
                             </items>
                         </tabBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WatchlistCell" rowHeight="79" id="MMq-Zd-fVU" customClass="WatchListCell" customModule="stockSentiments" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="79"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WatchlistCell" rowHeight="103" id="MMq-Zd-fVU" customClass="WatchlistCell" customModule="stockSentiments" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MMq-Zd-fVU" id="VlX-MX-Ny9">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="StockName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glX-Ep-BRT">
-                                            <rect key="frame" x="20" y="26" width="89" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StockName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glX-Ep-BRT">
+                                            <rect key="frame" x="20" y="36" width="89" height="31"/>
                                             <accessibility key="accessibilityConfiguration" identifier="stockName"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sentiment Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pad-ok-apW">
-                                            <rect key="frame" x="144" y="29" width="127" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <accessibility key="accessibilityConfiguration" identifier="sentimentScore"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frf-5g-Zae">
-                                            <rect key="frame" x="346" y="19" width="29" height="39"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frf-5g-Zae">
+                                            <rect key="frame" x="365" y="36" width="29" height="31"/>
                                             <accessibility key="accessibilityConfiguration" identifier="viewSentiment"/>
                                             <state key="normal" image="line.horizontal.3.circle.fill" catalog="system">
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
@@ -60,9 +50,28 @@
                                                 <action selector="sentimentTapped:" destination="MMq-Zd-fVU" eventType="touchUpInside" id="BPY-tZ-hAw"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sentiment Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pad-ok-apW">
+                                            <rect key="frame" x="223" y="36" width="127" height="31"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="sentimentScore"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="glX-Ep-BRT" firstAttribute="leading" secondItem="VlX-MX-Ny9" secondAttribute="leadingMargin" id="4vz-xy-1wB"/>
+                                        <constraint firstItem="Frf-5g-Zae" firstAttribute="leading" secondItem="pad-ok-apW" secondAttribute="trailing" constant="15" id="7T3-CJ-B8R"/>
+                                        <constraint firstItem="pad-ok-apW" firstAttribute="top" secondItem="VlX-MX-Ny9" secondAttribute="topMargin" constant="25" id="7Tu-gb-fm3"/>
+                                        <constraint firstItem="glX-Ep-BRT" firstAttribute="top" secondItem="VlX-MX-Ny9" secondAttribute="topMargin" constant="25" id="Fd5-vu-Cle"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="pad-ok-apW" secondAttribute="bottom" constant="25" id="PMo-OL-rac"/>
+                                        <constraint firstItem="pad-ok-apW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="glX-Ep-BRT" secondAttribute="trailing" constant="10" id="UZc-VJ-4eJ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Frf-5g-Zae" secondAttribute="bottom" constant="25" id="ZiV-eb-Czz"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="glX-Ep-BRT" secondAttribute="bottom" constant="25" id="bP1-n7-JmH"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Frf-5g-Zae" secondAttribute="trailing" id="nrH-4H-Jby"/>
+                                        <constraint firstItem="Frf-5g-Zae" firstAttribute="top" secondItem="VlX-MX-Ny9" secondAttribute="topMargin" constant="25" id="w7U-s8-iqk"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <accessibility key="accessibilityConfiguration" identifier="watchListCell"/>
+                                <accessibility key="accessibilityConfiguration" identifier="WatchlistCell"/>
                                 <connections>
                                     <outlet property="sentimentButton" destination="Frf-5g-Zae" id="YKu-i4-HFf"/>
                                     <outlet property="sentimentScore" destination="pad-ok-apW" id="8gP-1G-bWq"/>

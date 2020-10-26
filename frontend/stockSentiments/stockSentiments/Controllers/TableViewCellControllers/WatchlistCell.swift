@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WatchListCell: UITableViewCell {
+class WatchlistCell: UITableViewCell {
 
     var renderChatt: (() -> Void)? // a closure
     @IBOutlet weak var sentimentButton: UIButton!
