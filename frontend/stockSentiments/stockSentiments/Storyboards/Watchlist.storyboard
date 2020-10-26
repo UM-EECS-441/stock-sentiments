@@ -15,16 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <tabBar key="tableFooterView" contentMode="scaleToFill" id="yJp-9E-4Xy">
-                            <rect key="frame" x="0.0" y="159" width="414" height="49"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <items>
-                                <tabBarItem tag="1" title="Search Button" image="magnifyingglass" catalog="system" id="k8q-34-rVV"/>
-                                <tabBarItem tag="2" title="WatchList Button" image="list.dash" catalog="system" id="2h2-1X-1GH"/>
-                                <tabBarItem tag="3" title="Settings Button" image="gear" catalog="system" id="tcO-1s-rcK"/>
-                            </items>
-                        </tabBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WatchlistCell" rowHeight="103" id="MMq-Zd-fVU" customClass="WatchlistCell" customModule="stockSentiments" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="103"/>
@@ -84,9 +74,8 @@
                             <outlet property="delegate" destination="loM-bw-mSM" id="Eal-qM-IJB"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="tabBar" destination="yJp-9E-4Xy" id="5f8-fN-j4Y"/>
-                    </connections>
+                    <tabBarItem key="tabBarItem" title="Watchlist" image="list.dash" catalog="system" selectedImage="list.dash" id="MM0-z8-sPA"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEf-oy-CB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,10 +83,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="line.horizontal.3.circle.fill" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -22,7 +22,7 @@ class MainVC: UIViewController {
             return
         }
 
-        self.navigationController?.pushViewController(watchlistVC, animated: true)
+//        self.navigationController?.pushViewController(watchlistVC, animated: true)
     }
 }
 
