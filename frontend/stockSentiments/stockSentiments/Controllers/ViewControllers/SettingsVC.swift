@@ -18,7 +18,7 @@ class SettingsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Set nav title and don't allow back functionality from the watchlist to signin page
+        // Set nav title and don't allow back functionality
         self.tabBarController?.navigationItem.title = "Settings"
         self.tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
     }
