@@ -12,6 +12,8 @@ let sentimentStoryboard: UIStoryboard = UIStoryboard(name: "Sentiment", bundle: 
 class SentimentVC: UIViewController {
     
     var ticker: Ticker? = nil
+    
+    var pVC: UIViewController? = nil // pointer to parent view controller needed to replace view
 
     @IBOutlet weak var sentimentTitle: UILabel!
     @IBOutlet weak var sentimentScore: UILabel!
@@ -19,10 +21,15 @@ class SentimentVC: UIViewController {
     @IBOutlet weak var sentimentUnsubscribe: UIButton!
     
     @IBAction func unsubscribeTapped(_ sender: Any) {
-        let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-        subscribeVC.ticker = ticker
+        // replace sentiment view with subscribe view
+        
+        self.dismiss(animated: true, completion: {
+            let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
+            subscribeVC.tickerSymbol = self.ticker?.symbol
 
-        self.present(subscribeVC, animated: true, completion: nil)
+            // present from parent as self has already been dismissed
+            self.pVC?.present(subscribeVC, animated: true, completion: nil)
+        })
     }
     
     override func viewDidLoad() {

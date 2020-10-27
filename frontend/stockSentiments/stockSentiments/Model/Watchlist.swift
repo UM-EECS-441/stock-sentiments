@@ -17,8 +17,7 @@ class Watchlist {
                 Ticker(tickerSymbol: watchlistResponse.symbol,
                        tickerName: watchlistResponse.name,
                        sentimentScore: watchlistResponse.score,
-                       timestamp: watchlistResponse.timestamp)
-            )
+                       timestamp: watchlistResponse.timestamp))
         }
     }
 }

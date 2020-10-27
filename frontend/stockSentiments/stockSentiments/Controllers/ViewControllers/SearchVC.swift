@@ -83,7 +83,8 @@ class SearchVC: UITableViewController {
         cell.viewStock.isHidden = false
         cell.renderSearch = { () in
             let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-            subscribeVC.search = self.searchResults[indexPath.row]
+//            subscribeVC.search = self.searchResults[indexPath.row]
+            subscribeVC.tickerSymbol = searchResult.symbol
 
             self.present(subscribeVC, animated: true, completion: nil)
         }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// TODO: delete this and just use a string unless we find more uses for this
 class SearchResult {
     var symbol: String
     
