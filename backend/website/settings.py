@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'userdb',
-        'USER': 'admin',
-        'PASSWORD': 'password',
+        'NAME': 'sentimentdb',
+        'USER': 'root',
+        'PASSWORD': '123stockSentiments',
         'HOST': 'localhost',
         'PORT': '',
     }

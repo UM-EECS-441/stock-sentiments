@@ -20,5 +20,7 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('gettickers/', views.gettickers, name='gettickers'),
+    path('get_tickers/', views.get_tickers, name='get_tickers'),
+    path('get_watchlist_scores/', views.get_watchlist_score, name='get_watchlist_score'),
+    path('user/subscribe/', views.subscribe, name='subscribe'),
 ]
