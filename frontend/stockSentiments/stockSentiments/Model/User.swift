@@ -11,8 +11,8 @@ class User {
     
     static let sharedUser = User()
     
-    // Stores the user's current Watchlist. This should always be updated
-    // TODO: on subscribe and unsubscribe: add or delete individual ticker, on refresh: discard and reload watchlist
+    // Stores the user's current Watchlist. This should always be updated when in watchlist view
+    // TODO: on subscribe and unsubscribe and on refresh ??: discard and reload watchlist
     var watchlist = [String:Ticker]() // symbol -> Ticker map
     
     // MARK:- User Identity

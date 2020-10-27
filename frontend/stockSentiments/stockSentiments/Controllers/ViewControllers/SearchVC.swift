@@ -8,7 +8,7 @@
 import UIKit
 
 let searchStoryboard: UIStoryboard = UIStoryboard(name: "Search", bundle: nil)
-var x = 0
+
 class SearchVC: UITableViewController {
     
     // nil until SearchVC is instantiated for the first time
