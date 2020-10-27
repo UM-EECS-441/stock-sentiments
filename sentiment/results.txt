@@ -1,0 +1,30 @@
+Classifier accuracy percent:  69.80155306298533
+Most Informative Features
+                  moving = True                1 : -1     =     14.4 : 1.0
+                 bearish = True               -1 : 1      =     11.2 : 1.0
+                     fib = True               -1 : 1      =     11.0 : 1.0
+                breakout = True                1 : -1     =     10.7 : 1.0
+                   folks = True               -1 : 1      =      9.9 : 1.0
+                     ong = True                1 : -1     =      8.8 : 1.0
+                    weak = True               -1 : 1      =      8.7 : 1.0
+                   worst = True               -1 : 1      =      8.7 : 1.0
+               breakdown = True               -1 : 1      =      7.5 : 1.0
+                   falls = True               -1 : 1      =      7.5 : 1.0
+                  supply = True               -1 : 1      =      7.5 : 1.0
+                 beating = True                1 : -1     =      7.5 : 1.0
+                  follow = True                1 : -1     =      7.5 : 1.0
+                  strong = True                1 : -1     =      7.3 : 1.0
+                   entry = True                1 : -1     =      7.3 : 1.0
+F1 SCORE:  0.6980155306298533
+MNB Classifier accuracy percent:  71.69974115616911
+F1 SCORE:  0.7169974115616912
+BNB Classifier accuracy percent:  70.23295944779983
+F1 SCORE:  0.7023295944779983
+Logistic Regression Classifier accuracy percent:  73.4253666954271
+F1 SCORE:  0.734253666954271
+Stochastic Grad. Descent Classifier accuracy percent:  72.21742881794651
+F1 SCORE:  0.722174288179465
+SVC Classifier accuracy percent:  72.38999137187231
+F1 SCORE:  0.7238999137187231
+
+VADER F1 SCORE:  0.6675317185697809
