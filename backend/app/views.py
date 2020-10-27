@@ -77,3 +77,30 @@ def subscribe(request):
 
 
     return JsonResponse(response)
+
+
+def unsubscribe(request):
+    if request.method != 'GET':
+        return HttpResponse(status=404)
+    
+    ticker = str(request.GET.get('ticker'))
+    uid = str(request.GET.get('uid'))
+
+    response = {}
+
+    response['ticker'] = ticker
+    response['uid'] = uid
+
+    cursor = connection.cursor()
+    cursor.execute('SELECT userid, subscription FROM subscriptiontable s WHERE s.userid = %s AND s.subscription = %s', (uid, ticker,))
+    rows = cursor.fetchall()
+
+    if len(rows) == 0:
+        return HttpResponse(status=500)
+
+    cursor = connection.cursor()
+    cursor.execute('DELETE FROM subscriptiontable WHERE userid = %s AND subscription = %s', (uid, ticker,))
+
+
+    return JsonResponse(response)
+
