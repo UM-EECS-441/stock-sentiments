@@ -17,10 +17,10 @@ class MainVC: UIViewController {
     @IBAction func guestTapped() {
         print("tapped")
         
-        guard let watchlistVC = watchlistStoryboard.instantiateViewController(identifier: "WatchlistVC") as? WatchlistVC else {
-            print("failed to load watchlistVC")
-            return
-        }
+//        guard let watchlistVC = watchlistStoryboard.instantiateViewController(identifier: "WatchlistVC") as? WatchlistVC else {
+//            print("failed to load watchlistVC")
+//            return
+//        }
 
 //        self.navigationController?.pushViewController(watchlistVC, animated: true)
     }

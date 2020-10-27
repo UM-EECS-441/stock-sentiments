@@ -62,17 +62,17 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
             searchActive = true;
         }
 
-        func searchBarTextDidEndEditing(searchItem: UISearchBar) {
-            searchActive = false;
-        }
+     func searchBarTextDidEndEditing(searchItem: UISearchBar) {
+          searchActive = false;
+      }
 
-        func searchBarCancelButtonClicked(searchItem: UISearchBar) {
-            searchActive = false;
-        }
+      func searchBarCancelButtonClicked(searchItem: UISearchBar) {
+          searchActive = false;
+      }
 
-        func searchBarSearchButtonClicked(searchItem: UISearchBar) {
-            searchActive = false;
-        }
+      func searchBarSearchButtonClicked(searchItem: UISearchBar) {
+          searchActive = false;
+      }
 
     func searchBar(_ searchItem: UISearchBar, textDidChange searchText: String) {
         filteredResults = searchResults.filter({ (text) -> Bool in
@@ -120,6 +120,19 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
 //        let search = searchs[indexPath.row]
 //        cell.tickerName.text = search.tickerName
 //        cell.tickerName.sizeToFit()
+    // TODO: Ibtida Fix
+      /*
+        let searchResult = searchResults[indexPath.row]
+        cell.tickerName.text = searchResult.symbol
+        cell.tickerName.sizeToFit()
+        
+        cell.viewStock.isHidden = false
+        cell.renderSearch = { () in
+            let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
+//            subscribeVC.search = self.searchResults[indexPath.row]
+            subscribeVC.tickerSymbol = searchResult.symbol
+            subscribeVC.pVC = self */
+      
         if(searchActive){
             let filterResult = filteredResults[indexPath.row]
             cell.tickerName.text = filterResult.symbol

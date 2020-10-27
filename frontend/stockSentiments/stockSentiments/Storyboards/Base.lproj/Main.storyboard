@@ -41,7 +41,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="2VL-pm-W7H">
             <objects>
-                <tabBarController id="eLl-xF-0le" sceneMemberID="viewController">
+                <tabBarController id="eLl-xF-0le" customClass="TabBarController" customModule="stockSentiments" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="O0S-32-pjL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GeM-a5-ejJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -61,7 +61,6 @@
         <!--Navigation Controller-->
         <scene sceneID="nBX-dM-MgE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z86-Nx-O1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController title="Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="zqh-2q-Ip9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ILk-nZ-91P">
@@ -73,6 +72,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HA7-iu-KDu"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z86-Nx-O1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-197.10144927536234" y="69.642857142857139"/>
         </scene>

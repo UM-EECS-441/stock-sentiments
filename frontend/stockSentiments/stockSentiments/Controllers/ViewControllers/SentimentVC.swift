@@ -8,51 +8,51 @@
 import UIKit
 
 let sentimentStoryboard: UIStoryboard = UIStoryboard(name: "Sentiment", bundle: nil)
+
 class SentimentVC: UIViewController {
-    var watchlistItem: WatchlistItem? = nil
+    
+    var ticker: Ticker? = nil
+    
+    var pVC: UIViewController? = nil // pointer to parent view controller needed to replace view
 
-    @IBOutlet weak var sentimentDescription: UITextView!
-
-    @IBAction func unsubscribeTapped(_ sender: Any) {
-        let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-        subscribeVC.watchlistItem = watchlistItem
-
-        self.present(subscribeVC, animated: true, completion: nil)
-    }
-    @IBOutlet weak var sentimentUnsubscribe: UIButton!
-    @IBOutlet weak var sentimentScore: UILabel!
     @IBOutlet weak var sentimentTitle: UILabel!
+    @IBOutlet weak var sentimentScore: UILabel!
+    @IBOutlet weak var sentimentDescription: UITextView!
+    @IBOutlet weak var sentimentUnsubscribe: UIButton!
+    
+    @IBAction func unsubscribeTapped(_ sender: Any) {
+        // replace sentiment view with subscribe view
+        
+        self.dismiss(animated: true, completion: {
+            let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
+            subscribeVC.tickerSymbol = self.ticker?.symbol
+            
+            // set destination's parent to self's parent and present modally from parent
+            guard let pVC = self.pVC else {
+                fatalError("Parent view controller not set")
+            }
+            subscribeVC.pVC = pVC
+            self.pVC?.present(subscribeVC, animated: true, completion: nil)
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        guard let watchlistItem = self.watchlistItem else{
+        
+        guard let ticker = self.ticker else {
             return
         }
-        sentimentTitle.text = watchlistItem.name + " (" + watchlistItem.symbol + ")"
-        sentimentScore.text = String(watchlistItem.sentimentScore)
-        if(watchlistItem.sentimentScore >= 0.33){
-            //green
-            view.backgroundColor = .green
-            sentimentDescription.text = "People are saying good things about " + watchlistItem.name
-            sentimentDescription.backgroundColor = .green
-
-        }
-        else if(watchlistItem.sentimentScore < -0.33 ){
-            //red
-            view.backgroundColor = .red
-            sentimentDescription.text = "People are saying bad things about " + watchlistItem.name
-            sentimentDescription.backgroundColor = .red
-        }
-        else{
-            //amber
-            view.backgroundColor = .orange
-            sentimentDescription.text = "People are saying neutral things about " + watchlistItem.name
-            sentimentDescription.backgroundColor = .orange
-
-        }
-
-
-
+        
+        // set color
+        let sentimentLabel: SentimentLabel = getSentimentLabel(score: ticker.sentimentScore)
+        view.backgroundColor = sentimentLabel.color
+        sentimentDescription.backgroundColor = sentimentLabel.color
+        
+        // set text
+        sentimentTitle.text = ticker.name + " (" + ticker.symbol + ")"
+        sentimentScore.text = String(ticker.sentimentScore)
+        sentimentDescription.text = "People are saying " + sentimentLabel.rawValue + " things about " + ticker.name
 
     }
 }
