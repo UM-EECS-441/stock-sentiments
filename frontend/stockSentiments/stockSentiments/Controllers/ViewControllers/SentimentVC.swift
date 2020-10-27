@@ -8,35 +8,40 @@
 import UIKit
 
 let sentimentStoryboard: UIStoryboard = UIStoryboard(name: "Sentiment", bundle: nil)
+
 class SentimentVC: UIViewController {
-    var watchlistItem: WatchlistItem? = nil
+    
+    var ticker: Ticker? = nil
 
+    @IBOutlet weak var sentimentTitle: UILabel!
+    @IBOutlet weak var sentimentScore: UILabel!
     @IBOutlet weak var sentimentDescription: UITextView!
-
+    @IBOutlet weak var sentimentUnsubscribe: UIButton!
+    
     @IBAction func unsubscribeTapped(_ sender: Any) {
         let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-        subscribeVC.watchlistItem = watchlistItem
+        subscribeVC.ticker = ticker
 
         self.present(subscribeVC, animated: true, completion: nil)
     }
-    @IBOutlet weak var sentimentUnsubscribe: UIButton!
-    @IBOutlet weak var sentimentScore: UILabel!
-    @IBOutlet weak var sentimentTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        guard let watchlistItem = self.watchlistItem else{
+        
+        guard let ticker = self.ticker else {
             return
         }
         
-        let sentimentLabel: SentimentLabel = getSentimentLabel(score: watchlistItem.sentimentScore)
+        // set color
+        let sentimentLabel: SentimentLabel = getSentimentLabel(score: ticker.sentimentScore)
         view.backgroundColor = sentimentLabel.color
         sentimentDescription.backgroundColor = sentimentLabel.color
-        sentimentDescription.text = "People are saying " + sentimentLabel.rawValue + " things about " + watchlistItem.name
         
-        sentimentTitle.text = watchlistItem.name + " (" + watchlistItem.symbol + ")"
-        sentimentScore.text = String(watchlistItem.sentimentScore)
+        // set text
+        sentimentTitle.text = ticker.name + " (" + ticker.symbol + ")"
+        sentimentScore.text = String(ticker.sentimentScore)
+        sentimentDescription.text = "People are saying " + sentimentLabel.rawValue + " things about " + ticker.name
 
     }
 }

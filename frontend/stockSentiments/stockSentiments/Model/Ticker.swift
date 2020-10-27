@@ -6,7 +6,8 @@
 //
 
 
-class WatchlistItem {
+// stores all relevant information for a specific ticker
+class Ticker {
     var symbol: String
     var name: String
     var sentimentScore: Double

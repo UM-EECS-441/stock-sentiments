@@ -30,14 +30,11 @@ func requestUserWatchlist(completionHandler: @escaping (Watchlist) -> Void) -> V
         do {
             decodedResponse = try JSONDecoder().decode(GetWatchlistResponse.self, from: data!)
         } catch {
-//            print("something went wrong in decoding get_tickers/ response")
             print("error in decoding \(error.localizedDescription)")
             return
         }
         
-        print("worked")
-        // request is complete, call completion handler
-        
+        // pass watchlist back to WatchlistVC a
         completionHandler(Watchlist(response: decodedResponse!.data))
     }
     task.resume()

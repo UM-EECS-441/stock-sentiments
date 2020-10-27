@@ -43,8 +43,8 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
     }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-//            getWatchs()
-        }
+        // TODO: request and update watchlist
+    }
 
     // MARK:- TableView handlers
 
@@ -71,18 +71,23 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         }
         
         // will only execute if there is a reusable cell AND watchlist is not null
+        
+        // set color
+        let sentimentLabel: SentimentLabel = getSentimentLabel(score: watchlistItem.sentimentScore)
+        cell.backgroundColor = sentimentLabel.color
+        
+        // set text
         cell.stockName.text = watchlistItem.symbol
         cell.stockName.sizeToFit()
         cell.sentimentScore.text = String(watchlistItem.sentimentScore)
         cell.sentimentScore.sizeToFit()
         
-        let sentimentLabel: SentimentLabel = getSentimentLabel(score: watchlistItem.sentimentScore)
-        cell.backgroundColor = sentimentLabel.color
-        
         cell.sentimentButton.isHidden = false
+        
+        // click handler
         cell.renderChatt = { () in
             let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
-            sentimentVC.watchlistItem = self.watchlistInstance?.watchlist[indexPath.row]
+            sentimentVC.ticker = self.watchlistInstance?.watchlist[indexPath.row]
             
             self.present(sentimentVC, animated: true, completion: nil)
         }
