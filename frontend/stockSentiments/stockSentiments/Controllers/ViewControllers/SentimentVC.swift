@@ -22,37 +22,21 @@ class SentimentVC: UIViewController {
     @IBOutlet weak var sentimentUnsubscribe: UIButton!
     @IBOutlet weak var sentimentScore: UILabel!
     @IBOutlet weak var sentimentTitle: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         guard let watchlistItem = self.watchlistItem else{
             return
         }
+        
+        let sentimentLabel: SentimentLabel = getSentimentLabel(score: watchlistItem.sentimentScore)
+        view.backgroundColor = sentimentLabel.color
+        sentimentDescription.backgroundColor = sentimentLabel.color
+        sentimentDescription.text = "People are saying " + sentimentLabel.rawValue + " things about " + watchlistItem.name
+        
         sentimentTitle.text = watchlistItem.name + " (" + watchlistItem.symbol + ")"
         sentimentScore.text = String(watchlistItem.sentimentScore)
-        if(watchlistItem.sentimentScore >= 0.33){
-            //green
-            view.backgroundColor = .green
-            sentimentDescription.text = "People are saying good things about " + watchlistItem.name
-            sentimentDescription.backgroundColor = .green
-
-        }
-        else if(watchlistItem.sentimentScore < -0.33 ){
-            //red
-            view.backgroundColor = .red
-            sentimentDescription.text = "People are saying bad things about " + watchlistItem.name
-            sentimentDescription.backgroundColor = .red
-        }
-        else{
-            //amber
-            view.backgroundColor = .orange
-            sentimentDescription.text = "People are saying neutral things about " + watchlistItem.name
-            sentimentDescription.backgroundColor = .orange
-
-        }
-
-
-
 
     }
 }

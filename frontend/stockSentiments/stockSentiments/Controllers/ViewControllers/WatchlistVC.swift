@@ -65,28 +65,20 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        // populate a single cell
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath) as? WatchlistCell else {
-           fatalError("No reusable cell!")
-       }
-
-        let watchlistItem = watchlistInstance?
-            .watchlist[indexPath.row]
-        cell.stockName.text = watchlistItem?.symbol
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath) as? WatchlistCell,
+              let watchlistItem = watchlistInstance?.watchlist[indexPath.row] else {
+            fatalError("No reusable cell!")
+        }
+        
+        // will only execute if there is a reusable cell AND watchlist is not null
+        cell.stockName.text = watchlistItem.symbol
         cell.stockName.sizeToFit()
-        cell.sentimentScore.text = String(watchlistItem!.sentimentScore)
+        cell.sentimentScore.text = String(watchlistItem.sentimentScore)
         cell.sentimentScore.sizeToFit()
-        if(watchlistItem!.sentimentScore > 0.33){
-            //green
-            cell.backgroundColor = .green
-        }
-        else if(watchlistItem!.sentimentScore < -0.33){
-            //red
-            cell.backgroundColor = .red
-        }
-        else{
-            //orange
-            cell.backgroundColor = .orange
-        }
+        
+        let sentimentLabel: SentimentLabel = getSentimentLabel(score: watchlistItem.sentimentScore)
+        cell.backgroundColor = sentimentLabel.color
+        
         cell.sentimentButton.isHidden = false
         cell.renderChatt = { () in
             let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
