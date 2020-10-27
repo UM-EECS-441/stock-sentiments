@@ -11,25 +11,22 @@ let searchStoryboard: UIStoryboard = UIStoryboard(name: "Search", bundle: nil)
 
 class SearchVC: UITableViewController, UISearchBarDelegate {
     
-
     @IBOutlet weak var searchItem: UISearchBar!
-    var searchActive : Bool = false
+    
     // nil until SearchVC is instantiated for the first time
     var supportedTickers: SupportedTickers? = nil
+    
+    var searchActive : Bool = false
+    
 
     //TODO: include filter results function
 
-    var searchResults = [SearchResult]() // array of search results
-    var filteredResults:[SearchResult] = []// array of filtered results
+    var topSearchResults = [SearchResult]() // array of search results
+    var filteredResults: [SearchResult] = []// array of filtered results
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the  view.
-        
-        // completion handler has access to supportedTickers passed by delegator
-        // https://stackoverflow.com/questions/30401439/how-could-i-create-a-function-with-a-completion-handler-in-swift
-
+    
         // setup delegates
         searchItem.delegate = self
         tableView.delegate = self
@@ -39,7 +36,7 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
             self.supportedTickers = supportedTickers
             
             for (symbol, _) in self.supportedTickers!.symbolToName {
-                self.searchResults.append(SearchResult(tickerSymbol: symbol))
+                self.topSearchResults.append(SearchResult(tickerSymbol: symbol))
             }
             
             // Reload data from main thread
@@ -59,28 +56,29 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
 
     // MARK:- Search Bar handlers
     func searchBarTextDidBeginEditing(searchItem: UISearchBar) {
-            searchActive = true;
-        }
+        searchActive = true;
+    }
 
-     func searchBarTextDidEndEditing(searchItem: UISearchBar) {
-          searchActive = false;
-      }
+    func searchBarTextDidEndEditing(searchItem: UISearchBar) {
+        searchActive = false;
+    }
 
-      func searchBarCancelButtonClicked(searchItem: UISearchBar) {
-          searchActive = false;
-      }
+    func searchBarCancelButtonClicked(searchItem: UISearchBar) {
+        searchActive = false;
+    }
 
-      func searchBarSearchButtonClicked(searchItem: UISearchBar) {
-          searchActive = false;
-      }
+    func searchBarSearchButtonClicked(searchItem: UISearchBar) {
+        searchActive = false;
+    }
 
     func searchBar(_ searchItem: UISearchBar, textDidChange searchText: String) {
-        filteredResults = searchResults.filter({ (text) -> Bool in
-        let tmp:NSString = text.symbol as NSString
-        let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-        return range.location != NSNotFound
+        filteredResults = topSearchResults.filter({ (text) -> Bool in
+            let tmp:NSString = text.symbol as NSString
+            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            return range.location != NSNotFound
         })
-        if(filteredResults.count == 0){
+        
+        if (filteredResults.count == 0) {
             searchActive = false;
         } else {
             searchActive = true;
@@ -97,12 +95,8 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // how many rows per section
-        if(searchActive){
-            return filteredResults.count
-        }
-        print(searchResults.count)
-        return searchResults.count
-//        return 2
+
+        return searchActive ? filteredResults.count : topSearchResults.count
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -112,52 +106,23 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // populate a single cell
-        print("hi")
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchCell else {
             fatalError("No reusable cell!")
         }
 
-//        let search = searchs[indexPath.row]
-//        cell.tickerName.text = search.tickerName
-//        cell.tickerName.sizeToFit()
-    // TODO: Ibtida Fix
-      /*
-        let searchResult = searchResults[indexPath.row]
+        let searchResult = searchActive ? filteredResults[indexPath.row] : topSearchResults[indexPath.row]
+        
         cell.tickerName.text = searchResult.symbol
         cell.tickerName.sizeToFit()
-        
         cell.viewStock.isHidden = false
         cell.renderSearch = { () in
             let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-//            subscribeVC.search = self.searchResults[indexPath.row]
             subscribeVC.tickerSymbol = searchResult.symbol
-            subscribeVC.pVC = self */
-      
-        if(searchActive){
-            let filterResult = filteredResults[indexPath.row]
-            cell.tickerName.text = filterResult.symbol
-            cell.tickerName.sizeToFit()
-            cell.viewStock.isHidden = false
-            cell.renderSearch = { () in
-                let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-                subscribeVC.search = self.filteredResults[indexPath.row]
+            subscribeVC.pVC = self
 
-                self.present(subscribeVC, animated: true, completion: nil)
-            }
+            self.present(subscribeVC, animated: true, completion: nil)
         }
-        else{
-            let searchResult = searchResults[indexPath.row]
-            cell.tickerName.text = searchResult.symbol
-            cell.tickerName.sizeToFit()
-            cell.viewStock.isHidden = false
-            cell.renderSearch = { () in
-                let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-                subscribeVC.search = self.searchResults[indexPath.row]
-
-                self.present(subscribeVC, animated: true, completion: nil)
-            }
-        }
-
 
         return cell
    }
