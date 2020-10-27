@@ -26,8 +26,12 @@ class SentimentVC: UIViewController {
         self.dismiss(animated: true, completion: {
             let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
             subscribeVC.tickerSymbol = self.ticker?.symbol
-
-            // present from parent as self has already been dismissed
+            
+            // set destination's parent to self's parent and present modally from parent
+            guard let pVC = self.pVC else {
+                fatalError("Parent view controller not set")
+            }
+            subscribeVC.pVC = pVC
             self.pVC?.present(subscribeVC, animated: true, completion: nil)
         })
     }

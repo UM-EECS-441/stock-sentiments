@@ -12,8 +12,8 @@ let subscribeStoryboard: UIStoryboard = UIStoryboard(name: "Subscribe", bundle: 
 class SubscribeVC: UIViewController {
     
     var tickerSymbol: String? = nil
-//    var search: SearchResult? = nil
-//    var ticker: Ticker? = nil
+
+    var pVC: UIViewController? = nil // pointer to parent view controller needed to replace view
 
     @IBOutlet weak var stockTitle: UILabel!
     @IBOutlet weak var messagetextView: UITextView!
@@ -24,11 +24,18 @@ class SubscribeVC: UIViewController {
             1. Check if User is a subsciption member, if they're not check if user has reached subscription limit, if they have do not allow to subscribe to stock ticker
             2. Change this to a modal replacement to SentimentVC
          */
-        if (subscribeButton.currentTitle == "Subscribe") {
-            subscribeButton.setTitle("Unsubscribe", for: .normal)
-        } else {
-            subscribeButton.setTitle("Subscribe", for: .normal)
-        }
+        dismiss(animated: true, completion: {
+            let sentimentVC =  sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
+            // TODO: remove later (this is for testing, we need to actually pass in the ticker object) (the way it is now won't work in practice bc user won't have self.tickersymbol in their watchlist in this flow)
+            sentimentVC.ticker = user.watchlist[self.tickerSymbol!]
+            
+            // set destination's parent to self's parent and present modally from parent
+            guard let pVC = self.pVC else {
+                fatalError("Parent view controller not set")
+            }
+            sentimentVC.pVC = pVC
+            pVC.present(sentimentVC, animated: true, completion: nil)
+        })
     }
     
     override func viewDidLoad() {

@@ -19,6 +19,18 @@ class Ticker {
         self.sentimentScore = sentimentScore
         self.timestamp = timestamp
     }
+    
+    // initialize from Codable response format
+    init(fromCodable codable: WatchlistResponse) {
+        self.symbol = codable.symbol
+        self.name = codable.name
+        self.sentimentScore = codable.score
+        self.timestamp = codable.timestamp
+    }
+    
+//    func initFromWatchlistResponseList(list watchlistResponseList: [WatchlistResponse]) -> Void {
+//
+//    }
 }
 
 

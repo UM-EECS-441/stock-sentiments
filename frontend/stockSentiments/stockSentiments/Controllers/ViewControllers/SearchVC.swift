@@ -8,7 +8,7 @@
 import UIKit
 
 let searchStoryboard: UIStoryboard = UIStoryboard(name: "Search", bundle: nil)
-
+var x = 0
 class SearchVC: UITableViewController {
     
     // nil until SearchVC is instantiated for the first time
@@ -85,6 +85,7 @@ class SearchVC: UITableViewController {
             let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
 //            subscribeVC.search = self.searchResults[indexPath.row]
             subscribeVC.tickerSymbol = searchResult.symbol
+            subscribeVC.pVC = self
 
             self.present(subscribeVC, animated: true, completion: nil)
         }

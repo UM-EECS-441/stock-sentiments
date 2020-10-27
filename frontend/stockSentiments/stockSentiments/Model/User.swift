@@ -6,6 +6,21 @@
 //
 
 
+// Singleton instance per app lifecycle
 class User {
     
+    static let sharedUser = User()
+    
+    // Stores the user's current Watchlist. This should always be updated
+    // TODO: on subscribe and unsubscribe: add or delete individual ticker, on refresh: discard and reload watchlist
+    var watchlist = [String:Ticker]() // symbol -> Ticker map
+    
+    // MARK:- User Identity
+    // verify that is is a valid way to do deviceID https://www.hackingwithswift.com/example-code/system/how-to-identify-an-ios-device-uniquely-with-identifierforvendor
+    var deviceID: String? = nil
+    var username: String? = nil
+    var password: String? = nil
 }
+
+// singleton instance of user
+let user = User.sharedUser

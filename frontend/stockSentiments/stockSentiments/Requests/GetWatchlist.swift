@@ -11,7 +11,7 @@ import Foundation
 /* function takes in a completion handler to call after completing the request. This is a form of delegation
  to pass data back to the caller.
  */
-func requestUserWatchlist(completionHandler: @escaping (Watchlist) -> Void) -> Void {
+func requestUserWatchlist(completionHandler: @escaping ([WatchlistResponse]) -> Void) -> Void {
     let queryParameters = "?uid=X01X23Y4XYXY"
     
     let requestUrl = baseUrl + "get_watchlist_scores/" + queryParameters
@@ -35,7 +35,8 @@ func requestUserWatchlist(completionHandler: @escaping (Watchlist) -> Void) -> V
         }
         
         // pass watchlist back to WatchlistVC a
-        completionHandler(Watchlist(response: decodedResponse!.data))
+        completionHandler(decodedResponse!.data)
+//        completionHandler(Watchlist(response: decodedResponse!.data))
     }
     task.resume()
 }
