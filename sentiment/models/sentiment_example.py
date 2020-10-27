@@ -21,13 +21,22 @@ from nltk.classify.scikitlearn import SklearnClassifier
 from sklearn.naive_bayes import MultinomialNB,BernoulliNB
 from sklearn.linear_model import LogisticRegression,SGDClassifier
 from sklearn.svm import SVC
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
+sentence = "I have started to love Google, I'm gonna short Apple!"
+
+#our_model
 word_features = pickle.load( open( "word_features.pkl", "rb" ) )
-classifier = pickle.load( open( "naiveBayes.model", "rb" ) )
+classifier = pickle.load( open( "logreg.model", "rb" ) )
 def find_features(document):
     words = word_tokenize(document)
     features = {}
     for w in word_features:
         features[w] = (w in words)
     return features
-print(classifier.classify(find_features("I will short the stock")))
+print("LogReg:", classifier.classify(find_features(sentence)))
+
+#vader
+sid = SentimentIntensityAnalyzer()
+scores = sid.polarity_scores(sentence)
+print("Vader:", scores['compound'])
