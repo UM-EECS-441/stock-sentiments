@@ -16,8 +16,8 @@ def find_features(document, word_features):
 
 
 def analyze_sentiment(df):
-    word_features = pickle.load( open( "../models/word_features.pkl", "rb" ) )
-    classifier = pickle.load( open( "../models/logreg.model", "rb" ) )
+    word_features = pickle.load( open( "/root/stocksentiments/iosdevs/sentiment/models/word_features.pkl", "rb" ) )
+    classifier = pickle.load( open( "/root/stocksentiments/iosdevs/sentiment/models/logreg.model", "rb" ) )
 
     sentiment_scores = []
     for i in range(len(df.index)):
