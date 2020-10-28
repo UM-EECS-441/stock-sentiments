@@ -12,7 +12,7 @@ let watchlistStoryboard: UIStoryboard = UIStoryboard(name: "Watchlist", bundle: 
 class WatchlistVC: UITableViewController, UITabBarDelegate {
     
 //    var watchlistInstance: Watchlist? = nil
-    var orderedWatchlistKeys = [String]() // array of ticker symbols (to maintain ordering in table view)
+//    var orderedWatchlistKeys = [String]() // array of ticker symbols (to maintain ordering in table view)
     
 //    var watchlist = [WatchlistItem]() // array of watchlist
 
@@ -23,34 +23,34 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         // setup refreshControl here later
         refreshControl?.addTarget(self, action: #selector(WatchlistVC.handleRefresh(_:)), for: UIControl.Event.valueChanged)
 
-        // request watchlist and store in watchlist member variable
-        requestUserWatchlist(completionHandler: { (watchlistResponseList) -> Void in
-//            self.watchlistInstance = watchlist
-            // store watchlist in user instance
-            for codableWatchlistItem in watchlistResponseList {
-                user.watchlist[codableWatchlistItem.symbol] = Ticker(fromCodable: codableWatchlistItem)
-            }
-            // set ordering
-            self.orderedWatchlistKeys = Array(user.watchlist.keys)
-            
+        user.requestAndUpdateUserWatchlist(completion: {
             // Reload data from main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         })
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print("View will appear called")
+        
         // Set nav title and don't allow back functionality
         self.tabBarController?.navigationItem.title = "Watchlist"
         self.tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
+        
+        user.requestAndUpdateUserWatchlist(completion: {
+            // Reload data from main thread
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
     }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         // TODO: request and update watchlist
+        print("refresh called")
     }
 
     // MARK:- TableView handlers
@@ -78,7 +78,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         }
         
         // set ticker equal to current ticker
-        guard let ticker = user.watchlist[orderedWatchlistKeys[indexPath.row]] else {
+        guard let ticker = user.watchlist[user.orderedWatchlistKeys[indexPath.row]] else {
             fatalError()
         }
         

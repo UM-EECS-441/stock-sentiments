@@ -31,8 +31,8 @@
 		8D7EDB922543481C00A59F10 /* SentimentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7EDB912543481C00A59F10 /* SentimentVC.swift */; };
 		8D7EDB972543482600A59F10 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7EDB962543482600A59F10 /* SettingsVC.swift */; };
 		8D7EDB9C2543483200A59F10 /* SubscribeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7EDB9B2543483200A59F10 /* SubscribeVC.swift */; };
-		8D87D75F2547D4A000837DC1 /* PostUnsubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87D75D2547D4A000837DC1 /* PostUnsubscribe.swift */; };
-		8D87D7602547D4A000837DC1 /* PostSubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87D75E2547D4A000837DC1 /* PostSubscribe.swift */; };
+		8D87D75F2547D4A000837DC1 /* RequestUnsubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87D75D2547D4A000837DC1 /* RequestUnsubscribe.swift */; };
+		8D87D7602547D4A000837DC1 /* RequestSubscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87D75E2547D4A000837DC1 /* RequestSubscribe.swift */; };
 		8D87D76B2547E66A00837DC1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87D76A2547E66A00837DC1 /* TabBarController.swift */; };
 		8DE16D2F2534B4D300D5FBB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE16D2E2534B4D300D5FBB8 /* AppDelegate.swift */; };
 		8DE16D312534B4D300D5FBB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE16D302534B4D300D5FBB8 /* SceneDelegate.swift */; };
@@ -88,8 +88,8 @@
 		8D7EDB912543481C00A59F10 /* SentimentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentVC.swift; sourceTree = "<group>"; };
 		8D7EDB962543482600A59F10 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		8D7EDB9B2543483200A59F10 /* SubscribeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeVC.swift; sourceTree = "<group>"; };
-		8D87D75D2547D4A000837DC1 /* PostUnsubscribe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostUnsubscribe.swift; sourceTree = "<group>"; };
-		8D87D75E2547D4A000837DC1 /* PostSubscribe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSubscribe.swift; sourceTree = "<group>"; };
+		8D87D75D2547D4A000837DC1 /* RequestUnsubscribe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestUnsubscribe.swift; sourceTree = "<group>"; };
+		8D87D75E2547D4A000837DC1 /* RequestSubscribe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSubscribe.swift; sourceTree = "<group>"; };
 		8D87D76A2547E66A00837DC1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8DE16D2B2534B4D300D5FBB8 /* stockSentiments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stockSentiments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE16D2E2534B4D300D5FBB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -229,8 +229,8 @@
 			children = (
 				8D751730254604710017D8CD /* Requests.swift */,
 				8D71A3A3254530AD00F1B7EC /* GetTickers.swift */,
-				8D87D75E2547D4A000837DC1 /* PostSubscribe.swift */,
-				8D87D75D2547D4A000837DC1 /* PostUnsubscribe.swift */,
+				8D87D75E2547D4A000837DC1 /* RequestSubscribe.swift */,
+				8D87D75D2547D4A000837DC1 /* RequestUnsubscribe.swift */,
 				8DE7582B254643C70083993F /* GetWatchlist.swift */,
 			);
 			path = Requests;
@@ -500,7 +500,7 @@
 			files = (
 				8D7EDB8D2543481300A59F10 /* SearchVC.swift in Sources */,
 				8D7E2FB92547C42200F98B4A /* SentimentLabel.swift in Sources */,
-				8D87D7602547D4A000837DC1 /* PostSubscribe.swift in Sources */,
+				8D87D7602547D4A000837DC1 /* RequestSubscribe.swift in Sources */,
 				8DE7582C254643C70083993F /* GetWatchlist.swift in Sources */,
 				8DE16D332534B4D300D5FBB8 /* MainVC.swift in Sources */,
 				8D87D76B2547E66A00837DC1 /* TabBarController.swift in Sources */,
@@ -512,7 +512,7 @@
 				8DE16D312534B4D300D5FBB8 /* SceneDelegate.swift in Sources */,
 				8D7EDB972543482600A59F10 /* SettingsVC.swift in Sources */,
 				8D75174E2546287D0017D8CD /* SearchResult.swift in Sources */,
-				8D87D75F2547D4A000837DC1 /* PostUnsubscribe.swift in Sources */,
+				8D87D75F2547D4A000837DC1 /* RequestUnsubscribe.swift in Sources */,
 				8D7EDB83254347CA00A59F10 /* LaunchScreenVC.swift in Sources */,
 				8D71A39F254529C700F1B7EC /* User.swift in Sources */,
 				8D71A3A92545446200F1B7EC /* SupportedTickers.swift in Sources */,

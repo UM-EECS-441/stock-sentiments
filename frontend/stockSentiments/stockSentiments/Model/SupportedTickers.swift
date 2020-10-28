@@ -12,6 +12,8 @@
 class SupportedTickers {
     var symbolToName: [String:String] = [:]
     var nameToSymbol: [String:String] = [:]
+    
+    var allPossibleQueries: [String] = []
 
     init(response responseData : [TickerResponse]) {
         
@@ -28,5 +30,7 @@ class SupportedTickers {
             nameToSymbol[tickerResponse.name] = tickerResponse.symbol
             symbolToName[tickerResponse.symbol] = tickerResponse.name
         }
+        
+//        for (symbol, )
     }
 }

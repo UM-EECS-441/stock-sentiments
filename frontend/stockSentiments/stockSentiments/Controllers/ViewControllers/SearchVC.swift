@@ -35,6 +35,7 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
         requestSupportedTickers(completionHandler: { (supportedTickers) -> Void in
             self.supportedTickers = supportedTickers
             
+            // TODO: change this to select only the "top tickers"
             for (symbol, _) in self.supportedTickers!.symbolToName {
                 self.topSearchResults.append(SearchResult(tickerSymbol: symbol))
             }
@@ -72,10 +73,16 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
     }
 
     func searchBar(_ searchItem: UISearchBar, textDidChange searchText: String) {
-        filteredResults = topSearchResults.filter({ (text) -> Bool in
-            let tmp:NSString = text.symbol as NSString
-            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-            return range.location != NSNotFound
+        // TODO: we need to filter an appended list of (all symbols) + (all names)
+        let keys: [SearchResult] = Array(supportedTickers!.symbolToName.keys).map { (string) -> SearchResult in
+            SearchResult(tickerSymbol: string)
+        }
+        filteredResults = keys.filter({ (searchResult) -> Bool in
+            let symbol: NSString = searchResult.symbol as NSString
+            let name: NSString = supportedTickers!.symbolToName[searchResult.symbol]! as NSString
+            let rangeSymbol = symbol.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            let rangeName = name.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            return rangeSymbol.location != NSNotFound || rangeName.location != NSNotFound
         })
         
         if (filteredResults.count == 0) {

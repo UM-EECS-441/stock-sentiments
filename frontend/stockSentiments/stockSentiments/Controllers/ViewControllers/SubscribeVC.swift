@@ -24,18 +24,35 @@ class SubscribeVC: UIViewController {
             1. Check if User is a subsciption member, if they're not check if user has reached subscription limit, if they have do not allow to subscribe to stock ticker
             2. Change this to a modal replacement to SentimentVC
          */
-        dismiss(animated: true, completion: {
-            let sentimentVC =  sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
-            // TODO: remove later (this is for testing, we need to actually pass in the ticker object) (the way it is now won't work in practice bc user won't have self.tickersymbol in their watchlist in this flow)
-            sentimentVC.ticker = user.watchlist[self.tickerSymbol!]
-            
-            // set destination's parent to self's parent and present modally from parent
-            guard let pVC = self.pVC else {
-                fatalError("Parent view controller not set")
+        
+        /* TODO: get request to subscribe to ticker,
+         if 200: update the user's watchlist
+         if 500: say failed
+         */
+        requestSubscribe(to: tickerSymbol!) { (success) in
+            if success {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: {
+                        let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
+         
+                        // refresh watchlist
+                        user.requestAndUpdateUserWatchlist(completion: {
+                            sentimentVC.ticker = user.watchlist[self.tickerSymbol!]
+                            // set destination's parent to self's parent and present modally from parent
+                            guard let pVC = self.pVC else {
+                                fatalError("Parent view controller not set")
+                            }
+                            sentimentVC.pVC = pVC
+                            DispatchQueue.main.async {
+                                pVC.present(sentimentVC, animated: true, completion: nil)
+                            }
+                        }) 
+                    })
+                }
+            } else {
+                print("already subbed")
             }
-            sentimentVC.pVC = pVC
-            pVC.present(sentimentVC, animated: true, completion: nil)
-        })
+        }
     }
     
     override func viewDidLoad() {
