@@ -24,4 +24,5 @@ urlpatterns = [
     path('get_watchlist_scores/', views.get_watchlist_score, name='get_watchlist_score'),
     path('user/subscribe/', views.subscribe, name='subscribe'),
     path('user/unsubscribe/', views.unsubscribe, name='unsubscribe'),
+    path('update_sentiment/', views.update_sentiment, name='update_sentiment'),
 ]

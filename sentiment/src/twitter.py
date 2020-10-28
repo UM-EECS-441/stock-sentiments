@@ -17,7 +17,6 @@ def twitter_func(LIMIT, text_query):
     # test authentication
     try:
         api.verify_credentials()
-        print("Authentication OK")
     except:
         print("Error during authentication")
 

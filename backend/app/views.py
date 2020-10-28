@@ -11,11 +11,11 @@ def get_tickers(request):
     if request.method != 'GET':
         return HttpResponse(status=404)
     response = {}
-    
+
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM tickertable;')
     rows = cursor.fetchall()
-    
+
     response['data'] = []
 
     for row in rows:
@@ -24,8 +24,8 @@ def get_tickers(request):
         datum['name'] = row[0]
         response['data'].append(datum)
 
-    
     return JsonResponse(response)
+
 
 def get_watchlist_score(request):
     if request.method != 'GET':
@@ -51,6 +51,7 @@ def get_watchlist_score(request):
     
 
     return JsonResponse(response)
+
 
 def subscribe(request):
     if request.method != 'GET':
@@ -100,6 +101,39 @@ def unsubscribe(request):
 
     cursor = connection.cursor()
     cursor.execute('DELETE FROM subscriptiontable WHERE userid = %s AND subscription = %s', (uid, ticker,))
+
+
+    return JsonResponse(response)
+
+
+def update_sentiment(request):
+    if request.method != 'GET':
+        return HttpResponse(status=404)
+
+    ticker = str(request.GET.get('ticker'))
+    score = float(request.GET.get('score'))
+
+    response = {}
+    response['ticker'] = ticker
+    response['score'] = score
+
+    
+    cursor = connection.cursor()
+    cursor.execute('SELECT realname FROM tickertable WHERE ticker = %s', (ticker,))
+    row = cursor.fetchone()
+    response['rows'] = row
+    
+    if row == None:
+        return HttpResponse(status=500)
+    
+    realname = row[0]
+
+    cursor = connection.cursor()
+    cursor.execute('DELETE FROM tickertable WHERE ticker = %s', (ticker,))
+
+    cursor = connection.cursor()
+    cursor.execute('INSERT INTO tickertable (realname, ticker, currsentiment) VALUES '
+            '(%s, %s, %s);', (realname, ticker, score,))
 
 
     return JsonResponse(response)
