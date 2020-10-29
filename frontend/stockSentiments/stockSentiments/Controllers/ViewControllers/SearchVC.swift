@@ -125,6 +125,7 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
         cell.tickerName.text = searchResult.name
         cell.tickerName.sizeToFit()
         cell.viewStock.isHidden = false
+        
         cell.renderSearch = { () in
             // if already subscribed, render SentimentVC, else SubscribeVC
             if let ticker = user.watchlist[searchResult.symbol] {
@@ -139,7 +140,8 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
                 guard let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as? SubscribeVC else {
                     fatalError("failed to load SubscribeVC from search")
                 }
-                subscribeVC.tickerSymbol = searchResult.symbol
+                subscribeVC.tickerSymbol = searchResult.symbol // TODO: encapsulate these
+                subscribeVC.tickerName = searchResult.name
                 subscribeVC.pVC = self
 
                 self.present(subscribeVC, animated: true, completion: nil)

@@ -27,14 +27,18 @@ class SentimentVC: UIViewController {
          if 200: update the user's watchlist
          if 500: say failed
          */
-        requestUnSubscribe(to: ticker!.symbol) { (success) in
+        guard let ticker = self.ticker else {
+            fatalError("SentimentVC doesn't have Ticker in scope")
+        }
+        requestUnSubscribe(to: ticker.symbol) { (success) in
             if success {
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: {
                         let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
                         
                         user.requestAndUpdateUserWatchlist(completion: {
-                            subscribeVC.tickerSymbol = self.ticker?.symbol
+                            subscribeVC.tickerSymbol = ticker.symbol
+                            subscribeVC.tickerName = ticker.name
                             // set destination's parent to self's parent and present modally from parent
                             guard let pVC = self.pVC else {
                                 fatalError("Parent view controller not set")
@@ -58,7 +62,7 @@ class SentimentVC: UIViewController {
         // Do any additional setup after loading the view.
         
         guard let ticker = self.ticker else {
-            return
+            fatalError("SentimentVC doesn't have Ticker in scope")
         }
 
         

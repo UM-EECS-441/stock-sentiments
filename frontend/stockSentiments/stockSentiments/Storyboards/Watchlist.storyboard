@@ -16,22 +16,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WatchlistCell" rowHeight="103" id="MMq-Zd-fVU" customClass="WatchlistCell" customModule="stockSentiments" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="103"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WatchlistCell" rowHeight="89" id="MMq-Zd-fVU" customClass="WatchlistCell" customModule="stockSentiments" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="89"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MMq-Zd-fVU" id="VlX-MX-Ny9">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StockName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glX-Ep-BRT">
-                                            <rect key="frame" x="20" y="36" width="89" height="31"/>
-                                            <accessibility key="accessibilityConfiguration" identifier="stockName"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glX-Ep-BRT" userLabel="tickerSymbol">
+                                            <rect key="frame" x="20" y="21" width="58" height="21"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="tickerSymbol"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frf-5g-Zae">
-                                            <rect key="frame" x="365" y="36" width="29" height="31"/>
+                                            <rect key="frame" x="365" y="30.5" width="29" height="28"/>
                                             <accessibility key="accessibilityConfiguration" identifier="viewSentiment"/>
                                             <state key="normal" image="info.circle.fill" catalog="system">
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
@@ -41,8 +41,15 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sentiment Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pad-ok-apW">
-                                            <rect key="frame" x="223" y="36" width="127" height="31"/>
+                                            <rect key="frame" x="223" y="34.5" width="127" height="20.5"/>
                                             <accessibility key="accessibilityConfiguration" identifier="sentimentScore"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oq-0K-epo" userLabel="tickerName">
+                                            <rect key="frame" x="20" y="47" width="45" height="21"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="tickerName"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -51,21 +58,22 @@
                                     <constraints>
                                         <constraint firstItem="glX-Ep-BRT" firstAttribute="leading" secondItem="VlX-MX-Ny9" secondAttribute="leadingMargin" id="4vz-xy-1wB"/>
                                         <constraint firstItem="Frf-5g-Zae" firstAttribute="leading" secondItem="pad-ok-apW" secondAttribute="trailing" constant="15" id="7T3-CJ-B8R"/>
-                                        <constraint firstItem="pad-ok-apW" firstAttribute="top" secondItem="VlX-MX-Ny9" secondAttribute="topMargin" constant="25" id="7Tu-gb-fm3"/>
-                                        <constraint firstItem="glX-Ep-BRT" firstAttribute="top" secondItem="VlX-MX-Ny9" secondAttribute="topMargin" constant="25" id="Fd5-vu-Cle"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="pad-ok-apW" secondAttribute="bottom" constant="25" id="PMo-OL-rac"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0Oq-0K-epo" secondAttribute="bottom" constant="10" id="Ogt-S3-zPq"/>
                                         <constraint firstItem="pad-ok-apW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="glX-Ep-BRT" secondAttribute="trailing" constant="10" id="UZc-VJ-4eJ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Frf-5g-Zae" secondAttribute="bottom" constant="25" id="ZiV-eb-Czz"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="glX-Ep-BRT" secondAttribute="bottom" constant="25" id="bP1-n7-JmH"/>
+                                        <constraint firstItem="0Oq-0K-epo" firstAttribute="top" secondItem="glX-Ep-BRT" secondAttribute="bottom" constant="5" id="XwF-bH-opY"/>
+                                        <constraint firstItem="Frf-5g-Zae" firstAttribute="centerY" secondItem="VlX-MX-Ny9" secondAttribute="centerY" id="dQr-NU-aHW"/>
+                                        <constraint firstItem="glX-Ep-BRT" firstAttribute="top" secondItem="VlX-MX-Ny9" secondAttribute="topMargin" constant="10" id="eee-1r-grV"/>
+                                        <constraint firstItem="pad-ok-apW" firstAttribute="centerY" secondItem="VlX-MX-Ny9" secondAttribute="centerY" id="gHz-0o-Z7K"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Frf-5g-Zae" secondAttribute="trailing" id="nrH-4H-Jby"/>
-                                        <constraint firstItem="Frf-5g-Zae" firstAttribute="top" secondItem="VlX-MX-Ny9" secondAttribute="topMargin" constant="25" id="w7U-s8-iqk"/>
+                                        <constraint firstItem="0Oq-0K-epo" firstAttribute="leading" secondItem="VlX-MX-Ny9" secondAttribute="leadingMargin" id="tbK-gP-PbH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="WatchlistCell"/>
                                 <connections>
                                     <outlet property="sentimentButton" destination="Frf-5g-Zae" id="YKu-i4-HFf"/>
                                     <outlet property="sentimentScore" destination="pad-ok-apW" id="8gP-1G-bWq"/>
-                                    <outlet property="stockName" destination="glX-Ep-BRT" id="qXd-n9-xgH"/>
+                                    <outlet property="tickerName" destination="0Oq-0K-epo" id="GGy-DT-nsb"/>
+                                    <outlet property="tickerSymbol" destination="glX-Ep-BRT" id="xq4-39-RmE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

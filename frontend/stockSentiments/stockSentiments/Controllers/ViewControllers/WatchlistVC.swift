@@ -82,17 +82,20 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         cell.backgroundColor = sentimentLabel.color
         
         // set text
-        cell.stockName.text = ticker.symbol
-        cell.stockName.sizeToFit()
+        cell.tickerSymbol.text = ticker.symbol
+        cell.tickerSymbol.sizeToFit()
+        cell.tickerName.text = ticker.name
+        cell.tickerName.sizeToFit()
         cell.sentimentScore.text = String(ticker.sentimentScore)
         cell.sentimentScore.sizeToFit()
-
         
         cell.sentimentButton.isHidden = false
         
         // click handler
-        cell.renderChatt = { () in
-            let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
+        cell.presentSentiment = { () in
+            guard let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as? SentimentVC else {
+                fatalError("Failed to load SentimentVC")
+            }
             sentimentVC.ticker = ticker
             sentimentVC.pVC = self
             
