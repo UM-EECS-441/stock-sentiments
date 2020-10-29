@@ -94,7 +94,6 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         cell.renderChatt = { () in
             let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
             sentimentVC.ticker = ticker
-            sentimentVC.tickerSymbol = ticker.symbol
             sentimentVC.pVC = self
             
             self.present(sentimentVC, animated: true, completion: nil)

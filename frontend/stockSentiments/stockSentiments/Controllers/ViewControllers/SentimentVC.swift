@@ -12,7 +12,7 @@ let sentimentStoryboard: UIStoryboard = UIStoryboard(name: "Sentiment", bundle: 
 class SentimentVC: UIViewController {
     
     var ticker: Ticker? = nil
-    var tickerSymbol: String? = nil
+//    var tickerSymbol: String? = nil
     
     var pVC: UITableViewController? = nil // pointer to parent view controller needed to replace view
 
