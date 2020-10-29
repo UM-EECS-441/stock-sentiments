@@ -24,7 +24,7 @@ class Ticker {
     init(fromCodable codable: WatchlistResponse) {
         self.symbol = codable.symbol
         self.name = codable.name
-        self.sentimentScore = codable.score
+        self.sentimentScore = (codable.score*100).rounded()/100
         self.timestamp = codable.timestamp
     }
     
