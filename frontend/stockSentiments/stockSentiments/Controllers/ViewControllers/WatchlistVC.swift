@@ -15,6 +15,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
 //    var orderedWatchlistKeys = [String]() // array of ticker symbols (to maintain ordering in table view)
     
 //    var watchlist = [WatchlistItem]() // array of watchlist
+    var pVC: UIViewController? = nil // pointer to parent view controller needed to replace view
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +92,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         cell.stockName.sizeToFit()
         cell.sentimentScore.text = String(ticker.sentimentScore)
         cell.sentimentScore.sizeToFit()
+
         
         cell.sentimentButton.isHidden = false
         
@@ -98,6 +100,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         cell.renderChatt = { () in
             let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
             sentimentVC.ticker = ticker
+            sentimentVC.tickerSymbol = ticker.symbol
             sentimentVC.pVC = self
             
             self.present(sentimentVC, animated: true, completion: nil)

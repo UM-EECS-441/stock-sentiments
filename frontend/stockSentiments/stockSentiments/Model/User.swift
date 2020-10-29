@@ -25,6 +25,7 @@ class User {
     
     func requestAndUpdateUserWatchlist(completion: @escaping () -> Void) -> Void {
         // request watchlist and store in watchlist member variable
+        self.watchlist.removeAll()
         requestUserWatchlist(completionHandler: { (watchlistResponseList) -> Void in
 //            self.watchlistInstance = watchlist
             // store watchlist in user instance

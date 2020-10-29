@@ -69,4 +69,19 @@ class SubscribeVC: UIViewController {
         messagetextView.text = "This is the default stock description"
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        print("View has disappeared")
+
+        user.requestAndUpdateUserWatchlist(completion: {
+            // Reload data from main thread
+            DispatchQueue.main.async {
+
+                print("refresh")
+            }
+
+        })
+    }
+
 }

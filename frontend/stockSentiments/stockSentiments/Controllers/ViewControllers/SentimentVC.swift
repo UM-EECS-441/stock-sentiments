@@ -12,6 +12,7 @@ let sentimentStoryboard: UIStoryboard = UIStoryboard(name: "Sentiment", bundle: 
 class SentimentVC: UIViewController {
     
     var ticker: Ticker? = nil
+    var tickerSymbol: String? = nil
     
     var pVC: UIViewController? = nil // pointer to parent view controller needed to replace view
 
@@ -21,19 +22,33 @@ class SentimentVC: UIViewController {
     @IBOutlet weak var sentimentUnsubscribe: UIButton!
     
     @IBAction func unsubscribeTapped(_ sender: Any) {
-        // replace sentiment view with subscribe view
-        
-        self.dismiss(animated: true, completion: {
-            let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-            subscribeVC.tickerSymbol = self.ticker?.symbol
-            
-            // set destination's parent to self's parent and present modally from parent
-            guard let pVC = self.pVC else {
-                fatalError("Parent view controller not set")
+        // unsubscribe api called
+        /* TODO: get request to unsubscribe to ticker,
+         if 200: update the user's watchlist
+         if 500: say failed
+         */
+        requestUnSubscribe(to: ticker!.symbol) { (success) in
+            if success {
+                DispatchQueue.main.async {
+                    // replace sentiment view with subscribe view
+
+                    self.dismiss(animated: true, completion: {
+                        let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
+                        subscribeVC.tickerSymbol = self.ticker?.symbol
+
+                        // set destination's parent to self's parent and present modally from parent
+                        guard let pVC = self.pVC else {
+                            fatalError("Parent view controller not set")
+                        }
+                        subscribeVC.pVC = pVC
+                        self.pVC?.present(subscribeVC, animated: true, completion: nil)
+                    })
+                }
+            } else {
+                print("already subbed")
             }
-            subscribeVC.pVC = pVC
-            self.pVC?.present(subscribeVC, animated: true, completion: nil)
-        })
+        }
+
     }
     
     override func viewDidLoad() {
@@ -43,6 +58,7 @@ class SentimentVC: UIViewController {
         guard let ticker = self.ticker else {
             return
         }
+
         
         // set color
         let sentimentLabel: SentimentLabel = getSentimentLabel(score: ticker.sentimentScore)
