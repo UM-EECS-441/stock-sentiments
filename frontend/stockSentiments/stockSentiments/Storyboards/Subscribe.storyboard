@@ -2,8 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SaN-og-gc4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,30 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="StockTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ri1-ZB-2Xf">
-                                <rect key="frame" x="170" y="74" width="149" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StockTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ri1-ZB-2Xf">
+                                <rect key="frame" x="10" y="69" width="149" height="42"/>
                                 <accessibility key="accessibilityConfiguration" identifier="stockTitle"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Text details go here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZcR-lb-3dT">
-                                <rect key="frame" x="39" y="119" width="336" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text details go here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZcR-lb-3dT">
+                                <rect key="frame" x="10" y="131" width="394" height="58"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <accessibility key="accessibilityConfiguration" identifier="messageTextView"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="0yg-7K-bna"/>
+                                </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sS-pf-yjX">
-                                <rect key="frame" x="170" y="303" width="110" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="AccentColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sS-pf-yjX">
+                                <rect key="frame" x="155" y="429" width="105" height="39"/>
                                 <accessibility key="accessibilityConfiguration" identifier="subscribeButton"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="tintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Subscribe"/>
                                 <connections>
                                     <action selector="subscribeTapped:" destination="SaN-og-gc4" eventType="touchUpInside" id="ZfS-IR-Npl"/>
@@ -49,6 +47,15 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5as-MN-lGc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZcR-lb-3dT" firstAttribute="leading" secondItem="5as-MN-lGc" secondAttribute="leading" constant="10" id="6Y3-F2-hxU"/>
+                            <constraint firstItem="5as-MN-lGc" firstAttribute="trailing" secondItem="ZcR-lb-3dT" secondAttribute="trailing" constant="10" id="GTo-HD-CDo"/>
+                            <constraint firstItem="ri1-ZB-2Xf" firstAttribute="leading" secondItem="5as-MN-lGc" secondAttribute="leading" constant="10" id="Kci-Qj-zD1"/>
+                            <constraint firstItem="ri1-ZB-2Xf" firstAttribute="top" secondItem="5as-MN-lGc" secondAttribute="top" constant="25" id="kIT-rr-OaU"/>
+                            <constraint firstItem="ZcR-lb-3dT" firstAttribute="top" secondItem="ri1-ZB-2Xf" secondAttribute="bottom" constant="20" id="kh1-mw-WTg"/>
+                            <constraint firstItem="9sS-pf-yjX" firstAttribute="centerY" secondItem="fU8-h6-Zo0" secondAttribute="centerY" id="tOM-Xr-wC1"/>
+                            <constraint firstItem="9sS-pf-yjX" firstAttribute="centerX" secondItem="fU8-h6-Zo0" secondAttribute="centerX" id="uC3-qQ-XXw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="messagetextView" destination="ZcR-lb-3dT" id="6cd-Iy-mto"/>
@@ -62,16 +69,10 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

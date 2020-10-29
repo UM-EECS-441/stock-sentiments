@@ -71,6 +71,12 @@ class SentimentVC: UIViewController {
         sentimentTitle.text = ticker.name + " (" + ticker.symbol + ")"
         sentimentScore.text = String(ticker.sentimentScore)
         sentimentDescription.text = "People are saying " + sentimentLabel.rawValue + " things about " + ticker.name
+        
+        
+        // TODO: replace this with a better system
+        sentimentTitle.textColor = .white
+        sentimentScore.textColor = .white
+        sentimentDescription.textColor = .white
 
     }
     

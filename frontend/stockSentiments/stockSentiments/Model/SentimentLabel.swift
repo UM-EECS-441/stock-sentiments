@@ -21,7 +21,7 @@ enum SentimentLabel : String {
             case .negative:
                 return UIColor.red
             case .positive:
-                return UIColor.green
+                return UIColor(red: CGFloat(47/255.0), green: CGFloat(196/255.0), blue: CGFloat(52/255.0), alpha: CGFloat(1.0))
             case .neutral:
                 return UIColor.orange
             }

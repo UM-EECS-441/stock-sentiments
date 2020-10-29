@@ -36,8 +36,8 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
             self.supportedTickers = supportedTickers
             
             // TODO: change this to select only the "top tickers"
-            for (symbol, _) in self.supportedTickers!.symbolToName {
-                self.topSearchResults.append(SearchResult(tickerSymbol: symbol))
+            for (symbol, name) in self.supportedTickers!.symbolToName {
+                self.topSearchResults.append(SearchResult(tickerSymbol: symbol, tickerName: name))
             }
             
             // Reload data from main thread
@@ -74,8 +74,8 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
 
     func searchBar(_ searchItem: UISearchBar, textDidChange searchText: String) {
         // TODO: we need to filter an appended list of (all symbols) + (all names)
-        let keys: [SearchResult] = Array(supportedTickers!.symbolToName.keys).map { (string) -> SearchResult in
-            SearchResult(tickerSymbol: string)
+        let keys: [SearchResult] = Array(supportedTickers!.symbolToName.keys).map { (symbol) -> SearchResult in
+            SearchResult(tickerSymbol: symbol, tickerName: supportedTickers!.symbolToName[symbol]!)
         }
         filteredResults = keys.filter({ (searchResult) -> Bool in
             let symbol: NSString = searchResult.symbol as NSString
@@ -120,7 +120,9 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
 
         let searchResult = searchActive ? filteredResults[indexPath.row] : topSearchResults[indexPath.row]
         
-        cell.tickerName.text = searchResult.symbol
+        cell.tickerSymbol.text = searchResult.symbol
+        cell.tickerSymbol.sizeToFit()
+        cell.tickerName.text = searchResult.name
         cell.tickerName.sizeToFit()
         cell.viewStock.isHidden = false
         cell.renderSearch = { () in
