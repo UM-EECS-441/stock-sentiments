@@ -33,7 +33,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frf-5g-Zae">
                                             <rect key="frame" x="365" y="36" width="29" height="31"/>
                                             <accessibility key="accessibilityConfiguration" identifier="viewSentiment"/>
-                                            <state key="normal" image="line.horizontal.3.circle.fill" catalog="system">
+                                            <state key="normal" image="info.circle.fill" catalog="system">
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                             </state>
                                             <connections>
@@ -83,7 +83,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="line.horizontal.3.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

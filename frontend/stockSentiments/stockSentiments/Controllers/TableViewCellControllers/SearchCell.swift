@@ -9,8 +9,11 @@ import UIKit
 
 class SearchCell: UITableViewCell{
     
-    @IBOutlet weak var viewStock: UIButton!
+    @IBOutlet weak var tickerSymbol: UILabel!
     @IBOutlet weak var tickerName: UILabel!
+    
+    @IBOutlet weak var viewStock: UIButton!
+    
     
     var renderSearch: (() -> Void)? // a closure
     
