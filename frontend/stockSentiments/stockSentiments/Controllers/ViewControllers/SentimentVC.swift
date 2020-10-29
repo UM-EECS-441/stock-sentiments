@@ -14,7 +14,7 @@ class SentimentVC: UIViewController {
     var ticker: Ticker? = nil
     var tickerSymbol: String? = nil
     
-    var pVC: UIViewController? = nil // pointer to parent view controller needed to replace view
+    var pVC: UITableViewController? = nil // pointer to parent view controller needed to replace view
 
     @IBOutlet weak var sentimentTitle: UILabel!
     @IBOutlet weak var sentimentScore: UILabel!
@@ -30,18 +30,20 @@ class SentimentVC: UIViewController {
         requestUnSubscribe(to: ticker!.symbol) { (success) in
             if success {
                 DispatchQueue.main.async {
-                    // replace sentiment view with subscribe view
-
                     self.dismiss(animated: true, completion: {
                         let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-                        subscribeVC.tickerSymbol = self.ticker?.symbol
-
-                        // set destination's parent to self's parent and present modally from parent
-                        guard let pVC = self.pVC else {
-                            fatalError("Parent view controller not set")
-                        }
-                        subscribeVC.pVC = pVC
-                        self.pVC?.present(subscribeVC, animated: true, completion: nil)
+                        
+                        user.requestAndUpdateUserWatchlist(completion: {
+                            subscribeVC.tickerSymbol = self.ticker?.symbol
+                            // set destination's parent to self's parent and present modally from parent
+                            guard let pVC = self.pVC else {
+                                fatalError("Parent view controller not set")
+                            }
+                            subscribeVC.pVC = pVC
+                            DispatchQueue.main.async {
+                                self.pVC?.present(subscribeVC, animated: true, completion: self.refreshWatchlistTableViewIfIsParent)
+                            }
+                        })
                     })
                 }
             } else {
@@ -70,5 +72,15 @@ class SentimentVC: UIViewController {
         sentimentScore.text = String(ticker.sentimentScore)
         sentimentDescription.text = "People are saying " + sentimentLabel.rawValue + " things about " + ticker.name
 
+    }
+    
+    
+    // reloads table view data using the pVC pointer
+    func refreshWatchlistTableViewIfIsParent() {
+        if let pVC = self.pVC as? WatchlistVC {
+            DispatchQueue.main.async {
+                pVC.tableView.reloadData()
+            }
+        }
     }
 }

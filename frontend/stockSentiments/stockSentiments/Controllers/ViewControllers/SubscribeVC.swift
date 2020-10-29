@@ -13,17 +13,13 @@ class SubscribeVC: UIViewController {
     
     var tickerSymbol: String? = nil
 
-    var pVC: UIViewController? = nil // pointer to parent view controller needed to replace view
+    var pVC: UITableViewController? = nil // pointer to parent view controller needed to replace view
 
     @IBOutlet weak var stockTitle: UILabel!
     @IBOutlet weak var messagetextView: UITextView!
     @IBOutlet weak var subscribeButton: UIButton!
     
     @IBAction func subscribeTapped(_ sender: Any) {
-        /* TODO:
-            1. Check if User is a subsciption member, if they're not check if user has reached subscription limit, if they have do not allow to subscribe to stock ticker
-            2. Change this to a modal replacement to SentimentVC
-         */
         
         /* TODO: get request to subscribe to ticker,
          if 200: update the user's watchlist
@@ -44,7 +40,7 @@ class SubscribeVC: UIViewController {
                             }
                             sentimentVC.pVC = pVC
                             DispatchQueue.main.async {
-                                pVC.present(sentimentVC, animated: true, completion: nil)
+                                pVC.present(sentimentVC, animated: true, completion: self.refreshWatchlistTableViewIfIsParent)
                             }
                         }) 
                     })
@@ -68,20 +64,12 @@ class SubscribeVC: UIViewController {
         // TODO: retrieve stock description from database and update stock description
         messagetextView.text = "This is the default stock description"
     }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-
-        print("View has disappeared")
-
-        user.requestAndUpdateUserWatchlist(completion: {
-            // Reload data from main thread
+    
+    func refreshWatchlistTableViewIfIsParent() {
+        if let pVC = self.pVC as? WatchlistVC {
             DispatchQueue.main.async {
-
-                print("refresh")
+                pVC.tableView.reloadData()
             }
-
-        })
+        }
     }
-
 }

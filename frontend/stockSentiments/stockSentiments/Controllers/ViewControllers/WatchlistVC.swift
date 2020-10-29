@@ -10,12 +10,6 @@ import UIKit
 let watchlistStoryboard: UIStoryboard = UIStoryboard(name: "Watchlist", bundle: nil)
 
 class WatchlistVC: UITableViewController, UITabBarDelegate {
-    
-//    var watchlistInstance: Watchlist? = nil
-//    var orderedWatchlistKeys = [String]() // array of ticker symbols (to maintain ordering in table view)
-    
-//    var watchlist = [WatchlistItem]() // array of watchlist
-    var pVC: UIViewController? = nil // pointer to parent view controller needed to replace view
 
     override func viewDidLoad() {
         super.viewDidLoad()
