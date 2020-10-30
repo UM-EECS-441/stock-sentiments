@@ -45,6 +45,8 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
                 self.tableView.reloadData()
             }
         })
+        
+        tableView.keyboardDismissMode = .onDrag
     }
     
     override func viewWillAppear(_ animated: Bool) {
