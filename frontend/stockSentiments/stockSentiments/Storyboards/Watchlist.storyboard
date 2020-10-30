@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="loM-bw-mSM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Watchlist-->
+        <scene sceneID="jN3-Vu-sy6">
+            <objects>
+                <tableViewController storyboardIdentifier="WatchlistVC" title="Watchlist" useStoryboardIdentifierAsRestorationIdentifier="YES" id="loM-bw-mSM" customClass="WatchlistVC" customModule="stockSentiments" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="s63-U1-vj2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WatchlistCell" rowHeight="89" id="MMq-Zd-fVU" customClass="WatchlistCell" customModule="stockSentiments" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="89"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MMq-Zd-fVU" id="VlX-MX-Ny9">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glX-Ep-BRT" userLabel="tickerSymbol">
+                                            <rect key="frame" x="20" y="21" width="58" height="21"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="tickerSymbol"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frf-5g-Zae">
+                                            <rect key="frame" x="365" y="30.5" width="29" height="28"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="viewSentiment"/>
+                                            <state key="normal" image="info.circle.fill" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="sentimentTapped:" destination="MMq-Zd-fVU" eventType="touchUpInside" id="BPY-tZ-hAw"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sentiment Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pad-ok-apW">
+                                            <rect key="frame" x="223" y="34.5" width="127" height="20.5"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="sentimentScore"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oq-0K-epo" userLabel="tickerName">
+                                            <rect key="frame" x="20" y="47" width="45" height="21"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="tickerName"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="glX-Ep-BRT" firstAttribute="leading" secondItem="VlX-MX-Ny9" secondAttribute="leadingMargin" id="4vz-xy-1wB"/>
+                                        <constraint firstItem="Frf-5g-Zae" firstAttribute="leading" secondItem="pad-ok-apW" secondAttribute="trailing" constant="15" id="7T3-CJ-B8R"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0Oq-0K-epo" secondAttribute="bottom" constant="10" id="Ogt-S3-zPq"/>
+                                        <constraint firstItem="pad-ok-apW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="glX-Ep-BRT" secondAttribute="trailing" constant="10" id="UZc-VJ-4eJ"/>
+                                        <constraint firstItem="0Oq-0K-epo" firstAttribute="top" secondItem="glX-Ep-BRT" secondAttribute="bottom" constant="5" id="XwF-bH-opY"/>
+                                        <constraint firstItem="Frf-5g-Zae" firstAttribute="centerY" secondItem="VlX-MX-Ny9" secondAttribute="centerY" id="dQr-NU-aHW"/>
+                                        <constraint firstItem="glX-Ep-BRT" firstAttribute="top" secondItem="VlX-MX-Ny9" secondAttribute="topMargin" constant="10" id="eee-1r-grV"/>
+                                        <constraint firstItem="pad-ok-apW" firstAttribute="centerY" secondItem="VlX-MX-Ny9" secondAttribute="centerY" id="gHz-0o-Z7K"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Frf-5g-Zae" secondAttribute="trailing" id="nrH-4H-Jby"/>
+                                        <constraint firstItem="0Oq-0K-epo" firstAttribute="leading" secondItem="VlX-MX-Ny9" secondAttribute="leadingMargin" id="tbK-gP-PbH"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="WatchlistCell"/>
+                                <connections>
+                                    <outlet property="sentimentButton" destination="Frf-5g-Zae" id="YKu-i4-HFf"/>
+                                    <outlet property="sentimentScore" destination="pad-ok-apW" id="8gP-1G-bWq"/>
+                                    <outlet property="tickerName" destination="0Oq-0K-epo" id="GGy-DT-nsb"/>
+                                    <outlet property="tickerSymbol" destination="glX-Ep-BRT" id="xq4-39-RmE"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="loM-bw-mSM" id="EWo-nI-zLk"/>
+                            <outlet property="delegate" destination="loM-bw-mSM" id="Eal-qM-IJB"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Watchlist" image="list.dash" catalog="system" selectedImage="list.dash" id="MM0-z8-sPA"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aEf-oy-CB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-575.36231884057975" y="90.401785714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

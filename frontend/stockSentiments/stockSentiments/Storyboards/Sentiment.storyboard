@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k8k-5H-Xfr">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sentiment-->
+        <scene sceneID="Td6-eB-4FM">
+            <objects>
+                <viewController storyboardIdentifier="SentimentVC" title="Sentiment" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k8k-5H-Xfr" customClass="SentimentVC" customModule="stockSentiments" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RhG-i9-NNV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0MT-zP-mzT">
+                                <rect key="frame" x="10" y="69" width="64.5" height="42"/>
+                                <accessibility key="accessibilityConfiguration" identifier="sentimentTitle"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Sentiment Description goes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Pv-g5-X5i">
+                                <rect key="frame" x="10" y="131" width="394" height="64"/>
+                                <accessibility key="accessibilityConfiguration" identifier="sentimentDescription">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="jld-v7-Lzo"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4d-kN-gul">
+                                <rect key="frame" x="322" y="69" width="82" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="sentimentScore"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC4-SJ-Si2" userLabel="sentimentUnsubscribe">
+                                <rect key="frame" x="153.5" y="430.5" width="107" height="35"/>
+                                <accessibility key="accessibilityConfiguration" identifier="sentimentUnsubscribe"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Unsubscribe"/>
+                                <connections>
+                                    <action selector="unsubscribeTapped:" destination="k8k-5H-Xfr" eventType="touchUpInside" id="E4w-Ev-BL6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qaI-xp-VAr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Pv-g5-X5i" firstAttribute="leading" secondItem="qaI-xp-VAr" secondAttribute="leading" constant="10" id="1nv-2u-Fhw"/>
+                            <constraint firstItem="0MT-zP-mzT" firstAttribute="leading" secondItem="qaI-xp-VAr" secondAttribute="leading" constant="10" id="26h-lS-ikP"/>
+                            <constraint firstItem="qaI-xp-VAr" firstAttribute="trailing" secondItem="6Pv-g5-X5i" secondAttribute="trailing" constant="10" id="7v6-mA-ZYV"/>
+                            <constraint firstItem="6Pv-g5-X5i" firstAttribute="top" secondItem="0MT-zP-mzT" secondAttribute="bottom" constant="20" id="ETi-rl-33n"/>
+                            <constraint firstItem="OC4-SJ-Si2" firstAttribute="centerX" secondItem="RhG-i9-NNV" secondAttribute="centerX" id="KQK-tB-cI2"/>
+                            <constraint firstItem="OC4-SJ-Si2" firstAttribute="centerY" secondItem="RhG-i9-NNV" secondAttribute="centerY" id="M7G-lG-svl"/>
+                            <constraint firstItem="0MT-zP-mzT" firstAttribute="top" secondItem="qaI-xp-VAr" secondAttribute="top" constant="25" id="OpR-pm-Tba"/>
+                            <constraint firstItem="S4d-kN-gul" firstAttribute="top" secondItem="qaI-xp-VAr" secondAttribute="top" constant="25" id="R9H-5A-n6m"/>
+                            <constraint firstItem="OC4-SJ-Si2" firstAttribute="centerX" secondItem="RhG-i9-NNV" secondAttribute="centerX" id="WzG-tf-aWe"/>
+                            <constraint firstItem="qaI-xp-VAr" firstAttribute="trailing" secondItem="S4d-kN-gul" secondAttribute="trailing" constant="10" id="dfi-AN-yNL"/>
+                            <constraint firstItem="S4d-kN-gul" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0MT-zP-mzT" secondAttribute="trailing" constant="10" id="ebh-xW-NjD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sentimentDescription" destination="6Pv-g5-X5i" id="CRx-KN-bdu"/>
+                        <outlet property="sentimentScore" destination="S4d-kN-gul" id="KPm-dU-5T9"/>
+                        <outlet property="sentimentTitle" destination="0MT-zP-mzT" id="JxI-Ad-YRw"/>
+                        <outlet property="sentimentUnsubscribe" destination="OC4-SJ-Si2" id="dka-30-h99"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hfK-lG-G6w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="240.57971014492756" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
