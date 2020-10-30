@@ -24,12 +24,21 @@
                                     <segue destination="eLl-xF-0le" kind="show" id="rlb-2K-jD1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disclaimer: We are not liable for any losses as a result of using this app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNG-Qe-3Xz">
+                                <rect key="frame" x="50.5" y="488" width="313" height="11"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="1mb-5u-XJ1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7h0-GT-xyy"/>
                             <constraint firstItem="1mb-5u-XJ1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9jz-V5-xwb"/>
+                            <constraint firstItem="SNG-Qe-3Xz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LrF-j5-xRa"/>
+                            <constraint firstItem="SNG-Qe-3Xz" firstAttribute="top" secondItem="1mb-5u-XJ1" secondAttribute="bottom" constant="25" id="tKw-JW-tPy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bGI-w5-n9v"/>
