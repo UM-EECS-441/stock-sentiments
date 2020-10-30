@@ -4,6 +4,7 @@ from django.db import connection
 
 from django.views.decorators.csrf import csrf_exempt
 import json
+import requests
 
 # Create your views here.
 
@@ -119,14 +120,16 @@ def update_sentiment(request):
 
     
     cursor = connection.cursor()
-    cursor.execute('SELECT realname FROM tickertable WHERE ticker = %s', (ticker,))
+    cursor.execute('SELECT realname, currsentiment FROM tickertable WHERE ticker = %s', (ticker,))
     row = cursor.fetchone()
     response['rows'] = row
     
     if row == None:
         return HttpResponse(status=500)
     
-    realname = row[0]
+    old_score = row[1]
+    if (abs(score - old_score) > 0.5):
+        send_email(ticker, score)
 
     cursor = connection.cursor()
     cursor.execute('UPDATE tickertable SET currsentiment = %s, time = CURRENT_TIMESTAMP WHERE ticker = %s', (score, ticker,))
@@ -134,3 +137,16 @@ def update_sentiment(request):
 
     return JsonResponse(response)
 
+
+def send_email(ticker, score):
+    #cursor = connection.cursor()
+    #cusor.execute(FIND ALL EMAILS TO SEND TO)
+    EC2_ENDPOINT = "http://ec2-174-129-79-166.compute-1.amazonaws.com/send_email/"
+
+    payload = "{\r\n  \"email\": \"sentimentstock@gmail.com\",\r\n  \"stock\": \"" + ticker + "\",\r\n  \"score\": \"" + score + "\"\r\n}"
+    headers = {
+        'Content-Type': 'text/plain'
+    }
+
+    response = requests.request("POST", url, headers=headers, data = payload)
+    # check response
