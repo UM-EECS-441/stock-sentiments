@@ -128,8 +128,8 @@ def update_sentiment(request):
         return HttpResponse(status=500)
     
     old_score = row[1]
-	if (abs(score - old_score) > 0.5):
-		send_email(ticker, score)
+    if (abs(score - old_score) > 0.5):
+        send_email(ticker, score)
 
     cursor = connection.cursor()
     cursor.execute('UPDATE tickertable SET currsentiment = %s, time = CURRENT_TIMESTAMP WHERE ticker = %s', (score, ticker,))
@@ -139,14 +139,14 @@ def update_sentiment(request):
 
 
 def send_email(ticker, score):
-	#cursor = connection.cursor()
-	#cusor.execute(FIND ALL EMAILS TO SEND TO)
-	EC2_ENDPOINT = "http://ec2-174-129-79-166.compute-1.amazonaws.com/send_email/"
+    #cursor = connection.cursor()
+    #cusor.execute(FIND ALL EMAILS TO SEND TO)
+    EC2_ENDPOINT = "http://ec2-174-129-79-166.compute-1.amazonaws.com/send_email/"
 
-	payload = "{\r\n  \"email\": \"sentimentstock@gmail.com\",\r\n  \"stock\": \"" + ticker + "\",\r\n  \"score\": \"" + score + "\"\r\n}"
-	headers = {
-	    'Content-Type': 'text/plain'
-	}
+    payload = "{\r\n  \"email\": \"sentimentstock@gmail.com\",\r\n  \"stock\": \"" + ticker + "\",\r\n  \"score\": \"" + score + "\"\r\n}"
+    headers = {
+        'Content-Type': 'text/plain'
+    }
 
     response = requests.request("POST", url, headers=headers, data = payload)
-	# check response
+    # check response
