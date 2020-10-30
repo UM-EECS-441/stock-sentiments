@@ -142,10 +142,11 @@ def send_email(ticker, score):
 	#cursor = connection.cursor()
 	#cusor.execute(FIND ALL EMAILS TO SEND TO)
 	EC2_ENDPOINT = "http://ec2-174-129-79-166.compute-1.amazonaws.com/send_email/"
-	data = {
-		"email": "stocksentiments@gmail.com",
-		"stock": ticker,
-		"score": score
+
+	payload = "{\r\n  \"email\": \"sentimentstock@gmail.com\",\r\n  \"stock\": \"" + ticker + "\",\r\n  \"score\": \"" + score + "\"\r\n}"
+	headers = {
+	    'Content-Type': 'text/plain'
 	}
-	response = requests.post(url = EC2_ENDPOINT, data = data)
+
+    response = requests.request("POST", url, headers=headers, data = payload)
 	# check response
