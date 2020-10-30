@@ -129,11 +129,7 @@ def update_sentiment(request):
     realname = row[0]
 
     cursor = connection.cursor()
-    cursor.execute('DELETE FROM tickertable WHERE ticker = %s', (ticker,))
-
-    cursor = connection.cursor()
-    cursor.execute('INSERT INTO tickertable (realname, ticker, currsentiment) VALUES '
-            '(%s, %s, %s);', (realname, ticker, score,))
+    cursor.execute('UPDATE tickertable SET currsentiment = %s, time = CURRENT_TIMESTAMP WHERE ticker = %s', (score, ticker,))
 
 
     return JsonResponse(response)
