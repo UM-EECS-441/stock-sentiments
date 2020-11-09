@@ -30,30 +30,41 @@ class SentimentVC: UIViewController {
         guard let ticker = self.ticker else {
             fatalError("SentimentVC doesn't have Ticker in scope")
         }
-        requestUnSubscribe(to: ticker.symbol) { (success) in
-            if success {
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: {
-                        let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
-                        
-                        user.requestAndUpdateUserWatchlist(completion: {
-                            subscribeVC.tickerSymbol = ticker.symbol
-                            subscribeVC.tickerName = ticker.name
-                            // set destination's parent to self's parent and present modally from parent
-                            guard let pVC = self.pVC else {
-                                fatalError("Parent view controller not set")
-                            }
-                            subscribeVC.pVC = pVC
-                            DispatchQueue.main.async {
-                                self.pVC?.present(subscribeVC, animated: true, completion: self.refreshWatchlistTableViewIfIsParent)
-                            }
+
+        let refreshAlert = UIAlertController(title: "Log Out", message: "Are You Sure you want to unsubscribe from " + ticker.symbol + "?", preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "Unsubscribe", style: .default, handler: { (action) -> Void in
+            requestUnSubscribe(to: ticker.symbol) { (success) in
+                if success {
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: {
+                            let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
+
+                            user.requestAndUpdateUserWatchlist(completion: {
+                                subscribeVC.tickerSymbol = ticker.symbol
+                                subscribeVC.tickerName = ticker.name
+                                // set destination's parent to self's parent and present modally from parent
+                                guard let pVC = self.pVC else {
+                                    fatalError("Parent view controller not set")
+                                }
+                                subscribeVC.pVC = pVC
+                                DispatchQueue.main.async {
+                                    self.pVC?.present(subscribeVC, animated: true, completion: self.refreshWatchlistTableViewIfIsParent)
+                                }
+                            })
                         })
-                    })
+                    }
+                } else {
+                    print("already subbed")
                 }
-            } else {
-                print("already subbed")
             }
-        }
+        }))
+
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+            refreshAlert.dismiss(animated: true, completion: nil)
+        }))
+
+        present(refreshAlert, animated: true, completion: nil)
 
     }
     

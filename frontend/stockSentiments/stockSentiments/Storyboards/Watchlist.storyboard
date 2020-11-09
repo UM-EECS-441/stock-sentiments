@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="loM-bw-mSM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,7 +68,10 @@
                                         <constraint firstItem="0Oq-0K-epo" firstAttribute="leading" secondItem="VlX-MX-Ny9" secondAttribute="leadingMargin" id="tbK-gP-PbH"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <accessibility key="accessibilityConfiguration" identifier="WatchlistCell"/>
+                                <accessibility key="accessibilityConfiguration" identifier="WatchlistCell">
+                                    <accessibilityTraits key="traits" button="YES"/>
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <outlet property="sentimentButton" destination="Frf-5g-Zae" id="YKu-i4-HFf"/>
                                     <outlet property="sentimentScore" destination="pad-ok-apW" id="8gP-1G-bWq"/>

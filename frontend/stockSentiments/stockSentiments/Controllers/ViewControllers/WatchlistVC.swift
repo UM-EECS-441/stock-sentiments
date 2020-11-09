@@ -13,10 +13,21 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
         // Do any additional setup after loading the view.
       
         // setup refreshControl here later
-        refreshControl?.addTarget(self, action: #selector(WatchlistVC.handleRefresh(_:)), for: UIControl.Event.valueChanged)
+        let refreshControl = UIRefreshControl()
+
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Stock Data...")
+        refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_: )), for: .valueChanged)
 
         user.requestAndUpdateUserWatchlist(completion: {
             // Reload data from main thread
@@ -43,9 +54,17 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         })
     }
 
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+    @objc func handleRefresh(_ sender: Any) {
         // TODO: request and update watchlist
         print("refresh called")
+        user.requestAndUpdateUserWatchlist(completion: {
+            // Reload data from main thread
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+
+        })
+        self.refreshControl?.endRefreshing()
     }
 
     // MARK:- TableView handlers
@@ -63,45 +82,50 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // event handler when a cell is tapped
-        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       // populate a single cell
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath) as? WatchlistCell else {
-            fatalError("No reusable cell!")
-        }
-        
+        // click handler
         // set ticker equal to current ticker
         guard let ticker = user.watchlist[user.orderedWatchlistKeys[indexPath.row]] else {
             fatalError()
         }
-        
-        // set color
-        let sentimentLabel: SentimentLabel = getSentimentLabel(score: ticker.sentimentScore)
-        cell.backgroundColor = sentimentLabel.color
-        
-        // set text
-        cell.tickerSymbol.text = ticker.symbol
-        cell.tickerSymbol.sizeToFit()
-        cell.tickerName.text = ticker.name
-        cell.tickerName.sizeToFit()
-        cell.sentimentScore.text = String(ticker.sentimentScore)
-        cell.sentimentScore.sizeToFit()
-        
-        cell.sentimentButton.isHidden = false
-        
-        // click handler
-        cell.presentSentiment = { () in
-            guard let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as? SentimentVC else {
-                fatalError("Failed to load SentimentVC")
-            }
-            sentimentVC.ticker = ticker
-            sentimentVC.pVC = self
-            
-            self.present(sentimentVC, animated: true, completion: nil)
-        }
 
-       return cell
-   }
-}
+        guard let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as? SentimentVC else {
+            fatalError("Failed to load SentimentVC")
+        }
+        sentimentVC.ticker = ticker
+        sentimentVC.pVC = self
+
+        self.present(sentimentVC, animated: true, completion: nil)
+
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           // populate a single cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath) as? WatchlistCell else {
+                fatalError("No reusable cell!")
+            }
+
+            // set ticker equal to current ticker
+            guard let ticker = user.watchlist[user.orderedWatchlistKeys[indexPath.row]] else {
+                fatalError()
+            }
+
+            // set color
+            let sentimentLabel: SentimentLabel = getSentimentLabel(score: ticker.sentimentScore)
+            cell.backgroundColor = sentimentLabel.color
+
+            // set text
+            cell.tickerSymbol.text = ticker.symbol
+            cell.tickerSymbol.sizeToFit()
+            cell.tickerName.text = ticker.name
+            cell.tickerName.sizeToFit()
+            cell.sentimentScore.text = String(ticker.sentimentScore)
+            cell.sentimentScore.sizeToFit()
+
+            cell.sentimentButton.isHidden = false
+
+
+
+           return cell
+       }
+    }

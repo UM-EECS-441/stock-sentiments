@@ -15,6 +15,8 @@ class WatchlistCell: UITableViewCell {
     @IBOutlet weak var sentimentScore: UILabel!
     
     @IBOutlet weak var sentimentButton: UIButton!
+
+
     @IBAction func sentimentTapped(_ sender: Any) {
         self.presentSentiment?()
     }
