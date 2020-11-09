@@ -12,7 +12,7 @@ import Foundation
  to pass data back to the caller.
  */
 func requestUserWatchlist(completionHandler: @escaping ([WatchlistResponse]) -> Void) -> Void {
-    let queryParameters = "?uid=X01X23Y4XYXY"
+    let queryParameters = "?uid=2"
     
     let requestUrl = baseUrl + "get_watchlist_scores/" + queryParameters
     let request = URLRequest(url: URL(string: requestUrl)!)
@@ -45,7 +45,7 @@ func requestUserWatchlist(completionHandler: @escaping ([WatchlistResponse]) -> 
 
 // Stores response of /get_watchlist_scores
 struct GetWatchlistResponse : Codable {
-    var uid: String
+    var uid: Int
     var data: [WatchlistResponse]
 }
 

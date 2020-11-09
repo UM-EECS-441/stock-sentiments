@@ -12,8 +12,8 @@ import Foundation
  to pass data back to the caller.
  */
 func requestSubscribe(to tickerSymbol: String, success: @escaping (Bool) -> Void) -> Void {
-    //http://161.35.6.60/user/subscribe/?uid=X01X23Y4XYXY&ticker=FB
-    let queryParameters = "?uid=X01X23Y4XYXY&ticker=" + tickerSymbol
+    //http://161.35.6.60/user/subscribe/?uid=2&ticker=FB
+    let queryParameters = "?uid=2&ticker=" + tickerSymbol
     
     let requestUrl = baseUrl + "user/subscribe/" + queryParameters
     let request = URLRequest(url: URL(string: requestUrl)!)
