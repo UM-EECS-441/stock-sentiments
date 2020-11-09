@@ -10,6 +10,7 @@
 		37E25E91C632DDFACF23A878 /* Pods_stockSentiments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4D126A5A3E898486DB3518 /* Pods_stockSentiments.framework */; };
 		6A25C3795B24480F6C597DDB /* Pods_stockSentimentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057C0A9FFF53DE3334C812C3 /* Pods_stockSentimentsTests.framework */; };
 		861A274B26D9BA189B853AC3 /* Pods_stockSentiments_stockSentimentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67BE4269445E78FFFAE75BD /* Pods_stockSentiments_stockSentimentsUITests.framework */; };
+		8D1A608E2559CF27003207C2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1A608D2559CF27003207C2 /* CustomButton.swift */; };
 		8D40675025434492002760B1 /* Watchlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40674F25434492002760B1 /* Watchlist.storyboard */; };
 		8D406758254344A3002760B1 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D406757254344A3002760B1 /* Search.storyboard */; };
 		8D40675D254344EA002760B1 /* Sentiment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40675C254344EA002760B1 /* Sentiment.storyboard */; };
@@ -67,6 +68,7 @@
 		057C0A9FFF53DE3334C812C3 /* Pods_stockSentimentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentimentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		277C5339D0FD19D17C2C9ED5 /* Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		71C3FDD175688FA8F335635A /* Pods-stockSentiments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments/Pods-stockSentiments.debug.xcconfig"; sourceTree = "<group>"; };
+		8D1A608D2559CF27003207C2 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8D1FA7312E6BD2B1FD932D2B /* Pods-stockSentimentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentimentsTests.debug.xcconfig"; path = "Target Support Files/Pods-stockSentimentsTests/Pods-stockSentimentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8D40674F25434492002760B1 /* Watchlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Watchlist.storyboard; sourceTree = "<group>"; };
 		8D406757254344A3002760B1 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -166,13 +168,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		8D1A60892559CDE2003207C2 /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Buttons;
-			sourceTree = "<group>";
-		};
 		8D40674E2543444F002760B1 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,10 +185,10 @@
 		8D40676C25434568002760B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8D1A60892559CDE2003207C2 /* Buttons */,
 				8D5E8278254630EE00CC18A5 /* ViewControllers */,
 				8D5E82792546310500CC18A5 /* TableViewCellControllers */,
 				8D87D76A2547E66A00837DC1 /* TabBarController.swift */,
+				8D1A608D2559CF27003207C2 /* CustomButton.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -524,6 +519,7 @@
 				8D7EDB972543482600A59F10 /* SettingsVC.swift in Sources */,
 				8D75174E2546287D0017D8CD /* SearchResult.swift in Sources */,
 				8D87D75F2547D4A000837DC1 /* RequestUnsubscribe.swift in Sources */,
+				8D1A608E2559CF27003207C2 /* CustomButton.swift in Sources */,
 				8D7EDB83254347CA00A59F10 /* LaunchScreenVC.swift in Sources */,
 				8D6543052559027E00CC107D /* CustomColorScheme.swift in Sources */,
 				8D71A39F254529C700F1B7EC /* User.swift in Sources */,
