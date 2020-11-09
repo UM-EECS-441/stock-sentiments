@@ -30,7 +30,7 @@ struct CustomColorScheme {
     static let sharedColorScheme = CustomColorScheme()
     
     let red: UIColor = .red
-    let green = UIColor(red: CGFloat(0/255.0), green: CGFloat(131/255.0), blue: CGFloat(0/255.0), alpha: CGFloat(1.0))
+    let green = UIColor(red: CGFloat(0/255.0), green: CGFloat(175/255.0), blue: CGFloat(0/255.0), alpha: CGFloat(1.0))
     let orange: UIColor = .orange
     
     

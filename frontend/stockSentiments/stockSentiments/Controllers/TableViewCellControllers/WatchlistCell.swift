@@ -20,22 +20,22 @@ class WatchlistCell: UITableViewCell {
     }
     
     var presentSentiment: (() -> Void)? // a closure
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        // TODO: change to color class
-        tickerSymbol.textColor = .white
-        tickerName.textColor = .white
-        sentimentScore.textColor = .white
-        sentimentButton.tintColor = .white
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+    }
+    
+    func setColor(primary primaryColor: UIColor) {
+//        tickerSymbol.textColor = primaryColor
+//        tickerName.textColor = primaryColor
+        sentimentScore.textColor = primaryColor
+        sentimentButton.tintColor = primaryColor
     }
 
 }
