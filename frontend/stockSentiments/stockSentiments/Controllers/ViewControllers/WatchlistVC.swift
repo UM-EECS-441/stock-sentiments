@@ -79,7 +79,9 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         
         // set color
         let sentimentLabel: SentimentLabel = getSentimentLabel(score: ticker.sentimentScore)
-        cell.backgroundColor = sentimentLabel.color
+//        cell.backgroundColor = sentimentLabel.color
+//        cell.primaryColor = sentimentLabel.color
+        cell.setColor(primary: sentimentLabel.color)
         
         // set text
         cell.tickerSymbol.text = ticker.symbol
