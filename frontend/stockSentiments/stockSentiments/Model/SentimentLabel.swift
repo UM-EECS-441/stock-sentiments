@@ -19,11 +19,11 @@ enum SentimentLabel : String {
         get {
             switch self {
             case .negative:
-                return UIColor.red
+                return customColorScheme.red
             case .positive:
-                return UIColor(red: CGFloat(47/255.0), green: CGFloat(196/255.0), blue: CGFloat(52/255.0), alpha: CGFloat(1.0))
+                return customColorScheme.green
             case .neutral:
-                return UIColor.orange
+                return customColorScheme.orange
             }
         }
     }
