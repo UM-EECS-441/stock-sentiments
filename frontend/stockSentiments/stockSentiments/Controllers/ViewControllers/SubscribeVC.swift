@@ -23,10 +23,6 @@ class SubscribeVC: UIViewController {
     
     @IBAction func subscribeTapped(_ sender: Any) {
         
-        /* TODO: get request to subscribe to ticker,
-         if 200: update the user's watchlist
-         if 500: say failed
-         */
         guard let symbol = self.tickerSymbol else {
             fatalError("SubscribeVC doesn't have access to symbol")
         }
@@ -37,7 +33,7 @@ class SubscribeVC: UIViewController {
                         let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
          
                         // refresh watchlist
-                        user.requestAndUpdateUserWatchlist(completion: {
+                        user.requestAndUpdateUserWatchlist(autoReset: true, completion: {
                             sentimentVC.ticker = user.watchlist[symbol]
                             // set destination's parent to self's parent and present modally from parent
                             guard let pVC = self.pVC else {
