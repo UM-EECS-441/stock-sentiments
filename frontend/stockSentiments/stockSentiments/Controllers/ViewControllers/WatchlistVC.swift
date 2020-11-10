@@ -88,6 +88,9 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
             fatalError()
         }
 
+        
+        // click handler
+
         guard let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as? SentimentVC else {
             fatalError("Failed to load SentimentVC")
         }

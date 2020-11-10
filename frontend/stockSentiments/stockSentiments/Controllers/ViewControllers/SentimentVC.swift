@@ -76,25 +76,15 @@ class SentimentVC: UIViewController {
             fatalError("SentimentVC doesn't have Ticker in scope")
         }
 
-        
         // set color
         let sentimentLabel: SentimentLabel = getSentimentLabel(score: ticker.sentimentScore)
-        view.backgroundColor = sentimentLabel.color
-        sentimentDescription.backgroundColor = sentimentLabel.color
+        self.setColor(primary: sentimentLabel.color)
         
         // set text
         sentimentTitle.text = ticker.name + " (" + ticker.symbol + ")"
         sentimentScore.text = String(ticker.sentimentScore)
         sentimentDescription.text = "People are saying " + sentimentLabel.rawValue + " things about " + ticker.name
-        
-        
-        // TODO: replace this with a better system
-        sentimentTitle.textColor = .white
-        sentimentScore.textColor = .white
-        sentimentDescription.textColor = .white
-
     }
-    
     
     // reloads table view data using the pVC pointer
     func refreshWatchlistTableViewIfIsParent() {
@@ -103,5 +93,12 @@ class SentimentVC: UIViewController {
                 pVC.tableView.reloadData()
             }
         }
+    }
+    
+    func setColor(primary primaryColor: UIColor) {
+//        sentimentTitle.textColor = primaryColor
+        sentimentScore.textColor = primaryColor
+//        sentimentDescription.textColor = primaryColor
+        sentimentUnsubscribe.backgroundColor = primaryColor
     }
 }
