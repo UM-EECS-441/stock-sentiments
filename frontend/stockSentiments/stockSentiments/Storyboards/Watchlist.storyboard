@@ -30,18 +30,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Frf-5g-Zae">
-                                            <rect key="frame" x="365" y="30.5" width="29" height="28"/>
-                                            <accessibility key="accessibilityConfiguration" identifier="viewSentiment"/>
-                                            <state key="normal" image="info.circle.fill" catalog="system">
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="sentimentTapped:" destination="MMq-Zd-fVU" eventType="touchUpInside" id="BPY-tZ-hAw"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sentiment Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pad-ok-apW">
-                                            <rect key="frame" x="223" y="34.5" width="127" height="20.5"/>
+                                            <rect key="frame" x="267" y="34.5" width="127" height="20.5"/>
                                             <accessibility key="accessibilityConfiguration" identifier="sentimentScore"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -57,15 +47,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="glX-Ep-BRT" firstAttribute="leading" secondItem="VlX-MX-Ny9" secondAttribute="leadingMargin" id="4vz-xy-1wB"/>
-                                        <constraint firstItem="Frf-5g-Zae" firstAttribute="leading" secondItem="pad-ok-apW" secondAttribute="trailing" constant="15" id="7T3-CJ-B8R"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="0Oq-0K-epo" secondAttribute="bottom" constant="10" id="Ogt-S3-zPq"/>
-                                        <constraint firstItem="pad-ok-apW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="glX-Ep-BRT" secondAttribute="trailing" constant="10" id="UZc-VJ-4eJ"/>
                                         <constraint firstItem="0Oq-0K-epo" firstAttribute="top" secondItem="glX-Ep-BRT" secondAttribute="bottom" constant="5" id="XwF-bH-opY"/>
-                                        <constraint firstItem="Frf-5g-Zae" firstAttribute="centerY" secondItem="VlX-MX-Ny9" secondAttribute="centerY" id="dQr-NU-aHW"/>
                                         <constraint firstItem="glX-Ep-BRT" firstAttribute="top" secondItem="VlX-MX-Ny9" secondAttribute="topMargin" constant="10" id="eee-1r-grV"/>
                                         <constraint firstItem="pad-ok-apW" firstAttribute="centerY" secondItem="VlX-MX-Ny9" secondAttribute="centerY" id="gHz-0o-Z7K"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Frf-5g-Zae" secondAttribute="trailing" id="nrH-4H-Jby"/>
                                         <constraint firstItem="0Oq-0K-epo" firstAttribute="leading" secondItem="VlX-MX-Ny9" secondAttribute="leadingMargin" id="tbK-gP-PbH"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="pad-ok-apW" secondAttribute="trailing" id="zI0-eS-srS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="WatchlistCell">
@@ -73,7 +60,6 @@
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <outlet property="sentimentButton" destination="Frf-5g-Zae" id="YKu-i4-HFf"/>
                                     <outlet property="sentimentScore" destination="pad-ok-apW" id="8gP-1G-bWq"/>
                                     <outlet property="tickerName" destination="0Oq-0K-epo" id="GGy-DT-nsb"/>
                                     <outlet property="tickerSymbol" destination="glX-Ep-BRT" id="xq4-39-RmE"/>
@@ -94,7 +80,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

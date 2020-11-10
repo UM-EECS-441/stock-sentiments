@@ -16,13 +16,11 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
     // nil until SearchVC is instantiated for the first time
     var supportedTickers: SupportedTickers? = nil
     
-    var searchActive : Bool = false
+    var allPossibleResults = [SearchResult]() // array of all possible search results
+    var topSearchResults = [SearchResult]()   // array of search results
+    var filteredResults = [SearchResult]()    // array of filtered results
     
-
-    //TODO: include filter results function
-
-    var topSearchResults = [SearchResult]() // array of search results
-    var filteredResults: [SearchResult] = []// array of filtered results
+    var searchActive : Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +33,12 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
         requestSupportedTickers(completionHandler: { (supportedTickers) -> Void in
             self.supportedTickers = supportedTickers
             
-            // TODO: change this to select only the "top tickers"
-            for (symbol, name) in self.supportedTickers!.symbolToName {
-                self.topSearchResults.append(SearchResult(tickerSymbol: symbol, tickerName: name))
+            self.allPossibleResults = Array(self.supportedTickers!.symbolToName.keys).map { (symbol) -> SearchResult in
+                SearchResult(tickerSymbol: symbol, tickerName: supportedTickers.symbolToName[symbol]!)
             }
+            
+            // TODO: change this to so we receive tickers in order (temporarily same as all possible)
+            self.topSearchResults = self.allPossibleResults
             
             // Reload data from main thread
             DispatchQueue.main.async {
@@ -75,11 +75,8 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
     }
 
     func searchBar(_ searchItem: UISearchBar, textDidChange searchText: String) {
-        // TODO: we need to filter an appended list of (all symbols) + (all names)
-        let keys: [SearchResult] = Array(supportedTickers!.symbolToName.keys).map { (symbol) -> SearchResult in
-            SearchResult(tickerSymbol: symbol, tickerName: supportedTickers!.symbolToName[symbol]!)
-        }
-        filteredResults = keys.filter({ (searchResult) -> Bool in
+        
+        filteredResults = self.allPossibleResults.filter({ (searchResult) -> Bool in
             let symbol: NSString = searchResult.symbol as NSString
             let name: NSString = supportedTickers!.symbolToName[searchResult.symbol]! as NSString
             let rangeSymbol = symbol.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)

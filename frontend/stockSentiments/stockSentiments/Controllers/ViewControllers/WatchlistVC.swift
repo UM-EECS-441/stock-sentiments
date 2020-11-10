@@ -117,8 +117,6 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         cell.sentimentScore.text = String(ticker.sentimentScore)
         cell.sentimentScore.sizeToFit()
 
-        cell.sentimentButton.isHidden = false
-
         return cell
     }
 }
