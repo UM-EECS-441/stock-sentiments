@@ -21,26 +21,23 @@ class SentimentVC: UIViewController {
     @IBOutlet weak var sentimentDescription: UITextView!
     @IBOutlet weak var sentimentUnsubscribe: UIButton!
     
+    // Create unsubscribe alert and bind actions to click options
     @IBAction func unsubscribeTapped(_ sender: Any) {
-        // unsubscribe api called
-        /* TODO: get request to unsubscribe to ticker,
-         if 200: update the user's watchlist
-         if 500: say failed
-         */
+
         guard let ticker = self.ticker else {
             fatalError("SentimentVC doesn't have Ticker in scope")
         }
+        
+        let unsubscribeAlert = UIAlertController(title: "Unsubscribe", message: "Are You Sure you want to unsubscribe from " + ticker.symbol + "?", preferredStyle: UIAlertController.Style.alert)
 
-        let refreshAlert = UIAlertController(title: "Log Out", message: "Are You Sure you want to unsubscribe from " + ticker.symbol + "?", preferredStyle: UIAlertController.Style.alert)
-
-        refreshAlert.addAction(UIAlertAction(title: "Unsubscribe", style: .default, handler: { (action) -> Void in
+        unsubscribeAlert.addAction(UIAlertAction(title: "Unsubscribe", style: .default, handler: { (action) -> Void in
             requestUnSubscribe(to: ticker.symbol) { (success) in
                 if success {
                     DispatchQueue.main.async {
                         self.dismiss(animated: true, completion: {
                             let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
 
-                            user.requestAndUpdateUserWatchlist(completion: {
+                            user.requestAndUpdateUserWatchlist(autoReset: true, completion: {
                                 subscribeVC.tickerSymbol = ticker.symbol
                                 subscribeVC.tickerName = ticker.name
                                 // set destination's parent to self's parent and present modally from parent
@@ -60,11 +57,11 @@ class SentimentVC: UIViewController {
             }
         }))
 
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-            refreshAlert.dismiss(animated: true, completion: nil)
+        unsubscribeAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+            unsubscribeAlert.dismiss(animated: true, completion: nil)
         }))
 
-        present(refreshAlert, animated: true, completion: nil)
+        present(unsubscribeAlert, animated: true, completion: nil)
 
     }
     

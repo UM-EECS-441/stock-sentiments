@@ -22,23 +22,32 @@ class User {
     var username: String? = nil
     var password: String? = nil
     
-    
-    func requestAndUpdateUserWatchlist(completion: @escaping () -> Void) -> Void {
-        // request watchlist and store in watchlist member variable
-        self.watchlist.removeAll()
-        self.orderedWatchlistKeys.removeAll()
+    // request watchlist and store in watchlist member variable
+    func requestAndUpdateUserWatchlist(autoReset: Bool, completion: @escaping () -> Void) -> Void {
+        
+        // this exists because there are some cases when manual reset is desired (refresh control)
+        if autoReset {
+            self.resetWatchlist()
+        }
+        
         requestUserWatchlist(completionHandler: { (watchlistResponseList) -> Void in
-//            self.watchlistInstance = watchlist
             // store watchlist in user instance
             for codableWatchlistItem in watchlistResponseList {
                 self.watchlist[codableWatchlistItem.symbol] = Ticker(fromCodable: codableWatchlistItem)
             }
-            // set ordering
-            self.orderedWatchlistKeys = Array(user.watchlist.keys)
+            // set ordering by decreasing sentiment score
+            self.orderedWatchlistKeys = Array(user.watchlist.keys).sorted(by: { (lhs, rhs) -> Bool in
+                return self.watchlist[lhs]!.sentimentScore > self.watchlist[rhs]!.sentimentScore
+            })
             
             // call completion strictly after we have updated user's watchlist
             completion()
         })
+    }
+    
+    func resetWatchlist() {
+        self.watchlist.removeAll()
+        self.orderedWatchlistKeys.removeAll()
     }
 }
 

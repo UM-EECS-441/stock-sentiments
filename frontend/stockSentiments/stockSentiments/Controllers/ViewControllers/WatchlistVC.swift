@@ -29,7 +29,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
         refreshControl.addTarget(self, action: #selector(handleRefresh(_: )), for: .valueChanged)
 
-        user.requestAndUpdateUserWatchlist(completion: {
+        user.requestAndUpdateUserWatchlist(autoReset: true, completion: {
             // Reload data from main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -46,23 +46,19 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         self.tabBarController?.navigationItem.title = "Watchlist"
         self.tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
         
-        user.requestAndUpdateUserWatchlist(completion: {
-            // Reload data from main thread
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
+        // Just update, no need to re-request
+        self.tableView.reloadData()
     }
 
     @objc func handleRefresh(_ sender: Any) {
-        // TODO: request and update watchlist
-        print("refresh called")
-        user.requestAndUpdateUserWatchlist(completion: {
+        // Manually resetting user's watchlist (race cond. fix)
+        user.resetWatchlist()
+        self.tableView.reloadData()
+        user.requestAndUpdateUserWatchlist(autoReset: false, completion: {
             // Reload data from main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-
         })
         self.refreshControl?.endRefreshing()
     }
@@ -76,8 +72,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // how many rows per section
-//        return watchlistInstance?.watchlist.count ?? 0
-        return user.watchlist.count
+        return user.orderedWatchlistKeys.count
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -87,9 +82,6 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         guard let ticker = user.watchlist[user.orderedWatchlistKeys[indexPath.row]] else {
             fatalError()
         }
-
-        
-        // click handler
 
         guard let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as? SentimentVC else {
             fatalError("Failed to load SentimentVC")
@@ -115,7 +107,6 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
 
         // set color
         let sentimentLabel: SentimentLabel = getSentimentLabel(score: ticker.sentimentScore)
-//            cell.backgroundColor = sentimentLabel.color
         cell.setColor(primary: sentimentLabel.color)
 
         // set text
@@ -125,8 +116,6 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         cell.tickerName.sizeToFit()
         cell.sentimentScore.text = String(ticker.sentimentScore)
         cell.sentimentScore.sizeToFit()
-
-        cell.sentimentButton.isHidden = false
 
         return cell
     }

@@ -14,15 +14,7 @@ class WatchlistCell: UITableViewCell {
     
     @IBOutlet weak var sentimentScore: UILabel!
     
-    @IBOutlet weak var sentimentButton: UIButton!
 
-
-    @IBAction func sentimentTapped(_ sender: Any) {
-        self.presentSentiment?()
-    }
-    
-    var presentSentiment: (() -> Void)? // a closure
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,7 +29,6 @@ class WatchlistCell: UITableViewCell {
 //        tickerSymbol.textColor = primaryColor
 //        tickerName.textColor = primaryColor
         sentimentScore.textColor = primaryColor
-        sentimentButton.tintColor = primaryColor
     }
 
 }

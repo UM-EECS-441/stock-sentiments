@@ -17,20 +17,10 @@ class SupportedTickers {
 
     init(response responseData : [TickerResponse]) {
         
-//        for dict in responseData {
-//            let symbol: String = dict.keys.first!
-//            let name: String = dict[symbol]!
-//
-//            // store both ways
-//            symbolToName[symbol] = name
-//            nameToSymbol[name] = symbol
-//        }
-        
         for tickerResponse in responseData {
             nameToSymbol[tickerResponse.name] = tickerResponse.symbol
             symbolToName[tickerResponse.symbol] = tickerResponse.name
         }
         
-//        for (symbol, )
     }
 }
