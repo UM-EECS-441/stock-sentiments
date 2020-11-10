@@ -103,32 +103,31 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           // populate a single cell
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath) as? WatchlistCell else {
-                fatalError("No reusable cell!")
-            }
+       // populate a single cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath) as? WatchlistCell else {
+            fatalError("No reusable cell!")
+        }
 
-            // set ticker equal to current ticker
-            guard let ticker = user.watchlist[user.orderedWatchlistKeys[indexPath.row]] else {
-                fatalError()
-            }
+        // set ticker equal to current ticker
+        guard let ticker = user.watchlist[user.orderedWatchlistKeys[indexPath.row]] else {
+            fatalError()
+        }
 
-            // set color
-            let sentimentLabel: SentimentLabel = getSentimentLabel(score: ticker.sentimentScore)
-            cell.backgroundColor = sentimentLabel.color
+        // set color
+        let sentimentLabel: SentimentLabel = getSentimentLabel(score: ticker.sentimentScore)
+//            cell.backgroundColor = sentimentLabel.color
+        cell.setColor(primary: sentimentLabel.color)
 
-            // set text
-            cell.tickerSymbol.text = ticker.symbol
-            cell.tickerSymbol.sizeToFit()
-            cell.tickerName.text = ticker.name
-            cell.tickerName.sizeToFit()
-            cell.sentimentScore.text = String(ticker.sentimentScore)
-            cell.sentimentScore.sizeToFit()
+        // set text
+        cell.tickerSymbol.text = ticker.symbol
+        cell.tickerSymbol.sizeToFit()
+        cell.tickerName.text = ticker.name
+        cell.tickerName.sizeToFit()
+        cell.sentimentScore.text = String(ticker.sentimentScore)
+        cell.sentimentScore.sizeToFit()
 
-            cell.sentimentButton.isHidden = false
+        cell.sentimentButton.isHidden = false
 
-
-
-           return cell
-       }
+        return cell
     }
+}
