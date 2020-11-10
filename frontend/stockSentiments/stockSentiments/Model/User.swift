@@ -31,13 +31,14 @@ class User {
         }
         
         requestUserWatchlist(completionHandler: { (watchlistResponseList) -> Void in
-//            self.watchlistInstance = watchlist
             // store watchlist in user instance
             for codableWatchlistItem in watchlistResponseList {
                 self.watchlist[codableWatchlistItem.symbol] = Ticker(fromCodable: codableWatchlistItem)
             }
-            // set ordering
-            self.orderedWatchlistKeys = Array(user.watchlist.keys)
+            // set ordering by decreasing sentiment score
+            self.orderedWatchlistKeys = Array(user.watchlist.keys).sorted(by: { (lhs, rhs) -> Bool in
+                return self.watchlist[lhs]!.sentimentScore > self.watchlist[rhs]!.sentimentScore
+            })
             
             // call completion strictly after we have updated user's watchlist
             completion()
