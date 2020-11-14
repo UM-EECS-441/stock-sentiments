@@ -16,6 +16,8 @@
 		8D40675D254344EA002760B1 /* Sentiment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40675C254344EA002760B1 /* Sentiment.storyboard */; };
 		8D40676325434501002760B1 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40676225434501002760B1 /* Settings.storyboard */; };
 		8D4067682543455F002760B1 /* Subscribe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4067672543455F002760B1 /* Subscribe.storyboard */; };
+		8D51C65F255B80AF00DC1BE0 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D51C65E255B80AF00DC1BE0 /* Signin.storyboard */; };
+		8D51C664255B80D900DC1BE0 /* SigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D51C663255B80D900DC1BE0 /* SigninVC.swift */; };
 		8D6543052559027E00CC107D /* CustomColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6543042559027E00CC107D /* CustomColorScheme.swift */; };
 		8D71A39A254529B100F1B7EC /* Watchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A399254529B100F1B7EC /* Watchlist.swift */; };
 		8D71A39F254529C700F1B7EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71A39E254529C700F1B7EC /* User.swift */; };
@@ -79,6 +81,8 @@
 		8D40675C254344EA002760B1 /* Sentiment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sentiment.storyboard; sourceTree = "<group>"; };
 		8D40676225434501002760B1 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		8D4067672543455F002760B1 /* Subscribe.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Subscribe.storyboard; sourceTree = "<group>"; };
+		8D51C65E255B80AF00DC1BE0 /* Signin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signin.storyboard; sourceTree = "<group>"; };
+		8D51C663255B80D900DC1BE0 /* SigninVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninVC.swift; sourceTree = "<group>"; };
 		8D6543042559027E00CC107D /* CustomColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorScheme.swift; sourceTree = "<group>"; };
 		8D71A399254529B100F1B7EC /* Watchlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watchlist.swift; sourceTree = "<group>"; };
 		8D71A39E254529C700F1B7EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				8D40676225434501002760B1 /* Settings.storyboard */,
 				8D4067672543455F002760B1 /* Subscribe.storyboard */,
 				DCEBBDE425637EE900159B93 /* pickerView.storyboard */,
+				8D51C65E255B80AF00DC1BE0 /* Signin.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 				8D7EDB962543482600A59F10 /* SettingsVC.swift */,
 				8D7EDB9B2543483200A59F10 /* SubscribeVC.swift */,
 				DCEBBDE925637FD500159B93 /* pickerView.swift */,
+				8D51C663255B80D900DC1BE0 /* SigninVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -421,6 +427,7 @@
 				8D40675025434492002760B1 /* Watchlist.storyboard in Resources */,
 				8DE16D362534B4D300D5FBB8 /* Main.storyboard in Resources */,
 				8D4067682543455F002760B1 /* Subscribe.storyboard in Resources */,
+				8D51C65F255B80AF00DC1BE0 /* Signin.storyboard in Resources */,
 				8D406758254344A3002760B1 /* Search.storyboard in Resources */,
 				DCEBBDE525637EE900159B93 /* pickerView.storyboard in Resources */,
 				8D40676325434501002760B1 /* Settings.storyboard in Resources */,
@@ -533,6 +540,7 @@
 				8DE16D312534B4D300D5FBB8 /* SceneDelegate.swift in Sources */,
 				8D7EDB972543482600A59F10 /* SettingsVC.swift in Sources */,
 				8D75174E2546287D0017D8CD /* SearchResult.swift in Sources */,
+				8D51C664255B80D900DC1BE0 /* SigninVC.swift in Sources */,
 				8D87D75F2547D4A000837DC1 /* RequestUnsubscribe.swift in Sources */,
 				8D1A608E2559CF27003207C2 /* CustomButton.swift in Sources */,
 				8D7EDB83254347CA00A59F10 /* LaunchScreenVC.swift in Sources */,

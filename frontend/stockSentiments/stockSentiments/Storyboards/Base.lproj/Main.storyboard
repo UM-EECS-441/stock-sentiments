@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zqh-2q-Ip9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,8 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7l-c9-3hJ" customClass="CustomButton" customModule="stockSentiments" customModuleProvider="target">
+                                <rect key="frame" x="183.5" y="433" width="47" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="signinButton"/>
+                                <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4o2-0i-7LT"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mb-5u-XJ1">
-                                <rect key="frame" x="111.5" y="433" width="191" height="30"/>
+                                <rect key="frame" x="111.5" y="483" width="191" height="30"/>
                                 <state key="normal" title="Continue Without Signing In"/>
                                 <connections>
                                     <action selector="guestTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="sMx-LZ-4bJ"/>
@@ -25,7 +33,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disclaimer: We are not liable for any losses as a result of using this app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNG-Qe-3Xz">
-                                <rect key="frame" x="50.5" y="488" width="313" height="11"/>
+                                <rect key="frame" x="50.5" y="533" width="313" height="11"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                 <nil key="textColor"/>
@@ -35,13 +43,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1mb-5u-XJ1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7h0-GT-xyy"/>
-                            <constraint firstItem="1mb-5u-XJ1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9jz-V5-xwb"/>
-                            <constraint firstItem="SNG-Qe-3Xz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LrF-j5-xRa"/>
-                            <constraint firstItem="SNG-Qe-3Xz" firstAttribute="top" secondItem="1mb-5u-XJ1" secondAttribute="bottom" constant="25" id="tKw-JW-tPy"/>
+                            <constraint firstItem="u7l-c9-3hJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3DN-Qh-Moh"/>
+                            <constraint firstItem="1mb-5u-XJ1" firstAttribute="top" secondItem="u7l-c9-3hJ" secondAttribute="bottom" constant="20" id="5Va-RI-TaX"/>
+                            <constraint firstItem="SNG-Qe-3Xz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vd8-rw-uAm"/>
+                            <constraint firstItem="SNG-Qe-3Xz" firstAttribute="top" secondItem="1mb-5u-XJ1" secondAttribute="bottom" constant="20" id="mPc-nS-tUq"/>
+                            <constraint firstItem="1mb-5u-XJ1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tF2-S9-RLk"/>
+                            <constraint firstItem="u7l-c9-3hJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vDF-Wf-xd8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bGI-w5-n9v"/>
+                    <connections>
+                        <outlet property="signinButton" destination="u7l-c9-3hJ" id="gQk-Wn-61Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,9 +9,24 @@ import UIKit
 
 class MainVC: UIViewController {
     
+    @IBOutlet weak var signinButton: CustomButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        signinButton.backgroundColor = .systemGray
+        signinButton.tintColor = .systemBackground
+    }
+    
+    @IBAction func signinButtonTapped(_ sender: Any) {
+        guard let signinVC = signinStoryboard.instantiateViewController(identifier: "SigninVC") as? SigninVC else {
+            print("failed to load signinVC")
+            return
+        }
+        
+        present(signinVC, animated: true, completion: nil)
     }
     
     @IBAction func guestTapped() {
@@ -24,5 +39,7 @@ class MainVC: UIViewController {
 
 //        self.navigationController?.pushViewController(watchlistVC, animated: true)
     }
+    
+    
 }
 
