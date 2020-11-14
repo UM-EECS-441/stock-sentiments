@@ -32,14 +32,12 @@ class MainVC: UIViewController {
     @IBAction func guestTapped() {
         print("tapped")
         
-//        guard let watchlistVC = watchlistStoryboard.instantiateViewController(identifier: "WatchlistVC") as? WatchlistVC else {
-//            print("failed to load watchlistVC")
-//            return
-//        }
+        guard let tabBarController = tabBarStoryboard.instantiateViewController(identifier: "TabBarController") as? TabBarController else {
+            print("failed to load TabBarController")
+            return
+        }
 
-//        self.navigationController?.pushViewController(watchlistVC, animated: true)
+        self.navigationController?.pushViewController(tabBarController, animated: true)
     }
-    
-    
 }
 

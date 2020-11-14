@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UCX-C7-5qo">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--TabBar-->
+        <scene sceneID="9eM-9q-Dqt">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DEF-5S-sFD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tabBarController storyboardIdentifier="TabBarController" title="TabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UCX-C7-5qo" customClass="TabBarController" customModule="stockSentiments" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="s8k-14-foy"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e3f-Rj-RxX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="alF-Ez-uJB" kind="relationship" relationship="viewControllers" id="rzn-Px-YQA"/>
+                        <segue destination="plp-yp-CDF" kind="relationship" relationship="viewControllers" id="cZT-80-Zd1"/>
+                        <segue destination="mYg-2c-t2t" kind="relationship" relationship="viewControllers" id="o86-PL-CF4"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="1683" y="70"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="Ark-dH-RA0">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="THQ-Sh-nbD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Search" id="alF-Ez-uJB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="KiV-TE-3eO"/>
+                </viewControllerPlaceholder>
+            </objects>
+            <point key="canvasLocation" x="1338" y="508"/>
+        </scene>
+        <!--Watchlist-->
+        <scene sceneID="fjP-8R-K90">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fzk-Ma-Nmn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Watchlist" id="plp-yp-CDF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="oZB-9x-ux5"/>
+                </viewControllerPlaceholder>
+            </objects>
+            <point key="canvasLocation" x="1680" y="508"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="1Og-pI-Eye">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Axq-yq-oCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Settings" id="mYg-2c-t2t" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="65i-7I-3wP"/>
+                </viewControllerPlaceholder>
+            </objects>
+            <point key="canvasLocation" x="2053" y="508"/>
+        </scene>
+    </scenes>
+</document>

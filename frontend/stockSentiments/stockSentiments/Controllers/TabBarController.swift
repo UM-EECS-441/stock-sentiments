@@ -7,6 +7,8 @@
 
 import UIKit
 
+let tabBarStoryboard: UIStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
+
 class TabBarController : UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
