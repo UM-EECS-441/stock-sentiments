@@ -25,4 +25,5 @@ urlpatterns = [
     path('user/subscribe/', views.subscribe, name='subscribe'),
     path('user/unsubscribe/', views.unsubscribe, name='unsubscribe'),
     path('update_sentiment/', views.update_sentiment, name='update_sentiment'),
+    path('signin/', views.signin, name='signin'),
 ]

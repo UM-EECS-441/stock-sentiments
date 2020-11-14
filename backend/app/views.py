@@ -6,7 +6,69 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 import requests
 
+from google.oauth2 import id_token
+from google.auth.transport import requests as grequests
+
+import hashlib, time
+
 # Create your views here.
+
+@csrf_exempt
+def signin(request):
+    if request.method != 'POST':
+        return HttpResponse(status=404)
+
+    json_data = json.loads(request.body)
+    clientID = json_data['clientID']   # the front end app's OAuth 2.0 Client ID
+    idToken = json_data['idToken']     # user's OpenID ID Token, a JSon Web Token (JWT)
+
+    currentTimeStamp = time.time()
+    backendSecret = "hailhydra"
+
+    try:
+        # Collect user info from the Google idToken, verify_oauth2_token checks
+        # the integrity of idToken and throws a "ValueError" if idToken or
+        # clientID is corrupted or if user has been disconnected from Google
+        # OAuth (requiring user to log back in to Google).
+        idinfo = id_token.verify_oauth2_token(idToken, grequests.Request(), clientID)
+
+        # Verify the token is valid and fresh
+        if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
+            raise ValueError('Wrong issuer.')
+        if currentTimeStamp >= idinfo['exp']:
+            raise ValueError('Expired token.')
+
+    except ValueError:
+        # Invalid or expired token
+        return HttpResponse(status=511)  # 511 Network Authentication Required
+
+    # Check if token already exists in database
+    # Instead of the unlimited length ID Token,
+    # we work with a fixed-size SHA256 of the ID Token.
+    tokenhash = hashlib.sha256(idToken.strip().encode('utf-8')).hexdigest()
+
+    cursor = connection.cursor()
+    cursor.execute("SELECT userid FROM usertable2 WHERE idtoken='"+ tokenhash +"';")
+
+    userID = cursor.fetchone()
+    if userID is not None:
+        # if we've already seen the token, return associated chatterID
+        return JsonResponse({'userID': userID[0]})
+
+    # If it's a new token, get username
+    try:
+        username = idinfo['name']
+    except:
+        username = "Profile NA"
+
+    # Compute chatterID and add to database
+    hashable = idToken + username + str(currentTimeStamp) + backendSecret
+    userID = hashlib.sha256(hashable.strip().encode('utf-8')).hexdigest()
+    cursor.execute('INSERT INTO usertable2 (userid, idtoken) VALUES '
+                   '(%s, %s);', (userID, tokenhash))
+
+    # Return chatterID
+    return JsonResponse({'userID': userID})
 
 def get_tickers(request):
     if request.method != 'GET':
