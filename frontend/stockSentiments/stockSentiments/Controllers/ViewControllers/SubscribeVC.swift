@@ -32,9 +32,15 @@ class SubscribeVC: UIViewController {
                     self.dismiss(animated: true, completion: {
                         let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
          
+<<<<<<< HEAD
                         // refresh watchlist with decreasing sentiment score as default
                         user.requestAndUpdateUserWatchlist(autoReset: true, sortType: "Decreasing Sentiment Score", completion: {
                             sentimentVC.ticker = user.watchlist[symbol]
+=======
+                        // refresh watchlist
+                        sharedUser.requestAndUpdateUserWatchlist(autoReset: true, completion: {
+                            sentimentVC.ticker = sharedUser.watchlist[symbol]
+>>>>>>> WIP signin. Bug: GIDSignin.sharedInstance() isn't saving idToken.
                             // set destination's parent to self's parent and present modally from parent
                             guard let pVC = self.pVC else {
                                 fatalError("Parent view controller not set")

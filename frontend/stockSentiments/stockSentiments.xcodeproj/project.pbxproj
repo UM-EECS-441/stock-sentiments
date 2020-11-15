@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		6A25C3795B24480F6C597DDB /* Pods_stockSentimentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057C0A9FFF53DE3334C812C3 /* Pods_stockSentimentsTests.framework */; };
 		861A274B26D9BA189B853AC3 /* Pods_stockSentiments_stockSentimentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67BE4269445E78FFFAE75BD /* Pods_stockSentiments_stockSentimentsUITests.framework */; };
 		8D1A608E2559CF27003207C2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1A608D2559CF27003207C2 /* CustomButton.swift */; };
+		8D3635512560BDAA00B785BD /* RequestSignin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3635502560BDAA00B785BD /* RequestSignin.swift */; };
 		8D40675025434492002760B1 /* Watchlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40674F25434492002760B1 /* Watchlist.storyboard */; };
 		8D406758254344A3002760B1 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D406757254344A3002760B1 /* Search.storyboard */; };
 		8D40675D254344EA002760B1 /* Sentiment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40675C254344EA002760B1 /* Sentiment.storyboard */; };
@@ -77,6 +78,7 @@
 		71C3FDD175688FA8F335635A /* Pods-stockSentiments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments/Pods-stockSentiments.debug.xcconfig"; sourceTree = "<group>"; };
 		8D1A608D2559CF27003207C2 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8D1FA7312E6BD2B1FD932D2B /* Pods-stockSentimentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentimentsTests.debug.xcconfig"; path = "Target Support Files/Pods-stockSentimentsTests/Pods-stockSentimentsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D3635502560BDAA00B785BD /* RequestSignin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignin.swift; sourceTree = "<group>"; };
 		8D40674F25434492002760B1 /* Watchlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Watchlist.storyboard; sourceTree = "<group>"; };
 		8D406757254344A3002760B1 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		8D40675C254344EA002760B1 /* Sentiment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sentiment.storyboard; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				8D87D75D2547D4A000837DC1 /* RequestUnsubscribe.swift */,
 				8DE7582B254643C70083993F /* GetWatchlist.swift */,
 				DC7761EE257198570064E626 /* RequestSentiment.swift */,
+				8D3635502560BDAA00B785BD /* RequestSignin.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -329,6 +332,8 @@
 				8DE16D272534B4D300D5FBB8 /* Sources */,
 				8DE16D282534B4D300D5FBB8 /* Frameworks */,
 				8DE16D292534B4D300D5FBB8 /* Resources */,
+				FF77107017E2D3AC02C8C4C4 /* [CP] Embed Pods Frameworks */,
+				DE8C99466B00A113A123B94D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -366,6 +371,8 @@
 				8DE16D482534B4D700D5FBB8 /* Sources */,
 				8DE16D492534B4D700D5FBB8 /* Frameworks */,
 				8DE16D4A2534B4D700D5FBB8 /* Resources */,
+				7FA578ACBDEE9252E46BC43B /* [CP] Embed Pods Frameworks */,
+				41747E4EB214002CDC26BB28 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -477,6 +484,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		41747E4EB214002CDC26BB28 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7EC8F7595BC9618589C918EA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,6 +521,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FA578ACBDEE9252E46BC43B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A122E1FE3F65108F0A623670 /* [CP] Check Pods Manifest.lock */ = {
@@ -521,6 +562,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DE8C99466B00A113A123B94D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF77107017E2D3AC02C8C4C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -530,6 +605,7 @@
 			files = (
 				8D7EDB8D2543481300A59F10 /* SearchVC.swift in Sources */,
 				8D7E2FB92547C42200F98B4A /* SentimentLabel.swift in Sources */,
+				8D3635512560BDAA00B785BD /* RequestSignin.swift in Sources */,
 				8D87D7602547D4A000837DC1 /* RequestSubscribe.swift in Sources */,
 				8DE7582C254643C70083993F /* GetWatchlist.swift in Sources */,
 				8DE16D332534B4D300D5FBB8 /* MainVC.swift in Sources */,

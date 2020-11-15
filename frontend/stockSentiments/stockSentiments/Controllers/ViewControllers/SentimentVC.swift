@@ -45,7 +45,11 @@ class SentimentVC: UIViewController {
                         self.dismiss(animated: true, completion: { [self] in
                             let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
 
+<<<<<<< HEAD
                             user.requestAndUpdateUserWatchlist(autoReset: true, sortType: selectSort!, completion: {
+=======
+                            sharedUser.requestAndUpdateUserWatchlist(autoReset: true, completion: {
+>>>>>>> WIP signin. Bug: GIDSignin.sharedInstance() isn't saving idToken.
                                 subscribeVC.tickerSymbol = ticker.symbol
                                 subscribeVC.tickerName = ticker.name
                                 // set destination's parent to self's parent and present modally from parent

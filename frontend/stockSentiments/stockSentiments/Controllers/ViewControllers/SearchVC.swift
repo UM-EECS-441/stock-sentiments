@@ -127,7 +127,7 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
         
         cell.renderSearch = { () in
             // if already subscribed, render SentimentVC, else SubscribeVC
-            if let ticker = user.watchlist[searchResult.symbol] {
+            if let ticker = sharedUser.watchlist[searchResult.symbol] {
                 guard let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as? SentimentVC else {
                     fatalError("failed to load SentimentVC from search")
                 }

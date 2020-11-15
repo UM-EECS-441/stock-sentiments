@@ -18,9 +18,10 @@ class User {
     
     // MARK:- User Identity
     // verify that is is a valid way to do deviceID https://www.hackingwithswift.com/example-code/system/how-to-identify-an-ios-device-uniquely-with-identifierforvendor
-    var deviceID: String? = nil
-    var username: String? = nil
-    var password: String? = nil
+    var deviceID: String? = nil // unique device id
+    var userId: String? = nil   // backend reference for user
+    var idToken: String? = nil  // user's OpenID ID Token, a JSon Web Token (JWT)
+    
     
     // request watchlist and store in watchlist member variable
     func requestAndUpdateUserWatchlist(autoReset: Bool, sortType: String, completion: @escaping () -> Void) -> Void {
@@ -35,6 +36,7 @@ class User {
             for codableWatchlistItem in watchlistResponseList {
                 self.watchlist[codableWatchlistItem.symbol] = Ticker(fromCodable: codableWatchlistItem)
             }
+<<<<<<< HEAD
             if (sortType == "Decreasing Sentiment Score"){
                 // set ordering by decreasing sentiment score
                 self.orderedWatchlistKeys = Array(user.watchlist.keys).sorted(by: { (lhs, rhs) -> Bool in
@@ -72,6 +74,13 @@ class User {
                     return self.watchlist[lhs]!.sentimentScore > self.watchlist[rhs]!.sentimentScore
                 })
             }
+=======
+            // set ordering by decreasing sentiment score
+            self.orderedWatchlistKeys = Array(self.watchlist.keys).sorted(by: { (lhs, rhs) -> Bool in
+                return self.watchlist[lhs]!.sentimentScore > self.watchlist[rhs]!.sentimentScore
+            })
+            
+>>>>>>> WIP signin. Bug: GIDSignin.sharedInstance() isn't saving idToken.
             // call completion strictly after we have updated user's watchlist
             completion()
         })
@@ -84,4 +93,4 @@ class User {
 }
 
 // singleton instance of user
-let user = User.sharedUser
+let sharedUser = User.sharedUser
