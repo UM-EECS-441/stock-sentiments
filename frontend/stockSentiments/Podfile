@@ -6,6 +6,8 @@ target 'stockSentiments' do
   use_frameworks!
 
   # Pods for stockSentiments
+  pod 'GoogleSignIn'
+
 
   target 'stockSentimentsTests' do
     inherit! :search_paths

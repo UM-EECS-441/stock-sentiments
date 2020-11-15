@@ -6,10 +6,16 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class MainVC: UIViewController {
+protocol ReturnDelegate: UIViewController {
+    func didReturn(_ result: String)
+}
+
+class MainVC: UIViewController/*, ReturnDelegate */{
     
     @IBOutlet weak var signinButton: CustomButton!
+    
     
     
     override func viewDidLoad() {
@@ -21,17 +27,28 @@ class MainVC: UIViewController {
     }
     
     @IBAction func signinButtonTapped(_ sender: Any) {
-        guard let signinVC = signinStoryboard.instantiateViewController(identifier: "SigninVC") as? SigninVC else {
-            print("failed to load signinVC")
-            return
+        if (GIDSignIn.sharedInstance()?.currentUser == nil) {
+            // user is not signed in
+            guard let signinVC = signinStoryboard.instantiateViewController(identifier: "SigninVC") as? SigninVC else {
+                print("failed to load signinVC")
+                return
+            }
+//            signinVC.returnDelegate = self
+            
+            present(signinVC, animated: true, completion: nil)
+        } else {
+//            self.presentSignedIn()
+            requestSignin(GIDSignIn.sharedInstance().currentUser.authentication.idToken!)
+//            self.presentSignedIn()
         }
-        
-        present(signinVC, animated: true, completion: nil)
     }
     
     @IBAction func guestTapped() {
         print("tapped")
-        
+        self.presentSignedIn()
+    }
+    
+    func presentSignedIn() {
         guard let tabBarController = tabBarStoryboard.instantiateViewController(identifier: "TabBarController") as? TabBarController else {
             print("failed to load TabBarController")
             return
