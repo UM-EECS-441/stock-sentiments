@@ -33,8 +33,8 @@ class SubscribeVC: UIViewController {
                         let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
          
                         // refresh watchlist
-                        user.requestAndUpdateUserWatchlist(autoReset: true, completion: {
-                            sentimentVC.ticker = user.watchlist[symbol]
+                        sharedUser.requestAndUpdateUserWatchlist(autoReset: true, completion: {
+                            sentimentVC.ticker = sharedUser.watchlist[symbol]
                             // set destination's parent to self's parent and present modally from parent
                             guard let pVC = self.pVC else {
                                 fatalError("Parent view controller not set")

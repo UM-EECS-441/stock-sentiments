@@ -29,7 +29,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
         refreshControl.addTarget(self, action: #selector(handleRefresh(_: )), for: .valueChanged)
 
-        user.requestAndUpdateUserWatchlist(autoReset: true, completion: {
+        sharedUser.requestAndUpdateUserWatchlist(autoReset: true, completion: {
             // Reload data from main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -52,9 +52,9 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
 
     @objc func handleRefresh(_ sender: Any) {
         // Manually resetting user's watchlist (race cond. fix)
-        user.resetWatchlist()
+        sharedUser.resetWatchlist()
         self.tableView.reloadData()
-        user.requestAndUpdateUserWatchlist(autoReset: false, completion: {
+        sharedUser.requestAndUpdateUserWatchlist(autoReset: false, completion: {
             // Reload data from main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -72,14 +72,14 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // how many rows per section
-        return user.orderedWatchlistKeys.count
+        return sharedUser.orderedWatchlistKeys.count
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // event handler when a cell is tapped
         // click handler
         // set ticker equal to current ticker
-        guard let ticker = user.watchlist[user.orderedWatchlistKeys[indexPath.row]] else {
+        guard let ticker = sharedUser.watchlist[sharedUser.orderedWatchlistKeys[indexPath.row]] else {
             fatalError()
         }
 
@@ -101,7 +101,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
         }
 
         // set ticker equal to current ticker
-        guard let ticker = user.watchlist[user.orderedWatchlistKeys[indexPath.row]] else {
+        guard let ticker = sharedUser.watchlist[sharedUser.orderedWatchlistKeys[indexPath.row]] else {
             fatalError()
         }
 
