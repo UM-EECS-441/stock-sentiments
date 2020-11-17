@@ -45,6 +45,8 @@
 		8DE16D462534B4D700D5FBB8 /* stockSentimentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE16D452534B4D700D5FBB8 /* stockSentimentsTests.swift */; };
 		8DE16D512534B4D700D5FBB8 /* stockSentimentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE16D502534B4D700D5FBB8 /* stockSentimentsUITests.swift */; };
 		8DE7582C254643C70083993F /* GetWatchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7582B254643C70083993F /* GetWatchlist.swift */; };
+		DCEBBDE525637EE900159B93 /* pickerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCEBBDE425637EE900159B93 /* pickerView.storyboard */; };
+		DCEBBDEA25637FD500159B93 /* pickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBBDE925637FD500159B93 /* pickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,8 @@
 		8E4D126A5A3E898486DB3518 /* Pods_stockSentiments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentiments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BC1A62037218FD57DA028F /* Pods-stockSentiments-stockSentimentsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments-stockSentimentsUITests.release.xcconfig"; path = "Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C9C6198252DE5BA5CF4D2E83 /* Pods-stockSentimentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentimentsTests.release.xcconfig"; path = "Target Support Files/Pods-stockSentimentsTests/Pods-stockSentimentsTests.release.xcconfig"; sourceTree = "<group>"; };
+		DCEBBDE425637EE900159B93 /* pickerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = pickerView.storyboard; sourceTree = "<group>"; };
+		DCEBBDE925637FD500159B93 /* pickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerView.swift; sourceTree = "<group>"; };
 		E67BE4269445E78FFFAE75BD /* Pods_stockSentiments_stockSentimentsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentiments_stockSentimentsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9C9F2504E0BD616C060F241 /* Pods-stockSentiments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments.release.xcconfig"; path = "Target Support Files/Pods-stockSentiments/Pods-stockSentiments.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +182,7 @@
 				8D40675C254344EA002760B1 /* Sentiment.storyboard */,
 				8D40676225434501002760B1 /* Settings.storyboard */,
 				8D4067672543455F002760B1 /* Subscribe.storyboard */,
+				DCEBBDE425637EE900159B93 /* pickerView.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				8D7EDB912543481C00A59F10 /* SentimentVC.swift */,
 				8D7EDB962543482600A59F10 /* SettingsVC.swift */,
 				8D7EDB9B2543483200A59F10 /* SubscribeVC.swift */,
+				DCEBBDE925637FD500159B93 /* pickerView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 				8DE16D362534B4D300D5FBB8 /* Main.storyboard in Resources */,
 				8D4067682543455F002760B1 /* Subscribe.storyboard in Resources */,
 				8D406758254344A3002760B1 /* Search.storyboard in Resources */,
+				DCEBBDE525637EE900159B93 /* pickerView.storyboard in Resources */,
 				8D40676325434501002760B1 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +535,7 @@
 				8D7EDB922543481C00A59F10 /* SentimentVC.swift in Sources */,
 				8D7517242545F7A30017D8CD /* Ticker.swift in Sources */,
 				8D71A39A254529B100F1B7EC /* Watchlist.swift in Sources */,
+				DCEBBDEA25637FD500159B93 /* pickerView.swift in Sources */,
 				8D7EDB9C2543483200A59F10 /* SubscribeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

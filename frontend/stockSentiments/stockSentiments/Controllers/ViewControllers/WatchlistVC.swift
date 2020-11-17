@@ -9,13 +9,14 @@ import UIKit
 
 let watchlistStoryboard: UIStoryboard = UIStoryboard(name: "Watchlist", bundle: nil)
 
-class WatchlistVC: UITableViewController, UITabBarDelegate {
+class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate {
 
+    @IBOutlet weak var sortByButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         // Do any additional setup after loading the view.
-      
+
         // setup refreshControl here later
         let refreshControl = UIRefreshControl()
 
@@ -35,6 +36,17 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
                 self.tableView.reloadData()
             }
         })
+    }
+
+    @IBAction func sortByTapped(_ sender: Any) {
+        print("tapped")
+        guard let pickerView = pickerStoryboard.instantiateViewController(withIdentifier: "pickerView") as? pickerView else {
+            fatalError("Failed to load pickerView")
+        }
+
+
+        self.present(pickerView, animated: true, completion: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
