@@ -9,8 +9,28 @@ import UIKit
 
 let watchlistStoryboard: UIStoryboard = UIStoryboard(name: "Watchlist", bundle: nil)
 
-class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate {
+class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate, ReturnDelegate {
 
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        guard let pickerView = pickerStoryboard.instantiateViewController(withIdentifier: "pickerView") as? pickerView else {
+            fatalError("Failed to load pickerView")
+        }
+
+        pickerView.pVC = self
+        pickerView.returnDelegate = self
+    }
+
+    func didReturn(_ result: String){
+        selectSort = result
+        print(selectSort)
+    }
+    var selectSort:String = ""
+
+    func getSort(_ sortType: String){
+        //override the label with the parameter received in this method
+        selectSort = sortType
+    }
     @IBOutlet weak var sortByButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +64,8 @@ class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate
             fatalError("Failed to load pickerView")
         }
 
-
+        pickerView.pVC = self
+        pickerView.returnDelegate = self
         self.present(pickerView, animated: true, completion: nil)
         
     }
@@ -53,7 +74,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate
         super.viewWillAppear(animated)
         
         print("View will appear called")
-        
+        print(selectSort)
         // Set nav title and don't allow back functionality
         self.tabBarController?.navigationItem.title = "Watchlist"
         self.tabBarController?.navigationItem.setHidesBackButton(true, animated: false)

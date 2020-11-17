@@ -29,11 +29,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vg6-pt-D0r">
-                                <rect key="frame" x="347" y="293" width="48" height="30"/>
+                                <rect key="frame" x="347" y="293" width="48" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="cancelTapped:" destination="iPc-8c-Osf" eventType="touchUpInside" id="IKL-1z-lSz"/>
+                                    <action selector="cancelTapped:" destination="iPc-8c-Osf" eventType="touchUpInside" id="yy3-BB-kVD"/>
                                 </connections>
                             </button>
                         </subviews>
