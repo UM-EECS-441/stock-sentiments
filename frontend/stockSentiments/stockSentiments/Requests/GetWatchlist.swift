@@ -11,10 +11,36 @@ import Foundation
 /* function takes in a completion handler to call after completing the request. This is a form of delegation
  to pass data back to the caller.
  */
+
+// MARK: Codable Helper Structs
+
+// Stores response of /get_watchlist_scores
+struct GetWatchlistResponse : Codable {
+    var userid: Int
+    var data: [WatchlistResponse]
+}
+
+// stores watchlist information for a ticker
+struct WatchlistResponse : Codable {
+    var symbol: String
+    var name: String
+    var score: Double
+    var timestamp: String
+    var posts: [Posts]
+}
+
+// stores post for watchlist response
+struct Posts: Codable {
+    var source: String
+    var text: String
+    var time: String
+}
+
 func requestUserWatchlist(completionHandler: @escaping ([WatchlistResponse]) -> Void) -> Void {
-    let queryParameters = "?uid=2"
+    let queryParameters = "?uid=1"
     
     let requestUrl = baseUrl + "get_watchlist_scores/" + queryParameters
+    print(requestUrl)
     let request = URLRequest(url: URL(string: requestUrl)!)
     
     // TODO: how to do query parameter
@@ -29,8 +55,10 @@ func requestUserWatchlist(completionHandler: @escaping ([WatchlistResponse]) -> 
         var decodedResponse: GetWatchlistResponse?
         do {
             decodedResponse = try JSONDecoder().decode(GetWatchlistResponse.self, from: data!)
-        } catch {
-            print("error in decoding \(error.localizedDescription)")
+        } catch let jsonError as NSError {
+//            print(error)
+            print("JSON decode failed: \(jsonError.localizedDescription)")
+//            print("error in decoding \(error.localizedDescription)")
             return
         }
         
@@ -39,20 +67,4 @@ func requestUserWatchlist(completionHandler: @escaping ([WatchlistResponse]) -> 
 //        completionHandler(Watchlist(response: decodedResponse!.data))
     }
     task.resume()
-}
-
-// MARK: Codable Helper Structs
-
-// Stores response of /get_watchlist_scores
-struct GetWatchlistResponse : Codable {
-    var uid: Int
-    var data: [WatchlistResponse]
-}
-
-// stores watchlist information for a ticker
-struct WatchlistResponse : Codable {
-    var symbol: String
-    var name: String
-    var score: Double
-    var timestamp: String
 }

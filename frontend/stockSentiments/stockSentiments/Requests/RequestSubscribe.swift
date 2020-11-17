@@ -13,9 +13,10 @@ import Foundation
  */
 func requestSubscribe(to tickerSymbol: String, success: @escaping (Bool) -> Void) -> Void {
     //http://161.35.6.60/user/subscribe/?uid=2&ticker=FB
-    let queryParameters = "?uid=2&ticker=" + tickerSymbol
+    let queryParameters = "?uid=1&ticker=" + tickerSymbol
     
     let requestUrl = baseUrl + "user/subscribe/" + queryParameters
+    print(requestUrl)
     let request = URLRequest(url: URL(string: requestUrl)!)
     
     // TODO: how to do query parameter

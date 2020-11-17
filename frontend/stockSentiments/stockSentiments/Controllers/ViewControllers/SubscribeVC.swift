@@ -32,8 +32,8 @@ class SubscribeVC: UIViewController {
                     self.dismiss(animated: true, completion: {
                         let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
          
-                        // refresh watchlist
-                        user.requestAndUpdateUserWatchlist(autoReset: true, completion: {
+                        // refresh watchlist with decreasing sentiment score as default
+                        user.requestAndUpdateUserWatchlist(autoReset: true, sortType: "Decreasing Sentiment Score", completion: {
                             sentimentVC.ticker = user.watchlist[symbol]
                             // set destination's parent to self's parent and present modally from parent
                             guard let pVC = self.pVC else {

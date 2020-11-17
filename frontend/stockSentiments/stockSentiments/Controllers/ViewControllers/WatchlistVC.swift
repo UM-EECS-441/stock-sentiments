@@ -24,6 +24,12 @@ class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate
     func didReturn(_ result: String){
         selectSort = result
         print(selectSort)
+        user.requestAndUpdateUserWatchlist(autoReset: true, sortType: selectSort, completion: {
+            // Reload data from main thread
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
     }
     var selectSort:String = ""
 
@@ -50,7 +56,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate
         refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
         refreshControl.addTarget(self, action: #selector(handleRefresh(_: )), for: .valueChanged)
 
-        user.requestAndUpdateUserWatchlist(autoReset: true, completion: {
+        user.requestAndUpdateUserWatchlist(autoReset: true, sortType: selectSort, completion: {
             // Reload data from main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -87,7 +93,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate
         // Manually resetting user's watchlist (race cond. fix)
         user.resetWatchlist()
         self.tableView.reloadData()
-        user.requestAndUpdateUserWatchlist(autoReset: false, completion: {
+        user.requestAndUpdateUserWatchlist(autoReset: false,sortType: selectSort, completion: {
             // Reload data from main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -116,10 +122,13 @@ class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate
             fatalError()
         }
 
+
+
         guard let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as? SentimentVC else {
             fatalError("Failed to load SentimentVC")
         }
         sentimentVC.ticker = ticker
+        sentimentVC.selectSort = selectSort
         sentimentVC.pVC = self
 
         self.present(sentimentVC, animated: true, completion: nil)
