@@ -5,14 +5,22 @@
 //  Created by Ibtida I. Bhuiyan on 10/24/20.
 //
 
+import UIKit
 
 // Singleton instance per app lifecycle
 class User {
     
+    init() {
+        // initialize device id
+        if let retreivedDeviceId = UIDevice.current.identifierForVendor?.uuidString {
+            print("retreived device id:", retreivedDeviceId)
+            self.deviceID = retreivedDeviceId
+        }
+    }
+    
     static let sharedUser = User()
     
     // Stores the user's current Watchlist. This should always be updated when in watchlist view
-    // TODO: on subscribe and unsubscribe and on refresh ??: discard and reload watchlist
     var watchlist = [String:Ticker]() // symbol -> Ticker map
     var orderedWatchlistKeys = [String]() // array of ticker symbols (to maintain ordering in watchlist table view)
     

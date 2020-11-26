@@ -27,7 +27,7 @@ class MainVC: UIViewController/*, ReturnDelegate */{
     }
     
     @IBAction func signinButtonTapped(_ sender: Any) {
-        GIDSignIn.sharedInstance()?.signOut() // TODO: del
+//        GIDSignIn.sharedInstance()?.signOut() // TODO: del
         if (GIDSignIn.sharedInstance()?.currentUser == nil) {
             // user is not signed in
             guard let signinVC = signinStoryboard.instantiateViewController(identifier: "SigninVC") as? SigninVC else {
@@ -40,9 +40,11 @@ class MainVC: UIViewController/*, ReturnDelegate */{
         } else {
             requestSignin(GIDSignIn.sharedInstance().currentUser.authentication.idToken!) { (successfullySignedIn) in
                 if !successfullySignedIn {
-                    fatalError("Failed to sign in usere")
+                    fatalError("Failed to sign in user")
                 }
-                self.presentSignedIn()
+                DispatchQueue.main.async {
+                    self.presentSignedIn()
+                }
             }
         }
     }
