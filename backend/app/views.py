@@ -48,11 +48,11 @@ def signin(request):
     tokenhash = hashlib.sha256(idToken.strip().encode('utf-8')).hexdigest()
 
     cursor = connection.cursor()
-    cursor.execute("SELECT userid FROM usertable2 WHERE idtoken='"+ tokenhash +"';")
+    cursor.execute("SELECT userid FROM testusertable WHERE idtoken='"+ tokenhash +"';")
 
     userID = cursor.fetchone()
     if userID is not None:
-        # if we've already seen the token, return associated chatterID
+        # if we've already seen the token, return associated userID
         return JsonResponse({'userID': userID[0]})
 
     # If it's a new token, get username
@@ -64,7 +64,7 @@ def signin(request):
     # Compute chatterID and add to database
     hashable = idToken + username + str(currentTimeStamp) + backendSecret
     userID = hashlib.sha256(hashable.strip().encode('utf-8')).hexdigest()
-    cursor.execute('INSERT INTO usertable2 (userid, idtoken) VALUES '
+    cursor.execute('INSERT INTO testusertable (userid, idtoken) VALUES '
                    '(%s, %s);', (userID, tokenhash))
 
     # Return chatterID
