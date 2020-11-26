@@ -14,7 +14,7 @@ let signinStoryboard: UIStoryboard = UIStoryboard(name: "Signin", bundle: nil)
 class SigninVC: UIViewController, GIDSignInDelegate {
     
 //    var returnDelegate: ReturnDelegate? = nil
-
+    var pVC: UIViewController? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,16 +42,19 @@ class SigninVC: UIViewController, GIDSignInDelegate {
                 print("\(error.localizedDescription)")
             }
         } else {
-//            user.idToken = ""
             sharedUser.idToken = user.authentication.idToken
-            requestSignin(sharedUser.idToken!)
-            dismiss(animated: true, completion: nil)
-//            self.dismiss(animated:true) {
-//                if let parent = self.parent as? MainVC {
-//                    parent.presentSignedIn()
-//                }
-//            }
-            
+            requestSignin(sharedUser.idToken) { (successfullySignedIn) in
+                if !successfullySignedIn {
+                    fatalError("Failed to sign in user")
+                }
+                if let pVC = self.pVC as? MainVC {
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true) {
+                            pVC.presentSignedIn()
+                        }
+                    }
+                }
+            }
         }
         return
     }

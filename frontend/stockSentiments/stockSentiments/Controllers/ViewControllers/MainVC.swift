@@ -27,19 +27,23 @@ class MainVC: UIViewController/*, ReturnDelegate */{
     }
     
     @IBAction func signinButtonTapped(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signOut() // TODO: del
         if (GIDSignIn.sharedInstance()?.currentUser == nil) {
             // user is not signed in
             guard let signinVC = signinStoryboard.instantiateViewController(identifier: "SigninVC") as? SigninVC else {
                 print("failed to load signinVC")
                 return
             }
-//            signinVC.returnDelegate = self
+            signinVC.pVC = self
             
             present(signinVC, animated: true, completion: nil)
         } else {
-//            self.presentSignedIn()
-            requestSignin(GIDSignIn.sharedInstance().currentUser.authentication.idToken!)
-//            self.presentSignedIn()
+            requestSignin(GIDSignIn.sharedInstance().currentUser.authentication.idToken!) { (successfullySignedIn) in
+                if !successfullySignedIn {
+                    fatalError("Failed to sign in usere")
+                }
+                self.presentSignedIn()
+            }
         }
     }
     
