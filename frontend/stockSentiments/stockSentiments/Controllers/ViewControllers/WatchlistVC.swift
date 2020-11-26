@@ -14,6 +14,8 @@ class WatchlistVC: UITableViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
+        
+        print("userId passed to watchlistVC", sharedUser.userId)
         // Do any additional setup after loading the view.
       
         // setup refreshControl here later
