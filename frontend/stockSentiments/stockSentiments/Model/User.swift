@@ -18,9 +18,9 @@ class User {
     
     // MARK:- User Identity
     // verify that is is a valid way to do deviceID https://www.hackingwithswift.com/example-code/system/how-to-identify-an-ios-device-uniquely-with-identifierforvendor
-    var deviceID: String? = nil // unique device id
-    var userId: String? = nil   // backend reference for user
-    var idToken: String? = nil  // user's OpenID ID Token, a JSon Web Token (JWT)
+    var deviceID: String = "" // unique device id
+    var userId: String = ""   // backend reference for user
+    var idToken: String = ""  // user's OpenID ID Token, a JSon Web Token (JWT)
     
     
     // request watchlist and store in watchlist member variable

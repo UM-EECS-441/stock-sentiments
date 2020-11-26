@@ -8,11 +8,10 @@
 import Foundation
 
 
-func requestSignin(_ idToken: String) {
-    /* until backend verification is completed, the function should simply
-    return
-    */
+func requestSignin(_ idToken: String, success: @escaping (Bool) -> Void) {
+    
     /**/
+    print(sharedUser.userId)
     if sharedUser.userId == "" {
         // obtain chatterID from backend, replace the following line
         let json: [String: Any] = ["clientID": signinClientID,
@@ -28,36 +27,35 @@ func requestSignin(_ idToken: String) {
         let task =  URLSession.shared.dataTask(with: request) { data, response, error in
             guard let _ = data, error == nil else {
                 print("NETWORKING ERROR")
-                // TODO4.1: Case 5'a: for chatterID, pass an empty string "" back to MainVC
-//                self.returnDelegate?.didReturn("")
+                
                 sharedUser.userId = ""
+                success(false)
+                
                 return
             }
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 print("HTTP STATUS: \(httpStatus.statusCode)")
-                // TODO4.2: Case 5'b: return an empty string "" as chatterID to MainVC
-//                self.returnDelegate?.didReturn("")
+                
                 sharedUser.userId = ""
+                success(false)
                 
                 return
             }
             do {
                 if let json = try JSONSerialization.jsonObject(with: data!)
                     as? [String:Any] {
-                    // Case 4 in the **above** figure.
+            
                     sharedUser.userId = json["userID"] as? String ?? ""
-                    // TODO4.3: Case 5 (figure **below**): return self.chatterID to MainVC
-//                    self.returnDelegate?.didReturn(self.chatterID)
+                    print("stored userId:", sharedUser.userId)
+                    success(true)
                 }
             } catch let err {
-                // TODO4.4: Case 5'c: return an empty string "" as chatterID to MainVC
-//                self.returnDelegate?.didReturn("")
                 sharedUser.userId = ""
                 print(err.localizedDescription)
+                success(false)
             }
         }
         task.resume()
-    } // else no need to call return delegate
-    /**/
+    }
 }
 
