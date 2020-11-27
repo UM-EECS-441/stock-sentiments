@@ -25,4 +25,6 @@ urlpatterns = [
     path('user/subscribe/', views.subscribe, name='subscribe'),
     path('user/unsubscribe/', views.unsubscribe, name='unsubscribe'),
     path('update_sentiment/', views.update_sentiment, name='update_sentiment'),
+    path('delete_old_sentiment/', views.delete_old_sentiment, name='delete_old_sentiment'),
+    path('get_sentiment_score/', views.get_sentiment_score, name='get_sentiment_score'),
 ]
