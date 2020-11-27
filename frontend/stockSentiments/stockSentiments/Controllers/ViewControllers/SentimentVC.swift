@@ -12,8 +12,15 @@ let sentimentStoryboard: UIStoryboard = UIStoryboard(name: "Sentiment", bundle: 
 class SentimentVC: UIViewController {
     
     var ticker: Ticker? = nil
-    var selectSort:String? = nil
+    var selectSort: String? = ""
     var tickerSymbol: String? = nil
+
+    var sentimentResults: [Data]? = nil
+
+    // three axis points
+    var time_axis: [String]? = nil
+    var sentiment_axis: [Double]? = nil
+    var stock_axis: [Double]? = nil
     
     var pVC: UITableViewController? = nil // pointer to parent view controller needed to replace view
 
@@ -82,6 +89,19 @@ class SentimentVC: UIViewController {
         sentimentTitle.text = ticker.name + " (" + ticker.symbol + ")"
         sentimentScore.text = String(ticker.sentimentScore)
         sentimentDescription.text = "People are saying " + sentimentLabel.rawValue + " things about " + ticker.name
+
+        requestSentiment(to: ticker.symbol, completionHandler: {
+            (sentiments) -> Void in
+            self.sentimentResults = sentiments
+
+            for sentiment in self.sentimentResults!.reversed(){
+                self.time_axis?.append(sentiment.time)
+                self.sentiment_axis?.append(sentiment.sentiment)
+                self.stock_axis?.append(sentiment.price)
+                print("timestamp: " + sentiment.time + ", y1(Sentiment score): " + String(sentiment.sentiment) + ", y2(Stock Price): " + String(sentiment.price))
+                
+            }
+        })
     }
     
     // reloads table view data using the pVC pointer

@@ -123,14 +123,13 @@ class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate
         }
 
 
-
         guard let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as? SentimentVC else {
             fatalError("Failed to load SentimentVC")
         }
+
         sentimentVC.ticker = ticker
         sentimentVC.selectSort = selectSort
         sentimentVC.pVC = self
-
         self.present(sentimentVC, animated: true, completion: nil)
 
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)

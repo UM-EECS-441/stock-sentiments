@@ -45,6 +45,8 @@
 		8DE16D462534B4D700D5FBB8 /* stockSentimentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE16D452534B4D700D5FBB8 /* stockSentimentsTests.swift */; };
 		8DE16D512534B4D700D5FBB8 /* stockSentimentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE16D502534B4D700D5FBB8 /* stockSentimentsUITests.swift */; };
 		8DE7582C254643C70083993F /* GetWatchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7582B254643C70083993F /* GetWatchlist.swift */; };
+		DC7761EF257198570064E626 /* RequestSentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7761EE257198570064E626 /* RequestSentiment.swift */; };
+		DC7761F425719F5C0064E626 /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7761F325719F5C0064E626 /* Sentiment.swift */; };
 		DCEBBDE525637EE900159B93 /* pickerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCEBBDE425637EE900159B93 /* pickerView.storyboard */; };
 		DCEBBDEA25637FD500159B93 /* pickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBBDE925637FD500159B93 /* pickerView.swift */; };
 /* End PBXBuildFile section */
@@ -115,6 +117,8 @@
 		8E4D126A5A3E898486DB3518 /* Pods_stockSentiments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentiments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BC1A62037218FD57DA028F /* Pods-stockSentiments-stockSentimentsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments-stockSentimentsUITests.release.xcconfig"; path = "Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C9C6198252DE5BA5CF4D2E83 /* Pods-stockSentimentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentimentsTests.release.xcconfig"; path = "Target Support Files/Pods-stockSentimentsTests/Pods-stockSentimentsTests.release.xcconfig"; sourceTree = "<group>"; };
+		DC7761EE257198570064E626 /* RequestSentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSentiment.swift; sourceTree = "<group>"; };
+		DC7761F325719F5C0064E626 /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
 		DCEBBDE425637EE900159B93 /* pickerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = pickerView.storyboard; sourceTree = "<group>"; };
 		DCEBBDE925637FD500159B93 /* pickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerView.swift; sourceTree = "<group>"; };
 		E67BE4269445E78FFFAE75BD /* Pods_stockSentiments_stockSentimentsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentiments_stockSentimentsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,6 +236,7 @@
 				8D75174D2546287D0017D8CD /* SearchResult.swift */,
 				8D7E2FB82547C42200F98B4A /* SentimentLabel.swift */,
 				8D6543042559027E00CC107D /* CustomColorScheme.swift */,
+				DC7761F325719F5C0064E626 /* Sentiment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 				8D87D75E2547D4A000837DC1 /* RequestSubscribe.swift */,
 				8D87D75D2547D4A000837DC1 /* RequestUnsubscribe.swift */,
 				8DE7582B254643C70083993F /* GetWatchlist.swift */,
+				DC7761EE257198570064E626 /* RequestSentiment.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -516,11 +522,13 @@
 				8D87D7602547D4A000837DC1 /* RequestSubscribe.swift in Sources */,
 				8DE7582C254643C70083993F /* GetWatchlist.swift in Sources */,
 				8DE16D332534B4D300D5FBB8 /* MainVC.swift in Sources */,
+				DC7761F425719F5C0064E626 /* Sentiment.swift in Sources */,
 				8D87D76B2547E66A00837DC1 /* TabBarController.swift in Sources */,
 				8D7517252545F7A30017D8CD /* SearchCell.swift in Sources */,
 				8D751731254604710017D8CD /* Requests.swift in Sources */,
 				8DE16D2F2534B4D300D5FBB8 /* AppDelegate.swift in Sources */,
 				8D7EDB882543480600A59F10 /* WatchlistVC.swift in Sources */,
+				DC7761EF257198570064E626 /* RequestSentiment.swift in Sources */,
 				8D71A3A4254530AD00F1B7EC /* GetTickers.swift in Sources */,
 				8DE16D312534B4D300D5FBB8 /* SceneDelegate.swift in Sources */,
 				8D7EDB972543482600A59F10 /* SettingsVC.swift in Sources */,
