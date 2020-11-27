@@ -255,6 +255,7 @@ def update_sentiment(request):
     cursor.execute('UPDATE tickertable SET currsentiment = %s, time = CURRENT_TIMESTAMP WHERE ticker = %s;', (score, ticker,))
 
     # update sentimenttable with sentiment score and current stock price
+    finnhub_token = 'buve6of48v6vrjlugeh0'
     request_url = 'https://finnhub.io/api/v1/quote?symbol={}&token={}'.format(ticker, finnhub_token)
     r = requests.get(request_url)
     if r.status_code == 200:
