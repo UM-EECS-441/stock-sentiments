@@ -93,9 +93,9 @@ def get_tickers(request):
     response = {}
 
     cursor = connection.cursor()
-    cursor.execute('SELECT subscription, COUNT(*) from subscriptions group by subscription')
+    cursor.execute('SELECT ticker, COUNT(*) from subscriptions group by ticker')
     rows = cursor.fetchall()
-    
+
     ticker_count = {}
     for row in rows:
         ticker_count[str(row[0])] = str(row[1])
@@ -117,8 +117,6 @@ def get_tickers(request):
         else:
             datum['count'] = 0
         response['data'].append(datum)
-    
-    
 
     return JsonResponse(response)
 
