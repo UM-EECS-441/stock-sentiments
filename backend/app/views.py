@@ -19,9 +19,9 @@ def get_tickers(request):
     
     ticker_count = {}
     for row in rows:
-        ticker_count[str(rows[0])] = str(row[1])
+        ticker_count[str(row[0])] = str(row[1])
 
-    response['counts'] = ticker_count
+    #response['counts'] = ticker_count
 
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM tickertable;')
@@ -33,6 +33,10 @@ def get_tickers(request):
         datum = {}
         datum['symbol'] = row[1]
         datum['name'] = row[0]
+        if datum['symbol'] in ticker_count:
+            datum['count'] = int(ticker_count[datum['symbol']])
+        else:
+            datum['count'] = 0
         response['data'].append(datum)
     
     
