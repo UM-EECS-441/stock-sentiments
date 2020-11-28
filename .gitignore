@@ -223,4 +223,6 @@ fastlane/test_output
 # After new code Injection tools there's a generated folder /iOSInjectionProject
 # https://github.com/johnno1962/injectionforxcode
 iOSInjectionProject/
-__pycache__
+
+backend/app/__pycache__
+backend/website/__pycache__
