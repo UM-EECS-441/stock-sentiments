@@ -24,12 +24,47 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setup refresh
+        let refreshControl = UIRefreshControl()
+
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Search Data...")
+        refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_: )), for: .valueChanged)
     
         // setup delegates
         searchItem.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
 
+        self.refreshSearchVC()
+
+        tableView.keyboardDismissMode = .onDrag
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Set nav title and don't allow back functionality
+        self.tabBarController?.navigationItem.title = "Search"
+        self.tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
+    @objc func handleRefresh(_ sender: Any) {
+//        self.tableView.reloadData()
+        
+        self.refreshSearchVC()
+
+        self.refreshControl?.endRefreshing()
+    }
+    
+    func refreshSearchVC() {
         requestSupportedTickers(completionHandler: { (supportedTickers) -> Void in
             self.supportedTickers = supportedTickers
             
@@ -37,8 +72,6 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
                 SearchResult(tickerSymbol: symbol, tickerName: supportedTickers.symbolToName[symbol]!, count: supportedTickers.symbolToCount[symbol]!)
                 
             }
-            
-            
             
             // TODO: display all or just 10?
             self.topSearchResults = self.allPossibleResults.sorted(by: { (lhs, rhs) -> Bool in
@@ -50,16 +83,6 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
                 self.tableView.reloadData()
             }
         })
-        
-        tableView.keyboardDismissMode = .onDrag
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Set nav title and don't allow back functionality
-        self.tabBarController?.navigationItem.title = "Search"
-        self.tabBarController?.navigationItem.setHidesBackButton(true, animated: false)
     }
 
     // MARK:- Search Bar handlers
@@ -150,6 +173,7 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
         cell.tickerName.text = searchResult.name
         cell.tickerName.sizeToFit()
         cell.tickerCount.text = String(searchResult.count) + " subs."
+        cell.tickerCount.textColor = .systemBlue
         cell.tickerName.sizeToFit()
 //        cell.viewStock.isHidden = false
         
