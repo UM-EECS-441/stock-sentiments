@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ReturnDelegate: UIViewController {
+    func didReturn(_ result: String)
+}
+
 let watchlistStoryboard: UIStoryboard = UIStoryboard(name: "Watchlist", bundle: nil)
 
 class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate, ReturnDelegate {

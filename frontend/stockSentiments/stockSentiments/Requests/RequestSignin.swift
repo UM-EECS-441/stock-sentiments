@@ -20,7 +20,7 @@ func requestSignin(_ idToken: String, success: @escaping (Bool) -> Void) {
         
         // Replace YOUR_SERVER_IP with the IP address of your droplet
         var request = URLRequest(url:
-            URL(string: baseUrl + "signin/")!)
+            URL(string: baseUrl + "sign_in/")!)
         request.httpMethod = "POST"
         request.httpBody = jsonData
         

@@ -10,9 +10,9 @@ import Foundation
 /* function takes in a completion handler to call after completing the request. This is a form of delegation
  to pass data back to the caller.
  */
-func requestUnSubscribe(to tickerSymbol: String, success: @escaping (Bool) -> Void) -> Void {
-    //http://161.35.6.60/user/unsubscribe/?uid=2&ticker=FB
-    let queryParameters = "?uid=1&ticker=" + tickerSymbol
+func requestUnSubscribe(to tickerSymbol: String, success: @escaping (Bool) -> Void) {
+    //http://161.35.6.60/user/unsubscribe/?userID=2&ticker=FB
+    let queryParameters = "?userID=" + sharedUser.userId + "&ticker=" + tickerSymbol
 
     let requestUrl = baseUrl + "user/unsubscribe/" + queryParameters
     let request = URLRequest(url: URL(string: requestUrl)!)
@@ -42,12 +42,4 @@ func requestUnSubscribe(to tickerSymbol: String, success: @escaping (Bool) -> Vo
     }
     task.resume()
 }
-
-// MARK: Codable Helper Structs
-
-//// Stores response of /get_watchlist_scores
-//struct SubscirbeResponse : Codable {
-//    var uid: String
-//    var ticker: String
-//}
 

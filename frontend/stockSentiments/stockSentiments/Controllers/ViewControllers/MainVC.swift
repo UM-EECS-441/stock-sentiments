@@ -8,15 +8,10 @@
 import UIKit
 import GoogleSignIn
 
-protocol ReturnDelegate: UIViewController {
-    func didReturn(_ result: String)
-}
 
 class MainVC: UIViewController/*, ReturnDelegate */{
     
     @IBOutlet weak var signinButton: CustomButton!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +45,18 @@ class MainVC: UIViewController/*, ReturnDelegate */{
     }
     
     @IBAction func guestTapped() {
-        print("tapped")
-        self.presentSignedIn()
+        print("Continue without sign in tapped")
+        requestRegisterDeviceId { (success) in
+            if success {
+                print("userId is set to after continuing without sign in:", sharedUser.userId)
+                DispatchQueue.main.async {
+                    self.presentSignedIn()
+                }
+            } else {
+                fatalError("Failed to register deviceID in the backend")
+            }
+        }
+        
     }
     
     func presentSignedIn() {
