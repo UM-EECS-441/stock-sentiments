@@ -20,7 +20,7 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
     var topSearchResults = [SearchResult]()   // array of search results
     var filteredResults = [SearchResult]()    // array of filtered results
     
-    var searchActive : Bool = false
+    var searchActive: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +34,16 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
             self.supportedTickers = supportedTickers
             
             self.allPossibleResults = Array(self.supportedTickers!.symbolToName.keys).map { (symbol) -> SearchResult in
-                SearchResult(tickerSymbol: symbol, tickerName: supportedTickers.symbolToName[symbol]!)
+                SearchResult(tickerSymbol: symbol, tickerName: supportedTickers.symbolToName[symbol]!, count: supportedTickers.symbolToCount[symbol]!)
+                
             }
             
-            // TODO: change this to so we receive tickers in order (temporarily same as all possible)
-            self.topSearchResults = self.allPossibleResults
+            
+            
+            // TODO: display all or just 10?
+            self.topSearchResults = self.allPossibleResults.sorted(by: { (lhs, rhs) -> Bool in
+                return lhs.count > rhs.count // TODO: check if correct
+            })
             
             // Reload data from main thread
             DispatchQueue.main.async {
@@ -107,6 +112,27 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // event handler when a cell is tapped
+        let searchResult = searchActive ? filteredResults[indexPath.row] : topSearchResults[indexPath.row]
+        
+        if let ticker = sharedUser.watchlist[searchResult.symbol] {
+            guard let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as? SentimentVC else {
+                fatalError("failed to load SentimentVC from search")
+            }
+            sentimentVC.ticker = ticker
+            sentimentVC.pVC = self
+            
+            self.present(sentimentVC, animated: true, completion: nil)
+        } else {
+            guard let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as? SubscribeVC else {
+                fatalError("failed to load SubscribeVC from search")
+            }
+            subscribeVC.tickerSymbol = searchResult.symbol // TODO: encapsulate these
+            subscribeVC.tickerName = searchResult.name
+            subscribeVC.pVC = self
+
+            self.present(subscribeVC, animated: true, completion: nil)
+        }
+        
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
 
@@ -123,30 +149,10 @@ class SearchVC: UITableViewController, UISearchBarDelegate {
         cell.tickerSymbol.sizeToFit()
         cell.tickerName.text = searchResult.name
         cell.tickerName.sizeToFit()
-        cell.viewStock.isHidden = false
+        cell.tickerCount.text = String(searchResult.count) + " subs."
+        cell.tickerName.sizeToFit()
+//        cell.viewStock.isHidden = false
         
-        cell.renderSearch = { () in
-            // if already subscribed, render SentimentVC, else SubscribeVC
-            if let ticker = sharedUser.watchlist[searchResult.symbol] {
-                guard let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as? SentimentVC else {
-                    fatalError("failed to load SentimentVC from search")
-                }
-                sentimentVC.ticker = ticker
-                sentimentVC.pVC = self
-                
-                self.present(sentimentVC, animated: true, completion: nil)
-            } else {
-                guard let subscribeVC = subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as? SubscribeVC else {
-                    fatalError("failed to load SubscribeVC from search")
-                }
-                subscribeVC.tickerSymbol = searchResult.symbol // TODO: encapsulate these
-                subscribeVC.tickerName = searchResult.name
-                subscribeVC.pVC = self
-
-                self.present(subscribeVC, animated: true, completion: nil)
-            }
-        }
-
         return cell
    }
     

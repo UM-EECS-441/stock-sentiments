@@ -7,13 +7,14 @@
 
 import Foundation
 
-// TODO: delete this and just use a string unless we find more uses for this
 class SearchResult {
     var symbol: String
     var name: String
+    var count: Int
     
-    init(tickerSymbol: String, tickerName: String) {
+    init(tickerSymbol: String, tickerName: String, count: Int) {
         self.symbol = tickerSymbol
         self.name = tickerName
+        self.count = count
     }
 }

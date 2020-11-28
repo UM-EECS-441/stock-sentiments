@@ -49,8 +49,8 @@ struct GetSupportedTickersResponse : Codable {
 
 // stores base information for a ticker
 struct TickerResponse : Codable {
-//    var dictTickers: [[String:String]]
     var symbol: String
     var name: String
+    var count: Int
 }
 
