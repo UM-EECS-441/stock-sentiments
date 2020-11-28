@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:credentials.plist">
+   </FileRef>
+   <FileRef
       location = "group:stockSentiments.xcodeproj">
    </FileRef>
    <FileRef

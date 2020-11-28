@@ -27,4 +27,6 @@ urlpatterns = [
     path('update_sentiment/', views.update_sentiment, name='update_sentiment'),
     path('delete_old_sentiment/', views.delete_old_sentiment, name='delete_old_sentiment'),
     path('get_sentiment_score/', views.get_sentiment_score, name='get_sentiment_score'),
+    path('sign_in/', views.sign_in, name='sign_in'),
+    path('no_sign_in/', views.no_sign_in, name='no_sign_in'),
 ]

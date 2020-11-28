@@ -33,8 +33,9 @@ class SubscribeVC: UIViewController {
                         let sentimentVC = sentimentStoryboard.instantiateViewController(withIdentifier: "SentimentVC") as! SentimentVC
          
                         // refresh watchlist with decreasing sentiment score as default
-                        user.requestAndUpdateUserWatchlist(autoReset: true, sortType: "Decreasing Sentiment Score", completion: {
-                            sentimentVC.ticker = user.watchlist[symbol]
+                        sharedUser.requestAndUpdateUserWatchlist(autoReset: true, sortType: "Decreasing Sentiment Score", completion: {
+
+                            sentimentVC.ticker = sharedUser.watchlist[symbol]
                             // set destination's parent to self's parent and present modally from parent
                             guard let pVC = self.pVC else {
                                 fatalError("Parent view controller not set")

@@ -11,7 +11,7 @@ import Foundation
 /* function takes in a completion handler to call after completing the request. This is a form of delegation
  to pass data back to the caller.
  */
-func requestSupportedTickers(completionHandler: @escaping (SupportedTickers) -> Void) -> Void {
+func requestSupportedTickers(completionHandler: @escaping (SupportedTickers) -> Void) {
     
     let requestUrl = baseUrl + "get_tickers/"
     let request = URLRequest(url: URL(string: requestUrl)!)

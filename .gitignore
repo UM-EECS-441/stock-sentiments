@@ -224,6 +224,5 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 iOSInjectionProject/
 
-
 backend/app/__pycache__
 backend/website/__pycache__
