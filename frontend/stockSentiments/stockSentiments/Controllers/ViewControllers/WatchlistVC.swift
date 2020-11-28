@@ -58,11 +58,8 @@ class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate
         refreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
         refreshControl.addTarget(self, action: #selector(handleRefresh(_: )), for: .valueChanged)
 
-<<<<<<< HEAD
-        user.requestAndUpdateUserWatchlist(autoReset: true, sortType: selectSort, completion: {
-=======
-        sharedUser.requestAndUpdateUserWatchlist(autoReset: true, completion: {
->>>>>>> WIP signin. Bug: GIDSignin.sharedInstance() isn't saving idToken.
+
+        sharedUser.requestAndUpdateUserWatchlist(autoReset: true, sortType: selectSort, completion: {
             // Reload data from main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -99,11 +96,7 @@ class WatchlistVC: UITableViewController, UITabBarDelegate, UIPickerViewDelegate
         // Manually resetting user's watchlist (race cond. fix)
         sharedUser.resetWatchlist()
         self.tableView.reloadData()
-<<<<<<< HEAD
-        user.requestAndUpdateUserWatchlist(autoReset: false,sortType: selectSort, completion: {
-=======
-        sharedUser.requestAndUpdateUserWatchlist(autoReset: false, completion: {
->>>>>>> WIP signin. Bug: GIDSignin.sharedInstance() isn't saving idToken.
+        sharedUser.requestAndUpdateUserWatchlist(autoReset: false, sortType: selectSort, completion: {
             // Reload data from main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
