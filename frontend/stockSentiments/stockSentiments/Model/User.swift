@@ -44,6 +44,7 @@ class User {
             for codableWatchlistItem in watchlistResponseList {
                 self.watchlist[codableWatchlistItem.symbol] = Ticker(fromCodable: codableWatchlistItem)
             }
+<<<<<<< HEAD
             if (sortType == "Decreasing Sentiment Score"){
                 // set ordering by decreasing sentiment score
                 self.orderedWatchlistKeys = Array(user.watchlist.keys).sorted(by: { (lhs, rhs) -> Bool in
@@ -81,6 +82,13 @@ class User {
                     return self.watchlist[lhs]!.sentimentScore > self.watchlist[rhs]!.sentimentScore
                 })
             }
+=======
+            // set ordering by decreasing sentiment score
+            self.orderedWatchlistKeys = Array(self.watchlist.keys).sorted(by: { (lhs, rhs) -> Bool in
+                return self.watchlist[lhs]!.sentimentScore > self.watchlist[rhs]!.sentimentScore
+            })
+            
+>>>>>>> 7cf4713f57067ff6f2b612bc57cf9ac5dbd874ce
             // call completion strictly after we have updated user's watchlist
             completion()
         })

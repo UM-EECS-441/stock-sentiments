@@ -194,7 +194,10 @@
 				8D40675C254344EA002760B1 /* Sentiment.storyboard */,
 				8D40676225434501002760B1 /* Settings.storyboard */,
 				8D4067672543455F002760B1 /* Subscribe.storyboard */,
+<<<<<<< HEAD
 				DCEBBDE425637EE900159B93 /* pickerView.storyboard */,
+=======
+>>>>>>> 7cf4713f57067ff6f2b612bc57cf9ac5dbd874ce
 				8D51C65E255B80AF00DC1BE0 /* Signin.storyboard */,
 				8D58C5BF25609ECC00DD0AD0 /* TabBar.storyboard */,
 			);
@@ -222,7 +225,10 @@
 				8D7EDB912543481C00A59F10 /* SentimentVC.swift */,
 				8D7EDB962543482600A59F10 /* SettingsVC.swift */,
 				8D7EDB9B2543483200A59F10 /* SubscribeVC.swift */,
+<<<<<<< HEAD
 				DCEBBDE925637FD500159B93 /* pickerView.swift */,
+=======
+>>>>>>> 7cf4713f57067ff6f2b612bc57cf9ac5dbd874ce
 				8D51C663255B80D900DC1BE0 /* SigninVC.swift */,
 			);
 			path = ViewControllers;
@@ -260,7 +266,10 @@
 				8D87D75E2547D4A000837DC1 /* RequestSubscribe.swift */,
 				8D87D75D2547D4A000837DC1 /* RequestUnsubscribe.swift */,
 				8DE7582B254643C70083993F /* GetWatchlist.swift */,
+<<<<<<< HEAD
 				DC7761EE257198570064E626 /* RequestSentiment.swift */,
+=======
+>>>>>>> 7cf4713f57067ff6f2b612bc57cf9ac5dbd874ce
 				8D3635502560BDAA00B785BD /* RequestSignin.swift */,
 			);
 			path = Requests;

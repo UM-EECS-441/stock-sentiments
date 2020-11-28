@@ -45,7 +45,11 @@ class SentimentVC: UIViewController {
                         self.dismiss(animated: true, completion: { [self] in
                             let subscribeVC =  subscribeStoryboard.instantiateViewController(withIdentifier: "SubscribeVC") as! SubscribeVC
 
+<<<<<<< HEAD
                             sharedUser.requestAndUpdateUserWatchlist(autoReset: true, sortType: selectSort!, completion: {
+=======
+                            sharedUser.requestAndUpdateUserWatchlist(autoReset: true, completion: {
+>>>>>>> 7cf4713f57067ff6f2b612bc57cf9ac5dbd874ce
                                 subscribeVC.tickerSymbol = ticker.symbol
                                 subscribeVC.tickerName = ticker.name
                                 // set destination's parent to self's parent and present modally from parent
