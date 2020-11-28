@@ -56,8 +56,7 @@ class MainVC: UIViewController/*, ReturnDelegate */{
     
     func presentSignedIn() {
         guard let tabBarController = tabBarStoryboard.instantiateViewController(identifier: "TabBarController") as? TabBarController else {
-            print("failed to load TabBarController")
-            return
+            fatalError("failed to load TabBarController")
         }
 
         self.navigationController?.pushViewController(tabBarController, animated: true)

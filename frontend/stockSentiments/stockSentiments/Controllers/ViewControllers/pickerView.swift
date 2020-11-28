@@ -8,9 +8,6 @@
 import UIKit
 
 let pickerStoryboard: UIStoryboard = UIStoryboard(name: "pickerView", bundle: nil)
-protocol ReturnDelegate: UIViewController{
-    func didReturn(_ result: String) // data: string is an example parameter
-}
 
 class pickerView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     weak var returnDelegate : ReturnDelegate? // to pass return result to caller
