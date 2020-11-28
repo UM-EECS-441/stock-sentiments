@@ -14,6 +14,8 @@ import Foundation
 func requestSupportedTickers(completionHandler: @escaping (SupportedTickers) -> Void) {
     
     let requestUrl = baseUrl + "get_tickers/"
+    print("requesting", requestUrl)
+    
     let request = URLRequest(url: URL(string: requestUrl)!)
     
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -49,8 +51,8 @@ struct GetSupportedTickersResponse : Codable {
 
 // stores base information for a ticker
 struct TickerResponse : Codable {
-//    var dictTickers: [[String:String]]
     var symbol: String
     var name: String
+    var count: Int
 }
 

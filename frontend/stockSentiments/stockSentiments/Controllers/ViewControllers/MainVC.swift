@@ -22,7 +22,7 @@ class MainVC: UIViewController/*, ReturnDelegate */{
     }
     
     @IBAction func signinButtonTapped(_ sender: Any) {
-//        GIDSignIn.sharedInstance()?.signOut() // TODO: del
+        GIDSignIn.sharedInstance()?.signOut() // TODO: del
         if (GIDSignIn.sharedInstance()?.currentUser == nil) {
             // user is not signed in
             guard let signinVC = signinStoryboard.instantiateViewController(identifier: "SigninVC") as? SigninVC else {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gaM-oO-KVl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gaM-oO-KVl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,13 +35,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Yx-i1-5AR">
-                                            <rect key="frame" x="317" y="36" width="77" height="17"/>
-                                            <state key="normal" title="View Stock"/>
-                                            <connections>
-                                                <action selector="stockTapped:" destination="Boo-Oe-sL0" eventType="touchUpInside" id="Esa-uP-Oho"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWG-w9-z6b" userLabel="tickerName">
                                             <rect key="frame" x="20" y="47" width="45" height="21"/>
                                             <accessibility key="accessibilityConfiguration" identifier="tickerName"/>
@@ -49,26 +42,34 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yl-j8-CA5" userLabel="Count">
+                                            <rect key="frame" x="337" y="34" width="47" height="21"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="numSubscribers">
+                                                <accessibilityTraits key="traits" none="YES"/>
+                                            </accessibility>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="5Yx-i1-5AR" firstAttribute="top" secondItem="hR9-jt-Rl4" secondAttribute="topMargin" constant="25" id="1gA-EJ-UyT"/>
                                         <constraint firstItem="EJn-cI-z1v" firstAttribute="top" secondItem="hR9-jt-Rl4" secondAttribute="topMargin" constant="10" id="6H5-a0-R7y"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="5Yx-i1-5AR" secondAttribute="bottom" constant="25" id="GoH-16-kvN"/>
+                                        <constraint firstItem="1Yl-j8-CA5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EJn-cI-z1v" secondAttribute="trailing" constant="10" id="NGt-dV-xHC"/>
                                         <constraint firstItem="uWG-w9-z6b" firstAttribute="leading" secondItem="hR9-jt-Rl4" secondAttribute="leadingMargin" id="NV7-7A-W1r"/>
                                         <constraint firstItem="uWG-w9-z6b" firstAttribute="top" secondItem="EJn-cI-z1v" secondAttribute="bottom" constant="5" id="YVK-WL-R6V"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="1Yl-j8-CA5" secondAttribute="trailing" constant="10" id="Ywl-sj-Ve1"/>
+                                        <constraint firstItem="1Yl-j8-CA5" firstAttribute="centerY" secondItem="hR9-jt-Rl4" secondAttribute="centerY" id="b9M-xV-AFw"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="uWG-w9-z6b" secondAttribute="bottom" constant="10" id="g5p-qH-k22"/>
-                                        <constraint firstItem="5Yx-i1-5AR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EJn-cI-z1v" secondAttribute="trailing" constant="10" id="nId-Zn-3fu"/>
                                         <constraint firstItem="EJn-cI-z1v" firstAttribute="leading" secondItem="hR9-jt-Rl4" secondAttribute="leadingMargin" id="xAV-z4-ia0"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="5Yx-i1-5AR" secondAttribute="trailing" id="yWB-8S-Od8"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                                 <connections>
+                                    <outlet property="tickerCount" destination="1Yl-j8-CA5" id="FED-qo-P69"/>
                                     <outlet property="tickerName" destination="uWG-w9-z6b" id="Jh5-rX-a16"/>
                                     <outlet property="tickerSymbol" destination="EJn-cI-z1v" id="3Th-0T-3mu"/>
-                                    <outlet property="viewStock" destination="5Yx-i1-5AR" id="Tkz-KE-Wqi"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -12,6 +12,7 @@
 class SupportedTickers {
     var symbolToName: [String:String] = [:]
     var nameToSymbol: [String:String] = [:]
+    var symbolToCount: [String:Int] = [:]
     
     var allPossibleQueries: [String] = []
 
@@ -20,6 +21,7 @@ class SupportedTickers {
         for tickerResponse in responseData {
             nameToSymbol[tickerResponse.name] = tickerResponse.symbol
             symbolToName[tickerResponse.symbol] = tickerResponse.name
+            symbolToCount[tickerResponse.symbol] = tickerResponse.count
         }
         
     }
