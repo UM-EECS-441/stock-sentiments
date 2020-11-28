@@ -4,6 +4,9 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - GoogleSignIn (5.0.2):
     - AppAuth (~> 1.2)
     - GTMAppAuth (~> 1.0)
@@ -16,23 +19,30 @@ PODS:
   - GTMSessionFetcher/Core (1.5.0)
   - GTMSessionFetcher/Full (1.5.0):
     - GTMSessionFetcher/Core (= 1.5.0)
+  - TinyConstraints (4.0.1)
 
 DEPENDENCIES:
+  - Charts
   - GoogleSignIn
+  - TinyConstraints
 
 SPEC REPOS:
   trunk:
     - AppAuth
+    - Charts
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
+    - TinyConstraints
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: 1043854d8bbf2c1d1afce214539478655eb80746
+PODFILE CHECKSUM: e5773050a6efe0f4c4d3f128cf47b23ce1b35511
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

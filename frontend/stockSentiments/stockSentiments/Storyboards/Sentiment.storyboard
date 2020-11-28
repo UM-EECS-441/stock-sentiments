@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC4-SJ-Si2" userLabel="sentimentUnsubscribe" customClass="CustomButton" customModule="stockSentiments" customModuleProvider="target">
-                                <rect key="frame" x="153.5" y="430.5" width="107" height="35"/>
+                                <rect key="frame" x="153.5" y="817" width="107" height="35"/>
                                 <accessibility key="accessibilityConfiguration" identifier="sentimentUnsubscribe"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
@@ -59,13 +59,13 @@
                             <constraint firstItem="6Pv-g5-X5i" firstAttribute="leading" secondItem="qaI-xp-VAr" secondAttribute="leading" constant="10" id="1nv-2u-Fhw"/>
                             <constraint firstItem="0MT-zP-mzT" firstAttribute="leading" secondItem="qaI-xp-VAr" secondAttribute="leading" constant="10" id="26h-lS-ikP"/>
                             <constraint firstItem="qaI-xp-VAr" firstAttribute="trailing" secondItem="6Pv-g5-X5i" secondAttribute="trailing" constant="10" id="7v6-mA-ZYV"/>
+                            <constraint firstItem="OC4-SJ-Si2" firstAttribute="bottom" secondItem="qaI-xp-VAr" secondAttribute="bottom" constant="-10" id="AYS-Ve-6KT"/>
                             <constraint firstItem="6Pv-g5-X5i" firstAttribute="top" secondItem="0MT-zP-mzT" secondAttribute="bottom" constant="20" id="ETi-rl-33n"/>
+                            <constraint firstItem="OC4-SJ-Si2" firstAttribute="centerX" secondItem="RhG-i9-NNV" secondAttribute="centerX" id="EnM-56-rgs"/>
                             <constraint firstItem="0MT-zP-mzT" firstAttribute="top" secondItem="qaI-xp-VAr" secondAttribute="top" constant="25" id="OpR-pm-Tba"/>
                             <constraint firstItem="S4d-kN-gul" firstAttribute="top" secondItem="qaI-xp-VAr" secondAttribute="top" constant="25" id="R9H-5A-n6m"/>
-                            <constraint firstItem="OC4-SJ-Si2" firstAttribute="centerY" secondItem="RhG-i9-NNV" secondAttribute="centerY" id="arb-gu-zty"/>
                             <constraint firstItem="qaI-xp-VAr" firstAttribute="trailing" secondItem="S4d-kN-gul" secondAttribute="trailing" constant="10" id="dfi-AN-yNL"/>
                             <constraint firstItem="S4d-kN-gul" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0MT-zP-mzT" secondAttribute="trailing" constant="10" id="ebh-xW-NjD"/>
-                            <constraint firstItem="OC4-SJ-Si2" firstAttribute="centerX" secondItem="RhG-i9-NNV" secondAttribute="centerX" id="jEQ-1O-nom"/>
                         </constraints>
                     </view>
                     <connections>

@@ -6,8 +6,13 @@ target 'stockSentiments' do
   use_frameworks!
 
   # Pods for stockSentiments
+
+  # Pods for sign in feature
   pod 'GoogleSignIn'
 
+  # Pods for charts feature
+  pod 'Charts'
+  pod 'TinyConstraints'
 
   target 'stockSentimentsTests' do
     inherit! :search_paths
