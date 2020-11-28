@@ -14,7 +14,7 @@ import hashlib, time
 # Create your views here.
 
 @csrf_exempt
-def signin(request):
+def sign_in(request):
     if request.method != 'POST':
         return HttpResponse(status=404)
 
@@ -70,13 +70,13 @@ def signin(request):
     # Return userID
     return JsonResponse({'userID': userID})
 
-def continue_no_sign_in(request):
+def no_sign_in(request):
     if request.method != 'GET':
         return HttpResponse(status=404)
     response = {}
 
     # Using deviceid string as userid
-    userID = str(request.GET.get('deviceid'))
+    userID = str(request.GET.get('deviceID'))
     cursor = connection.cursor()
     cursor.execute('SELECT userid FROM users WHERE userid = %s;', (userID,))
     row = cursor.fetchone()
