@@ -66,7 +66,7 @@ class SubscribeVC: UIViewController {
         }
         
         // TODO: retrieve stock description from database and update stock description
-        messagetextView.text = "This is the default stock description"
+        messagetextView.text = "Subscribe to " + self.tickerSymbol! + " to follow its real-time sentiment analysis."
         
         subscribeButton.tintColor = .systemBlue
     }
