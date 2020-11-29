@@ -68,7 +68,7 @@ class SubscribeVC: UIViewController {
         // TODO: retrieve stock description from database and update stock description
         messagetextView.text = "This is the default stock description"
         
-        subscribeButton.backgroundColor = .secondarySystemFill
+        subscribeButton.tintColor = .systemBlue
     }
     
     func refreshWatchlistTableViewIfIsParent() {

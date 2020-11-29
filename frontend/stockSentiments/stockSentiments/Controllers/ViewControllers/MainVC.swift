@@ -16,9 +16,8 @@ class MainVC: UIViewController/*, ReturnDelegate */{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        signinButton.backgroundColor = .systemGray
-        signinButton.tintColor = .systemBackground
+
+        signinButton.tintColor = .systemBlue
     }
     
     @IBAction func signinButtonTapped(_ sender: Any) {
