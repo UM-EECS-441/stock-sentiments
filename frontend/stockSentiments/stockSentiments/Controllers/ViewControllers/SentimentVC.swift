@@ -143,7 +143,7 @@ class SentimentVC: UIViewController, ChartViewDelegate {
         // set text
         sentimentTitle.text = ticker.name + " (" + ticker.symbol + ")"
         sentimentScore.text = String(ticker.sentimentScore)
-        sentimentDescription.text = "People are saying " + sentimentLabel.rawValue + " things about " + ticker.name
+        sentimentDescription.text = "People are saying " + sentimentLabel.rawValue + " things about " + ticker.name + ". " + sentimentLabel.emoji
         
         // setting up chart
         view.addSubview(lineChartView)
@@ -152,22 +152,23 @@ class SentimentVC: UIViewController, ChartViewDelegate {
         lineChartView.topAnchor.constraint(equalTo: self.sentimentDescription.bottomAnchor, constant: 10.0).isActive = true
 
         // adding overlay switch elements
+        self.overlaySwitch = UISwitch.init()
+        view.addSubview(self.overlaySwitch!)
+        self.overlaySwitch!.isOn = false
+        self.overlaySwitch!.centerYAnchor.constraint(equalTo: self.lineChartView.bottomAnchor, constant: 25.0).isActive = true
+        self.overlaySwitch!.trailingToSuperview(offset: 10.0, isActive: true)
+        self.overlaySwitch!.isHidden = true
+        self.overlaySwitch!.addTarget(self, action: #selector(updateChart), for: .valueChanged)
+        
         self.overlayLabel = UILabel.init()
         view.addSubview(self.overlayLabel!)
         self.overlayLabel!.text = "Show stock price"
         self.overlayLabel!.frame.size = self.overlayLabel!.intrinsicContentSize
         self.overlayLabel!.textAlignment = .left
-        self.overlayLabel!.centerXToSuperview()
+        self.overlayLabel!.centerY(to: self.overlaySwitch!)
+        self.overlayLabel!.trailingToLeading(of: self.overlaySwitch!, offset: -10.0, isActive: true)
         self.overlayLabel!.centerYAnchor.constraint(equalTo: self.lineChartView.bottomAnchor, constant: 25.0).isActive = true
         self.overlayLabel!.isHidden = true
-        
-        self.overlaySwitch = UISwitch.init()
-        view.addSubview(self.overlaySwitch!)
-        self.overlaySwitch!.isOn = false
-        self.overlaySwitch!.centerY(to: self.overlayLabel!)
-        self.overlaySwitch!.leadingToTrailing(of: overlayLabel!, offset: 10.0, isActive: true)
-        self.overlaySwitch!.isHidden = true
-        self.overlaySwitch!.addTarget(self, action: #selector(updateChart), for: .valueChanged)
         
         // getting data for chart
         requestSentiment(to: ticker.symbol, completionHandler: {
@@ -211,7 +212,7 @@ class SentimentVC: UIViewController, ChartViewDelegate {
     func setChartDataWithoutOverlay() {
         let set = LineChartDataSet(entries: self.sentimentScoreValues, label: "Sentiment Score")
         set.drawCirclesEnabled = false
-        set.mode = .cubicBezier
+//        set.mode = .cubicBezier
         set.setColor(.systemBlue, alpha: 0.75)
         set.axisDependency = .left
 //        let gradientColors = [UIColor.systemBlue.cgColor, UIColor.cyan.cgColor] as CFArray // Colors of the gradient
@@ -236,14 +237,14 @@ class SentimentVC: UIViewController, ChartViewDelegate {
         // sentiment score dataset
         let set1 = LineChartDataSet(entries: self.sentimentScoreValues, label: "Sentiment Score")
         set1.drawCirclesEnabled = false
-        set1.mode = .cubicBezier
+//        set1.mode = .cubicBezier
         set1.setColor(.systemBlue, alpha: 0.75)
         set1.axisDependency = .left
         
         // stock price dataset
         let set2 = LineChartDataSet(entries: self.stockPriceValues, label: "Stock Price")
         set2.drawCirclesEnabled = false
-        set2.mode = .cubicBezier
+//        set2.mode = .cubicBezier
         set2.setColor(.systemGreen, alpha: 0.75)
         set2.axisDependency = .right
         

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		37E25E91C632DDFACF23A878 /* Pods_stockSentiments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4D126A5A3E898486DB3518 /* Pods_stockSentiments.framework */; };
+		4E7FDC4D257443BF00B1919D /* stock_sentiments_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7FDC4C257443BF00B1919D /* stock_sentiments_logo.png */; };
 		6A25C3795B24480F6C597DDB /* Pods_stockSentimentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057C0A9FFF53DE3334C812C3 /* Pods_stockSentimentsTests.framework */; };
 		861A274B26D9BA189B853AC3 /* Pods_stockSentiments_stockSentimentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67BE4269445E78FFFAE75BD /* Pods_stockSentiments_stockSentimentsUITests.framework */; };
 		8D1A608E2559CF27003207C2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1A608D2559CF27003207C2 /* CustomButton.swift */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		057C0A9FFF53DE3334C812C3 /* Pods_stockSentimentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentimentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		277C5339D0FD19D17C2C9ED5 /* Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4E7FDC4C257443BF00B1919D /* stock_sentiments_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stock_sentiments_logo.png; sourceTree = "<group>"; };
 		71C3FDD175688FA8F335635A /* Pods-stockSentiments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments/Pods-stockSentiments.debug.xcconfig"; sourceTree = "<group>"; };
 		8D1A608D2559CF27003207C2 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8D1FA7312E6BD2B1FD932D2B /* Pods-stockSentimentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentimentsTests.debug.xcconfig"; path = "Target Support Files/Pods-stockSentimentsTests/Pods-stockSentimentsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		8D40674E2543444F002760B1 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				4E7FDC4C257443BF00B1919D /* stock_sentiments_logo.png */,
 				8DE16D342534B4D300D5FBB8 /* Main.storyboard */,
 				8DE16D392534B4D600D5FBB8 /* LaunchScreen.storyboard */,
 				8D40674F25434492002760B1 /* Watchlist.storyboard */,
@@ -435,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D58C5C025609ECC00DD0AD0 /* TabBar.storyboard in Resources */,
+				4E7FDC4D257443BF00B1919D /* stock_sentiments_logo.png in Resources */,
 				8D40675D254344EA002760B1 /* Sentiment.storyboard in Resources */,
 				8DE16D3B2534B4D600D5FBB8 /* LaunchScreen.storyboard in Resources */,
 				8DE16D382534B4D600D5FBB8 /* Assets.xcassets in Resources */,

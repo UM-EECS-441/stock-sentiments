@@ -27,6 +27,19 @@ enum SentimentLabel : String {
             }
         }
     }
+
+    var emoji: String {
+        get {
+            switch self {
+            case .negative:
+                return "🙁"
+            case .positive:
+                return "😀"
+            case .neutral:
+                return "😐"
+            }
+        }
+    }
 }
 
 func getSentimentLabel(score sentimentScore: Double) -> SentimentLabel {
