@@ -19,7 +19,7 @@ def get_sentiment_score(LIMIT, ticker):
         ensemble.append(df)
     result = pd.concat(ensemble)
     sentiment_score = 0
-    if len(ensemble) > 0:
+    if len(result) > 0:
         average = result.mean(axis=0)
         sentiment_score = average['scores']
     return sentiment_score
