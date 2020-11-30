@@ -8,14 +8,15 @@
 import Foundation
 
 
-func requestSignin(_ idToken: String, success: @escaping (Bool) -> Void) {
+func requestSignin(token idToken: String, email userEmail: String, success: @escaping (Bool) -> Void) {
     
     /**/
     print(sharedUser.userId)
     if sharedUser.userId == "" {
         // obtain chatterID from backend, replace the following line
         let json: [String: Any] = ["clientID": signinClientID,
-                                   "idToken" : idToken]
+                                   "idToken" : idToken,
+                                   "email"   : userEmail]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
         // Replace YOUR_SERVER_IP with the IP address of your droplet

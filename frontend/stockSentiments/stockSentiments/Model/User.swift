@@ -29,6 +29,7 @@ class User {
     var deviceID: String = "" // unique device id
     var userId: String = ""   // backend reference for user
     var idToken: String = ""  // user's OpenID ID Token, a JSon Web Token (JWT)
+    var email: String = ""    // user's email
     
     
     // request watchlist and store in watchlist member variable

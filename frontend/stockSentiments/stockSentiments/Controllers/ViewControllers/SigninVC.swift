@@ -42,8 +42,12 @@ class SigninVC: UIViewController, GIDSignInDelegate {
                 print("\(error.localizedDescription)")
             }
         } else {
+            guard let userEmail = GIDSignIn.sharedInstance()?.currentUser.profile.email else {
+                fatalError("Failed to retrieve user's email")
+            }
+            sharedUser.email = userEmail
             sharedUser.idToken = user.authentication.idToken
-            requestSignin(sharedUser.idToken) { (successfullySignedIn) in
+            requestSignin(token: sharedUser.idToken, email: sharedUser.email) { (successfullySignedIn) in
                 if !successfullySignedIn {
                     fatalError("Failed to sign in user")
                 }
