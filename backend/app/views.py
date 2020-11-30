@@ -27,6 +27,7 @@ def sign_in(request):
     json_data = json.loads(request.body)
     clientID = json_data['clientID']   # the front end app's OAuth 2.0 Client ID
     idToken = json_data['idToken']     # user's OpenID ID Token, a JSon Web Token (JWT)
+    userEmail = json_data['email']     # user's google email
 
     currentTimeStamp = time.time()
     backendSecret = "hailhydra"
@@ -54,24 +55,20 @@ def sign_in(request):
     tokenhash = hashlib.sha256(idToken.strip().encode('utf-8')).hexdigest()
 
     cursor = connection.cursor()
-    cursor.execute("SELECT userid FROM users WHERE idtoken='"+ tokenhash +"';")
+    # Temp: using email as unique identifier becaues idtoken seems to change
+    # cursor.execute("SELECT userid FROM users WHERE idtoken='"+ tokenhash +"';")
+    cursor.execute("SELECT userid FROM users WHERE email='"+ userEmail +"';")
 
     userID = cursor.fetchone()
     if userID is not None:
         # if we've already seen the token, return associated userID
         return JsonResponse({'userID': userID[0]})
 
-    # If it's a new token, get username
-    try:
-        username = idinfo['name']
-    except:
-        username = "Profile NA"
-
     # Compute userID and add to database
-    hashable = idToken + username + str(currentTimeStamp) + backendSecret
+    hashable = idToken + str(currentTimeStamp) + backendSecret
     userID = hashlib.sha256(hashable.strip().encode('utf-8')).hexdigest()
-    cursor.execute('INSERT INTO users (userid, idtoken) VALUES '
-                   '(%s, %s);', (userID, tokenhash,))
+    cursor.execute('INSERT INTO users (userid, idtoken, email) VALUES '
+                   '(%s, %s, %s);', (userID, tokenhash, userEmail,))
 
     # Return userID
     return JsonResponse({'userID': userID})
