@@ -83,6 +83,22 @@ class SentimentVC: UIViewController, ChartViewDelegate {
     @IBOutlet weak var sentimentDescription: UITextView!
     @IBOutlet weak var sentimentUnsubscribe: UIButton!
     
+    @IBAction func scoreHelpTapped(_ sender: Any) {
+        guard let ticker = self.ticker else {
+            fatalError("SentimentVC doesn't have Ticker in scope")
+        }
+
+        let helpMessage = "We analyze the latest Twitter and Reddit posts about " + ticker.name + ", and classify each post as either positive (+1) or negative (-1) using our trained classification sentiment analysis model. The live sentiment score is the mean of the assigned binary labels."
+      
+        let helpAlert = UIAlertController(title: "Sentiment Score Help", message: helpMessage, preferredStyle: UIAlertController.Style.alert)
+
+        helpAlert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (action: UIAlertAction!) in
+            helpAlert.dismiss(animated: true, completion: nil)
+        }))
+
+        present(helpAlert, animated: true, completion: nil)
+    }
+
     // Create unsubscribe alert and bind actions to click options
     @IBAction func unsubscribeTapped(_ sender: Any) {
         
@@ -90,9 +106,13 @@ class SentimentVC: UIViewController, ChartViewDelegate {
             fatalError("SentimentVC doesn't have Ticker in scope")
         }
         
-        let unsubscribeAlert = UIAlertController(title: "Unsubscribe", message: "Are You Sure you want to unsubscribe from " + ticker.symbol + "?", preferredStyle: UIAlertController.Style.alert)
-        
-        unsubscribeAlert.addAction(UIAlertAction(title: "Unsubscribe", style: .default, handler: { (action) -> Void in
+        let unsubscribeAlert = UIAlertController(title: "Unsubscribe", message: "Are you sure you want to unsubscribe from " + ticker.symbol + "?", preferredStyle: UIAlertController.Style.alert)
+
+        unsubscribeAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+            unsubscribeAlert.dismiss(animated: true, completion: nil)
+        }))
+
+        unsubscribeAlert.addAction(UIAlertAction(title: "Unsubscribe", style: .destructive, handler: { (action) -> Void in
             requestUnSubscribe(to: ticker.symbol) { (success) in
                 if success {
                     DispatchQueue.main.async {
@@ -118,10 +138,6 @@ class SentimentVC: UIViewController, ChartViewDelegate {
                     print("already subbed")
                 }
             }
-        }))
-        
-        unsubscribeAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-            unsubscribeAlert.dismiss(animated: true, completion: nil)
         }))
         
         present(unsubscribeAlert, animated: true, completion: nil)

@@ -16,25 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7l-c9-3hJ" customClass="CustomButton" customModule="stockSentiments" customModuleProvider="target">
-                                <rect key="frame" x="140.5" y="652" width="133" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7l-c9-3hJ" userLabel="signIn" customClass="CustomButton" customModule="stockSentiments" customModuleProvider="target">
+                                <rect key="frame" x="140.5" y="710.5" width="133" height="30"/>
                                 <accessibility key="accessibilityConfiguration" identifier="signinButton"/>
                                 <state key="normal" title="Sign In with Google"/>
                                 <connections>
                                     <action selector="signinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4o2-0i-7LT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mb-5u-XJ1">
-                                <rect key="frame" x="112.5" y="707" width="189" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mb-5u-XJ1" userLabel="noSignIn">
+                                <rect key="frame" x="112.5" y="765.5" width="189" height="30"/>
                                 <state key="normal" title="Continue without Signing In"/>
                                 <connections>
                                     <action selector="guestTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="sMx-LZ-4bJ"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stock_sentiments_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pX4-7V-aQU">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stock_sentiments_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pX4-7V-aQU" userLabel="appLogo">
                                 <rect key="frame" x="121" y="318.5" width="172" height="259"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="o1F-Av-oUl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="o1F-Av-oUl" userLabel="titleLabel">
                                 <rect key="frame" x="20" y="185.5" width="374" height="66"/>
                                 <attributedString key="attributedText">
                                     <fragment content="STOCK">
@@ -56,8 +56,8 @@
                                 </attributedString>
                                 <color key="highlightedColor" systemColor="labelColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNG-Qe-3Xz">
-                                <rect key="frame" x="20" y="837" width="374" height="21.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNG-Qe-3Xz" userLabel="disclaimerLabel">
+                                <rect key="frame" x="20" y="820.5" width="374" height="21.5"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Disclaimer: Stock Sentiments is meant for general informational purposes only and is not intended to provide specific advice or recommendations for any individual.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -69,7 +69,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="u7l-c9-3hJ" firstAttribute="bottom" secondItem="1mb-5u-XJ1" secondAttribute="top" constant="-25" id="3DN-Qh-Moh"/>
-                            <constraint firstItem="1mb-5u-XJ1" firstAttribute="bottom" secondItem="SNG-Qe-3Xz" secondAttribute="top" constant="-100" id="5Va-RI-TaX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SNG-Qe-3Xz" secondAttribute="bottom" constant="20" id="5Va-RI-TaX" userLabel="Safe Area.bottom = disclaimerLabel.bottom + 10"/>
                             <constraint firstItem="o1F-Av-oUl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8yn-xP-TWa"/>
                             <constraint firstItem="pX4-7V-aQU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="VZh-tY-GrD"/>
                             <constraint firstItem="SNG-Qe-3Xz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vd8-rw-uAm"/>
@@ -77,9 +77,9 @@
                             <constraint firstItem="pX4-7V-aQU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bQ8-Ot-mdd"/>
                             <constraint firstItem="SNG-Qe-3Xz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="db3-Nb-W4Y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o1F-Av-oUl" secondAttribute="trailing" constant="20" id="dbx-g6-1QP"/>
+                            <constraint firstItem="SNG-Qe-3Xz" firstAttribute="top" secondItem="1mb-5u-XJ1" secondAttribute="bottom" constant="25" id="ego-oY-FAM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SNG-Qe-3Xz" secondAttribute="trailing" constant="20" id="f9K-m4-qZQ"/>
                             <constraint firstItem="o1F-Av-oUl" firstAttribute="centerY" secondItem="pX4-7V-aQU" secondAttribute="top" constant="-100" id="foU-Z2-i1Z"/>
-                            <constraint firstItem="SNG-Qe-3Xz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-25" id="mPc-nS-tUq"/>
                             <constraint firstItem="1mb-5u-XJ1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tF2-S9-RLk"/>
                             <constraint firstItem="u7l-c9-3hJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vDF-Wf-xd8"/>
                         </constraints>

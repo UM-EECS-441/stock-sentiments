@@ -43,13 +43,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC4-SJ-Si2" userLabel="sentimentUnsubscribe" customClass="CustomButton" customModule="stockSentiments" customModuleProvider="target">
-                                <rect key="frame" x="153.5" y="817" width="107" height="35"/>
+                                <rect key="frame" x="163.5" y="822" width="87" height="30"/>
                                 <accessibility key="accessibilityConfiguration" identifier="sentimentUnsubscribe"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Unsubscribe"/>
                                 <connections>
                                     <action selector="unsubscribeTapped:" destination="k8k-5H-Xfr" eventType="touchUpInside" id="E4w-Ev-BL6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxe-m1-nAa">
+                                <rect key="frame" x="76.5" y="782" width="261" height="30"/>
+                                <state key="normal" title="How the sentiment score is calculated"/>
+                                <connections>
+                                    <action selector="scoreHelpTapped:" destination="k8k-5H-Xfr" eventType="touchUpInside" id="2fi-aK-fbz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -64,8 +70,10 @@
                             <constraint firstItem="OC4-SJ-Si2" firstAttribute="centerX" secondItem="RhG-i9-NNV" secondAttribute="centerX" id="EnM-56-rgs"/>
                             <constraint firstItem="0MT-zP-mzT" firstAttribute="top" secondItem="qaI-xp-VAr" secondAttribute="top" constant="25" id="OpR-pm-Tba"/>
                             <constraint firstItem="S4d-kN-gul" firstAttribute="top" secondItem="qaI-xp-VAr" secondAttribute="top" constant="25" id="R9H-5A-n6m"/>
+                            <constraint firstItem="OC4-SJ-Si2" firstAttribute="top" secondItem="oxe-m1-nAa" secondAttribute="bottom" constant="10" id="ZSZ-Zu-4sp"/>
                             <constraint firstItem="qaI-xp-VAr" firstAttribute="trailing" secondItem="S4d-kN-gul" secondAttribute="trailing" constant="10" id="dfi-AN-yNL"/>
                             <constraint firstItem="S4d-kN-gul" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0MT-zP-mzT" secondAttribute="trailing" constant="10" id="ebh-xW-NjD"/>
+                            <constraint firstItem="oxe-m1-nAa" firstAttribute="centerX" secondItem="RhG-i9-NNV" secondAttribute="centerX" id="y6Q-p7-LVh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -83,9 +91,6 @@
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
