@@ -259,11 +259,22 @@ def get_sentiment_score(request):
     return JsonResponse(response)
 
 def send_email(ticker, score):
-    #cursor = connection.cursor()
-    #cusor.execute(FIND ALL EMAILS TO SEND TO)
     EC2_ENDPOINT = "http://ec2-174-129-79-166.compute-1.amazonaws.com/send_email/"
+    
+    # Find all users' emails subscribed to this stock
+    cursor = connection.cursor()
+    cusor.execute('SELECT email FROM subscriptions s LEFT JOIN users u ON s.userid = u.userid WHERE ticker = %s;', (ticker,))
+    rows = cursor.fetchall()
 
-    payload = "{\r\n  \"email\": \"sentimentstock@gmail.com\",\r\n  \"stock\": \"" + ticker + "\",\r\n  \"score\": \"" + str(score) + "\"\r\n}"
+    if rows == None:
+        return
+
+    # For testing purposes adding email we can all access
+    emails = ['sentimentstock@gmail.com']
+    for row in rows:
+        emails.append(row[0])
+
+    payload = "{\r\n  \"email\": \"" + emails + "\",\r\n  \"stock\": \"" + ticker + "\",\r\n  \"score\": \"" + str(score) + "\"\r\n}"
     headers = {
         'Content-Type': 'text/plain'
     }
