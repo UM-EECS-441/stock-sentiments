@@ -227,7 +227,7 @@ def update_sentiment(request):
     old_score = row[1]
     if (abs(score - old_score) > 0.5):
         try:
-            send_email(ticker, score)
+            send_emails(ticker, score)
         except:
             pass
 
@@ -255,17 +255,30 @@ def get_sentiment_score(request):
             response['data'].append(datum)
     return JsonResponse(response)
 
-def send_email(ticker, score):
-    #cursor = connection.cursor()
-    #cusor.execute(FIND ALL EMAILS TO SEND TO)
-    EC2_ENDPOINT = "http://ec2-174-129-79-166.compute-1.amazonaws.com/send_email/"
+def send_emails(ticker, score):
+    EC2_ENDPOINT = "http://ec2-174-129-79-166.compute-1.amazonaws.com/send_emails/"
+    
+    # Find all users' emails subscribed to this stock
+    cursor = connection.cursor()
+    cusor.execute('SELECT email FROM users u LEFT JOIN subscriptions s ON s.userid = u.userid WHERE ticker = %s;', (ticker,))
+    rows = cursor.fetchall()
 
-    payload = "{\r\n  \"email\": \"sentimentstock@gmail.com\",\r\n  \"stock\": \"" + ticker + "\",\r\n  \"score\": \"" + str(score) + "\"\r\n}"
-    headers = {
-        'Content-Type': 'text/plain'
+    if rows == None:
+        return
+
+    # For testing purposes adding email we can all access
+    emails = ['sentimentstock@gmail.com']
+    for row in rows:
+        if email is not None:
+            emails.append(row[0])
+
+    payload = {
+        'emails': emails,
+        'ticker': ticker,
+        'score': str(score)
     }
 
-    response = requests.request("POST", url, headers=headers, data = payload)
+    response = requests.post(EC2_ENDPOINT, data = payload)
     # check response
 
 def delete_old_sentiment(request):
