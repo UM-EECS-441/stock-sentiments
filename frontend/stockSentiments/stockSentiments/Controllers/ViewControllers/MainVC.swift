@@ -21,7 +21,7 @@ class MainVC: UIViewController/*, ReturnDelegate */{
     }
     
     @IBAction func signinButtonTapped(_ sender: Any) {
-        GIDSignIn.sharedInstance()?.signOut() // TODO: del
+//        GIDSignIn.sharedInstance()?.signOut() // TODO: del
         if (GIDSignIn.sharedInstance()?.currentUser == nil) {
             // user is not signed in
             guard let signinVC = signinStoryboard.instantiateViewController(identifier: "SigninVC") as? SigninVC else {
@@ -32,7 +32,11 @@ class MainVC: UIViewController/*, ReturnDelegate */{
             
             present(signinVC, animated: true, completion: nil)
         } else {
-            requestSignin(GIDSignIn.sharedInstance().currentUser.authentication.idToken!) { (successfullySignedIn) in
+            guard let userEmail = GIDSignIn.sharedInstance()?.currentUser.profile.email else {
+                fatalError("Failed to retrieve user's email")
+            }
+            sharedUser.email = userEmail
+            requestSignin(token: GIDSignIn.sharedInstance().currentUser.authentication.idToken!, email: sharedUser.email) { (successfullySignedIn) in
                 if !successfullySignedIn {
                     fatalError("Failed to sign in user")
                 }
