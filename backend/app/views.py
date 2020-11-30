@@ -268,7 +268,7 @@ def send_email(ticker, score):
         'Content-Type': 'text/plain'
     }
 
-    response = requests.request("POST", url, headers=headers, data = payload)
+    response = requests.request("POST", EC2_ENDPOINT, headers=headers, data = payload)
     # check response
 
 def delete_old_sentiment(request):
