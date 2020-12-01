@@ -30,15 +30,19 @@ class SettingsVC: UITableViewController, UITabBarDelegate {
        // create a cell for each table view row
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-           let cell:MyCustomCell = self.tableView.dequeueReusableCell(withIdentifier: "MyCustomCell") as! MyCustomCell
-        //
-            switch (indexPath.row) {
+       let cell:MyCustomCell = self.tableView.dequeueReusableCell(withIdentifier: "MyCustomCell") as! MyCustomCell
+    //
+        switch (indexPath.row) {
             case 0:
                 // receive notifications
-                cell.settingsLabel.text = settings[indexPath.row]
-                cell.settingsLabel.sizeToFit()
-                cell.switchButton.isHidden = false
-                cell.switchButton.sizeToFit()
+                if sharedUser.email != "" { // only show this cell if the user is signed in
+                    cell.settingsLabel.text = settings[indexPath.row]
+                    cell.settingsLabel.sizeToFit()
+                    cell.switchButton.isHidden = false
+                    cell.switchButton.sizeToFit()
+                } else {
+                    cell.isHidden = true
+                }
                 break
             case 1:
                 // LogOut
@@ -61,10 +65,10 @@ class SettingsVC: UITableViewController, UITabBarDelegate {
                 cell.switchButton.isHidden = true
                 cell.switchButton.sizeToFit()
                 break
-            }
-
-            return cell
         }
+
+        return cell
+    }
 
        // method to run when table view cell is tapped
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -76,22 +80,15 @@ class SettingsVC: UITableViewController, UITabBarDelegate {
             break
         case 1:
             // LogOut
-            // clear sharedUser instance
-            sharedUser.deviceID = ""
+            // clear sharedUser instance besides deviceID
             sharedUser.email = ""
             sharedUser.idToken = ""
             sharedUser.userId = ""
-            // return to MainVC
-//            guard let mainVC = mainStoryboard.instantiateViewController(identifier: "MainVC") as? MainVC else {
-//                fatalError("Failed to load MainVC")
-//            }
-            //mainVC.pVC = self
-
 
             // call GID sign out function
             GIDSignIn.sharedInstance()?.signOut()
-//            self.present(mainVC, animated: true, completion: nil)
             self.navigationController?.popViewController(animated: true)
+            
             break
         case 2:
             // View Profile

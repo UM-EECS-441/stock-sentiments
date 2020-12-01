@@ -43,11 +43,12 @@ func requestSignin(token idToken: String, email userEmail: String, success: @esc
                 return
             }
             do {
-                if let json = try JSONSerialization.jsonObject(with: data!)
-                    as? [String:Any] {
-            
+                if let json = try JSONSerialization.jsonObject(with: data!) as? [String:Any] {
                     sharedUser.userId = json["userID"] as? String ?? ""
+//                    let notifications: String = json["notifications"] as? String ?? ""
+                    sharedUser.notifications = json["notifications"] as? Bool ?? false
                     print("stored userId:", sharedUser.userId)
+                    print("saved email notifications preference:", sharedUser.notifications)
                     success(true)
                 }
             } catch let err {

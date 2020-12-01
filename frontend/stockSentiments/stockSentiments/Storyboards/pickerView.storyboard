@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,21 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Sw-cb-st9">
-                                <rect key="frame" x="0.0" y="183" width="414" height="490"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Sw-cb-st9">
+                                <rect key="frame" x="47" y="340" width="320" height="216"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRA-5X-XBE">
-                                <rect key="frame" x="25" y="293" width="37" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRA-5X-XBE">
+                                <rect key="frame" x="15" y="295" width="37" height="30"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="doneTapped:" destination="iPc-8c-Osf" eventType="touchUpInside" id="Wc2-PG-Ocn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vg6-pt-D0r">
-                                <rect key="frame" x="347" y="293" width="48" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vg6-pt-D0r">
+                                <rect key="frame" x="351" y="295" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancelTapped:" destination="iPc-8c-Osf" eventType="touchUpInside" id="yy3-BB-kVD"/>
@@ -39,6 +36,14 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cy7-Io-J7E"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cy7-Io-J7E" firstAttribute="trailing" secondItem="Vg6-pt-D0r" secondAttribute="trailing" constant="15" id="9n6-Xj-nrI"/>
+                            <constraint firstItem="9Sw-cb-st9" firstAttribute="centerX" secondItem="krj-H4-r2I" secondAttribute="centerX" id="CAe-My-5EX"/>
+                            <constraint firstItem="9Sw-cb-st9" firstAttribute="centerY" secondItem="krj-H4-r2I" secondAttribute="centerY" id="Jxl-0u-8fM"/>
+                            <constraint firstItem="dRA-5X-XBE" firstAttribute="leading" secondItem="cy7-Io-J7E" secondAttribute="leading" constant="15" id="a48-k1-6pe"/>
+                            <constraint firstItem="9Sw-cb-st9" firstAttribute="top" secondItem="Vg6-pt-D0r" secondAttribute="bottom" constant="15" id="dOL-6h-dnw"/>
+                            <constraint firstItem="9Sw-cb-st9" firstAttribute="top" secondItem="dRA-5X-XBE" secondAttribute="bottom" constant="15" id="klq-f2-qoO"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="Vg6-pt-D0r" id="EaQ-vt-iFP"/>

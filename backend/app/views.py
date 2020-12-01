@@ -51,21 +51,22 @@ def sign_in(request):
     cursor = connection.cursor()
     # Temp: using email as unique identifier becaues idtoken seems to change
     # cursor.execute("SELECT userid FROM users WHERE idtoken='"+ tokenhash +"';")
-    cursor.execute("SELECT userid FROM users WHERE email='"+ userEmail +"';")
+    cursor.execute("SELECT userid, notifications FROM users WHERE email='"+ userEmail +"';")
 
-    userID = cursor.fetchone()
-    if userID is not None:
+    row = cursor.fetchone()
+    if row is not None:
         # if we've already seen the token, return associated userID
-        return JsonResponse({'userID': userID[0]})
+        return JsonResponse({'userID': row[0], 'notifications': row[1]})
 
     # Compute userID and add to database
     hashable = idToken + str(currentTimeStamp) + backendSecret
     userID = hashlib.sha256(hashable.strip().encode('utf-8')).hexdigest()
-    cursor.execute('INSERT INTO users (userid, idtoken, email) VALUES '
-                   '(%s, %s, %s);', (userID, tokenhash, userEmail,))
+    notifications = False
+    cursor.execute('INSERT INTO users (userid, idtoken, email, notifications) VALUES '
+                   '(%s, %s, %s, %s);', (userID, tokenhash, userEmail, notifications,))
 
     # Return userID
-    return JsonResponse({'userID': userID})
+    return JsonResponse({'userID': userID, 'notifications': notifications})
 
 def no_sign_in(request):
     if request.method != 'GET':
@@ -79,10 +80,41 @@ def no_sign_in(request):
     row = cursor.fetchone()
 
     if row is None:
-        cursor.execute('INSERT INTO users (userid) VALUES (%s);', (userID,))
+        cursor.execute('INSERT INTO users (userid, notifications) VALUES (%s, %s);', (userID, False))
 
     # Return userID
     return JsonResponse({'userID': userID})
+
+@csrf_exempt
+def toggle_notifications(request):
+    if request.method != 'POST':
+        return HttpResponse(status=404)
+
+    json_data = json.loads(request.body)
+    userID = json_data['userID']                    # String unique id of user
+    str_notifications = json_data['notifications']  # String True or False if user sets notifications
+    notifications = False
+    if str_notifications == 'true':
+        notifications = True
+    elif str_notifications != 'false':
+        return HttpResponse(status=400)
+
+    cursor = connection.cursor()
+
+    # Check if this account has an email (signed in user)
+    cursor.execute('SELECT email FROM users WHERE userid = %s;', (userID,))
+    email = cursor.fetchall()
+    if email is None:
+        return HttpResponse(status=400)
+    email = email[0]
+    if email is None:
+        return HttpResponse(status=403)
+
+    # Set user notification settings to the notifications specified
+    cursor.execute('UPDATE users SET notifications = %s WHERE userid = %s;', (notifications, userID,))
+
+    # Return only 200
+    return HttpResponse(status=200)
 
 def get_tickers(request):
     if request.method != 'GET':
@@ -257,10 +289,10 @@ def get_sentiment_score(request):
 
 def send_emails(ticker, score):
     EC2_ENDPOINT = "http://ec2-174-129-79-166.compute-1.amazonaws.com/send_emails/"
-    
+
     # Find all users' emails subscribed to this stock
     cursor = connection.cursor()
-    cusor.execute('SELECT email FROM users u LEFT JOIN subscriptions s ON s.userid = u.userid WHERE ticker = %s;', (ticker,))
+    cursor.execute('SELECT email, notifications FROM users u LEFT JOIN subscriptions s ON u.userid = s.userid WHERE s.ticker = %s;', (ticker,))
     rows = cursor.fetchall()
 
     if rows == None:
@@ -269,16 +301,17 @@ def send_emails(ticker, score):
     # For testing purposes adding email we can all access
     emails = ['sentimentstock@gmail.com']
     for row in rows:
-        if email is not None:
-            emails.append(row[0])
+        if row[0] is not None:
+            if row[1] == True:
+                emails.append(row[0])
 
-    payload = {
-        'emails': emails,
-        'ticker': ticker,
-        'score': str(score)
+    payload = "{\r\n  \"emails\": " + str(emails) + ",\r\n  \"stock\": \"" + ticker + "\",\r\n  \"score\": \"" + str(score) + "\"\r\n}"
+    payload = payload.replace("'", '"')
+    headers = {
+        'Content-Type': 'application/json'
     }
 
-    response = requests.post(EC2_ENDPOINT, data = payload)
+    response = requests.request("POST", EC2_ENDPOINT, headers=headers, data=payload)
     # check response
 
 def delete_old_sentiment(request):

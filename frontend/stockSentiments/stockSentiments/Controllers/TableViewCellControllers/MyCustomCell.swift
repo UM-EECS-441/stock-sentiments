@@ -10,29 +10,25 @@ import UIKit
 class MyCustomCell: UITableViewCell {
 
     @IBOutlet weak var settingsLabel: UILabel!
-    
     @IBOutlet weak var switchButton: UISwitch!
 
     @IBAction func switchToggled(_ sender: UISwitch) {
         print(sender.isOn)
-        if(sender.isOn){
-            // do something
-            print("email notification is on")
-            sharedUser.notification = true
-            print(sharedUser.notification)
-            //call email toggle post/request method
-        }
-        else{
-            // do something
-            print("email notification is off")
-            sharedUser.notification = false
-            //call email toggle post/request method
-            print(sharedUser.notification)
+        requestToggleNotifications(on: sender.isOn) { (success) in
+            DispatchQueue.main.async {
+                if success {
+                    sharedUser.notifications = sender.isOn
+                } else {
+                    self.switchButton.setOn(!sender.isOn, animated: true)
+                }
+                print("successfully toggled notifications:", success)
+            }
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.switchButton.setOn(sharedUser.notifications, animated: false)
     }
 }
