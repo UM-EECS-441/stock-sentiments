@@ -30,6 +30,7 @@ class User {
     var userId: String = ""   // backend reference for user
     var idToken: String = ""  // user's OpenID ID Token, a JSon Web Token (JWT)
     var email: String = ""    // user's email
+    var notification: Bool = true // switchButton in settings
     
     
     // request watchlist and store in watchlist member variable

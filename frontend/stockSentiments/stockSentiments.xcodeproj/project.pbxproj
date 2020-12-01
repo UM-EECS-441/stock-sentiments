@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		37E25E91C632DDFACF23A878 /* Pods_stockSentiments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4D126A5A3E898486DB3518 /* Pods_stockSentiments.framework */; };
+		06FC94A521D3D1E06B8D5BA0 /* Pods_stockSentiments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2F55AD30ACFF70310512E6 /* Pods_stockSentiments.framework */; };
+		1BE4AD3FD5E1CFE8E91A023B /* Pods_stockSentiments_stockSentimentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87503539D9553F3D2C6E742B /* Pods_stockSentiments_stockSentimentsUITests.framework */; };
 		4E7FDC4D257443BF00B1919D /* stock_sentiments_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7FDC4C257443BF00B1919D /* stock_sentiments_logo.png */; };
-		6A25C3795B24480F6C597DDB /* Pods_stockSentimentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057C0A9FFF53DE3334C812C3 /* Pods_stockSentimentsTests.framework */; };
-		861A274B26D9BA189B853AC3 /* Pods_stockSentiments_stockSentimentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67BE4269445E78FFFAE75BD /* Pods_stockSentiments_stockSentimentsUITests.framework */; };
+		567C37A48C8C39245B9B1031 /* Pods_stockSentimentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3485AF0C43BA419C4782AA1A /* Pods_stockSentimentsTests.framework */; };
 		8D1A608E2559CF27003207C2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1A608D2559CF27003207C2 /* CustomButton.swift */; };
 		8D3635512560BDAA00B785BD /* RequestSignin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3635502560BDAA00B785BD /* RequestSignin.swift */; };
 		8D40675025434492002760B1 /* Watchlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40674F25434492002760B1 /* Watchlist.storyboard */; };
@@ -53,6 +53,9 @@
 		8DE7582C254643C70083993F /* GetWatchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE7582B254643C70083993F /* GetWatchlist.swift */; };
 		DC7761EF257198570064E626 /* RequestSentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7761EE257198570064E626 /* RequestSentiment.swift */; };
 		DC7761F425719F5C0064E626 /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7761F325719F5C0064E626 /* Sentiment.swift */; };
+		DCDAB1FF25759CEB00138D76 /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAB1FE25759CEB00138D76 /* MyCustomCell.swift */; };
+		DCDAB2172575C39300138D76 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCDAB2162575C39300138D76 /* User.storyboard */; };
+		DCDAB21C2575C47F00138D76 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAB21B2575C47F00138D76 /* UserVC.swift */; };
 		DCEBBDE525637EE900159B93 /* pickerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCEBBDE425637EE900159B93 /* pickerView.storyboard */; };
 		DCEBBDEA25637FD500159B93 /* pickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBBDE925637FD500159B93 /* pickerView.swift */; };
 /* End PBXBuildFile section */
@@ -75,12 +78,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		057C0A9FFF53DE3334C812C3 /* Pods_stockSentimentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentimentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		277C5339D0FD19D17C2C9ED5 /* Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		15F9FE8F5BE16255A4B61C61 /* Pods-stockSentimentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentimentsTests.release.xcconfig"; path = "Target Support Files/Pods-stockSentimentsTests/Pods-stockSentimentsTests.release.xcconfig"; sourceTree = "<group>"; };
+		1D2F55AD30ACFF70310512E6 /* Pods_stockSentiments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentiments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3485AF0C43BA419C4782AA1A /* Pods_stockSentimentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentimentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39CAEEFBB4B7E4189C280915 /* Pods-stockSentiments-stockSentimentsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments-stockSentimentsUITests.release.xcconfig"; path = "Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4E7FDC4C257443BF00B1919D /* stock_sentiments_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stock_sentiments_logo.png; sourceTree = "<group>"; };
-		71C3FDD175688FA8F335635A /* Pods-stockSentiments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments/Pods-stockSentiments.debug.xcconfig"; sourceTree = "<group>"; };
+		617D1C69C3267E1F49315168 /* Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		81A4B60C87A8FB0ADB87D2EE /* Pods-stockSentiments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments/Pods-stockSentiments.debug.xcconfig"; sourceTree = "<group>"; };
+		87503539D9553F3D2C6E742B /* Pods_stockSentiments_stockSentimentsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentiments_stockSentimentsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1A608D2559CF27003207C2 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		8D1FA7312E6BD2B1FD932D2B /* Pods-stockSentimentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentimentsTests.debug.xcconfig"; path = "Target Support Files/Pods-stockSentimentsTests/Pods-stockSentimentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8D3635502560BDAA00B785BD /* RequestSignin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignin.swift; sourceTree = "<group>"; };
 		8D40674F25434492002760B1 /* Watchlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Watchlist.storyboard; sourceTree = "<group>"; };
 		8D406757254344A3002760B1 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -126,15 +132,15 @@
 		8DE16D502534B4D700D5FBB8 /* stockSentimentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stockSentimentsUITests.swift; sourceTree = "<group>"; };
 		8DE16D522534B4D700D5FBB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DE7582B254643C70083993F /* GetWatchlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWatchlist.swift; sourceTree = "<group>"; };
-		8E4D126A5A3E898486DB3518 /* Pods_stockSentiments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentiments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		96BC1A62037218FD57DA028F /* Pods-stockSentiments-stockSentimentsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments-stockSentimentsUITests.release.xcconfig"; path = "Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests.release.xcconfig"; sourceTree = "<group>"; };
-		C9C6198252DE5BA5CF4D2E83 /* Pods-stockSentimentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentimentsTests.release.xcconfig"; path = "Target Support Files/Pods-stockSentimentsTests/Pods-stockSentimentsTests.release.xcconfig"; sourceTree = "<group>"; };
+		AC4DC0913259D1A153EB070D /* Pods-stockSentimentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentimentsTests.debug.xcconfig"; path = "Target Support Files/Pods-stockSentimentsTests/Pods-stockSentimentsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE0ED35BB00D6FD873A71878 /* Pods-stockSentiments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments.release.xcconfig"; path = "Target Support Files/Pods-stockSentiments/Pods-stockSentiments.release.xcconfig"; sourceTree = "<group>"; };
 		DC7761EE257198570064E626 /* RequestSentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSentiment.swift; sourceTree = "<group>"; };
 		DC7761F325719F5C0064E626 /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
+		DCDAB1FE25759CEB00138D76 /* MyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
+		DCDAB2162575C39300138D76 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		DCDAB21B2575C47F00138D76 /* UserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
 		DCEBBDE425637EE900159B93 /* pickerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = pickerView.storyboard; sourceTree = "<group>"; };
 		DCEBBDE925637FD500159B93 /* pickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerView.swift; sourceTree = "<group>"; };
-		E67BE4269445E78FFFAE75BD /* Pods_stockSentiments_stockSentimentsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentiments_stockSentimentsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9C9F2504E0BD616C060F241 /* Pods-stockSentiments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments.release.xcconfig"; path = "Target Support Files/Pods-stockSentiments/Pods-stockSentiments.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37E25E91C632DDFACF23A878 /* Pods_stockSentiments.framework in Frameworks */,
+				06FC94A521D3D1E06B8D5BA0 /* Pods_stockSentiments.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A25C3795B24480F6C597DDB /* Pods_stockSentimentsTests.framework in Frameworks */,
+				567C37A48C8C39245B9B1031 /* Pods_stockSentimentsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,34 +164,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				861A274B26D9BA189B853AC3 /* Pods_stockSentiments_stockSentimentsUITests.framework in Frameworks */,
+				1BE4AD3FD5E1CFE8E91A023B /* Pods_stockSentiments_stockSentimentsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		155AEFB38599CC776DD4335E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8E4D126A5A3E898486DB3518 /* Pods_stockSentiments.framework */,
-				E67BE4269445E78FFFAE75BD /* Pods_stockSentiments_stockSentimentsUITests.framework */,
-				057C0A9FFF53DE3334C812C3 /* Pods_stockSentimentsTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		210D751764986694CC309D87 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				71C3FDD175688FA8F335635A /* Pods-stockSentiments.debug.xcconfig */,
-				F9C9F2504E0BD616C060F241 /* Pods-stockSentiments.release.xcconfig */,
-				277C5339D0FD19D17C2C9ED5 /* Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig */,
-				96BC1A62037218FD57DA028F /* Pods-stockSentiments-stockSentimentsUITests.release.xcconfig */,
-				8D1FA7312E6BD2B1FD932D2B /* Pods-stockSentimentsTests.debug.xcconfig */,
-				C9C6198252DE5BA5CF4D2E83 /* Pods-stockSentimentsTests.release.xcconfig */,
+				81A4B60C87A8FB0ADB87D2EE /* Pods-stockSentiments.debug.xcconfig */,
+				CE0ED35BB00D6FD873A71878 /* Pods-stockSentiments.release.xcconfig */,
+				617D1C69C3267E1F49315168 /* Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig */,
+				39CAEEFBB4B7E4189C280915 /* Pods-stockSentiments-stockSentimentsUITests.release.xcconfig */,
+				AC4DC0913259D1A153EB070D /* Pods-stockSentimentsTests.debug.xcconfig */,
+				15F9FE8F5BE16255A4B61C61 /* Pods-stockSentimentsTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5C5D6176D2A6B508B9CDABD9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D2F55AD30ACFF70310512E6 /* Pods_stockSentiments.framework */,
+				87503539D9553F3D2C6E742B /* Pods_stockSentiments_stockSentimentsUITests.framework */,
+				3485AF0C43BA419C4782AA1A /* Pods_stockSentimentsTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8D40674E2543444F002760B1 /* Storyboards */ = {
@@ -202,6 +208,7 @@
 				DCEBBDE425637EE900159B93 /* pickerView.storyboard */,
 				8D51C65E255B80AF00DC1BE0 /* Signin.storyboard */,
 				8D58C5BF25609ECC00DD0AD0 /* TabBar.storyboard */,
+				DCDAB2162575C39300138D76 /* User.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -229,6 +236,7 @@
 				8D7EDB9B2543483200A59F10 /* SubscribeVC.swift */,
 				DCEBBDE925637FD500159B93 /* pickerView.swift */,
 				8D51C663255B80D900DC1BE0 /* SigninVC.swift */,
+				DCDAB21B2575C47F00138D76 /* UserVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 			children = (
 				8D7517222545F7A30017D8CD /* SearchCell.swift */,
 				8D7517202545F7A30017D8CD /* WatchlistCell.swift */,
+				DCDAB1FE25759CEB00138D76 /* MyCustomCell.swift */,
 			);
 			path = TableViewCellControllers;
 			sourceTree = "<group>";
@@ -280,7 +289,7 @@
 				8DE16D4F2534B4D700D5FBB8 /* stockSentimentsUITests */,
 				8DE16D2C2534B4D300D5FBB8 /* Products */,
 				210D751764986694CC309D87 /* Pods */,
-				155AEFB38599CC776DD4335E /* Frameworks */,
+				5C5D6176D2A6B508B9CDABD9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -334,12 +343,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DE16D552534B4D700D5FBB8 /* Build configuration list for PBXNativeTarget "stockSentiments" */;
 			buildPhases = (
-				2BEDFF30EDDC27709A4BE1E6 /* [CP] Check Pods Manifest.lock */,
+				44C68B22B176C8FF6828CB77 /* [CP] Check Pods Manifest.lock */,
 				8DE16D272534B4D300D5FBB8 /* Sources */,
 				8DE16D282534B4D300D5FBB8 /* Frameworks */,
 				8DE16D292534B4D300D5FBB8 /* Resources */,
-				FF77107017E2D3AC02C8C4C4 /* [CP] Embed Pods Frameworks */,
-				DE8C99466B00A113A123B94D /* [CP] Copy Pods Resources */,
+				F5DC0837A0652E72B2C0B790 /* [CP] Embed Pods Frameworks */,
+				C786B7A454CB2EAD8D3F40E3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -354,7 +363,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DE16D582534B4D700D5FBB8 /* Build configuration list for PBXNativeTarget "stockSentimentsTests" */;
 			buildPhases = (
-				7EC8F7595BC9618589C918EA /* [CP] Check Pods Manifest.lock */,
+				B56AFEC6EBC88C452F34C536 /* [CP] Check Pods Manifest.lock */,
 				8DE16D3D2534B4D700D5FBB8 /* Sources */,
 				8DE16D3E2534B4D700D5FBB8 /* Frameworks */,
 				8DE16D3F2534B4D700D5FBB8 /* Resources */,
@@ -373,12 +382,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DE16D5B2534B4D700D5FBB8 /* Build configuration list for PBXNativeTarget "stockSentimentsUITests" */;
 			buildPhases = (
-				A122E1FE3F65108F0A623670 /* [CP] Check Pods Manifest.lock */,
+				F60C4E5DE45798F5E9E2CB54 /* [CP] Check Pods Manifest.lock */,
 				8DE16D482534B4D700D5FBB8 /* Sources */,
 				8DE16D492534B4D700D5FBB8 /* Frameworks */,
 				8DE16D4A2534B4D700D5FBB8 /* Resources */,
-				7FA578ACBDEE9252E46BC43B /* [CP] Embed Pods Frameworks */,
-				41747E4EB214002CDC26BB28 /* [CP] Copy Pods Resources */,
+				1CA8DCE4E3A1CFACF55FD414 /* [CP] Embed Pods Frameworks */,
+				25B37400FBEACE5B951C02C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -448,6 +457,7 @@
 				8D51C65F255B80AF00DC1BE0 /* Signin.storyboard in Resources */,
 				8D406758254344A3002760B1 /* Search.storyboard in Resources */,
 				DCEBBDE525637EE900159B93 /* pickerView.storyboard in Resources */,
+				DCDAB2172575C39300138D76 /* User.storyboard in Resources */,
 				8D40676325434501002760B1 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,7 +479,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2BEDFF30EDDC27709A4BE1E6 /* [CP] Check Pods Manifest.lock */ = {
+		1CA8DCE4E3A1CFACF55FD414 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25B37400FBEACE5B951C02C7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44C68B22B176C8FF6828CB77 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -491,24 +535,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		41747E4EB214002CDC26BB28 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7EC8F7595BC9618589C918EA /* [CP] Check Pods Manifest.lock */ = {
+		B56AFEC6EBC88C452F34C536 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -530,24 +557,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7FA578ACBDEE9252E46BC43B /* [CP] Embed Pods Frameworks */ = {
+		C786B7A454CB2EAD8D3F40E3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A122E1FE3F65108F0A623670 /* [CP] Check Pods Manifest.lock */ = {
+		F5DC0837A0652E72B2C0B790 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F60C4E5DE45798F5E9E2CB54 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -567,40 +611,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DE8C99466B00A113A123B94D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FF77107017E2D3AC02C8C4C4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-stockSentiments/Pods-stockSentiments-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -623,7 +633,9 @@
 				8D751731254604710017D8CD /* Requests.swift in Sources */,
 				8DE16D2F2534B4D300D5FBB8 /* AppDelegate.swift in Sources */,
 				8D7EDB882543480600A59F10 /* WatchlistVC.swift in Sources */,
+				DCDAB21C2575C47F00138D76 /* UserVC.swift in Sources */,
 				DC7761EF257198570064E626 /* RequestSentiment.swift in Sources */,
+				DCDAB1FF25759CEB00138D76 /* MyCustomCell.swift in Sources */,
 				8D71A3A4254530AD00F1B7EC /* GetTickers.swift in Sources */,
 				8DE16D312534B4D300D5FBB8 /* SceneDelegate.swift in Sources */,
 				8D7EDB972543482600A59F10 /* SettingsVC.swift in Sources */,
@@ -813,14 +825,14 @@
 		};
 		8DE16D562534B4D700D5FBB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 71C3FDD175688FA8F335635A /* Pods-stockSentiments.debug.xcconfig */;
+			baseConfigurationReference = 81A4B60C87A8FB0ADB87D2EE /* Pods-stockSentiments.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZB69X62SP9;
 				INFOPLIST_FILE = stockSentiments/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -834,14 +846,14 @@
 		};
 		8DE16D572534B4D700D5FBB8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9C9F2504E0BD616C060F241 /* Pods-stockSentiments.release.xcconfig */;
+			baseConfigurationReference = CE0ED35BB00D6FD873A71878 /* Pods-stockSentiments.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZB69X62SP9;
 				INFOPLIST_FILE = stockSentiments/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -855,7 +867,7 @@
 		};
 		8DE16D592534B4D700D5FBB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D1FA7312E6BD2B1FD932D2B /* Pods-stockSentimentsTests.debug.xcconfig */;
+			baseConfigurationReference = AC4DC0913259D1A153EB070D /* Pods-stockSentimentsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -877,7 +889,7 @@
 		};
 		8DE16D5A2534B4D700D5FBB8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9C6198252DE5BA5CF4D2E83 /* Pods-stockSentimentsTests.release.xcconfig */;
+			baseConfigurationReference = 15F9FE8F5BE16255A4B61C61 /* Pods-stockSentimentsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -899,7 +911,7 @@
 		};
 		8DE16D5C2534B4D700D5FBB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 277C5339D0FD19D17C2C9ED5 /* Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig */;
+			baseConfigurationReference = 617D1C69C3267E1F49315168 /* Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -919,7 +931,7 @@
 		};
 		8DE16D5D2534B4D700D5FBB8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96BC1A62037218FD57DA028F /* Pods-stockSentiments-stockSentimentsUITests.release.xcconfig */;
+			baseConfigurationReference = 39CAEEFBB4B7E4189C280915 /* Pods-stockSentiments-stockSentimentsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
