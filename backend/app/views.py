@@ -11,12 +11,6 @@ from google.auth.transport import requests as grequests
 
 import hashlib, time
 
-# import the logging library
-import logging
-
-# Get an instance of a logger
-logger = logging.getLogger(__name__)
-
 # Create your views here.
 
 @csrf_exempt
@@ -199,7 +193,6 @@ def unsubscribe(request):
 
 
 def update_sentiment(request):
-    logger.debug('update_sentiment')
     if request.method != 'GET':
         return HttpResponse(status=404)
 
@@ -233,7 +226,6 @@ def update_sentiment(request):
     # send email if significant change in sentiment
     old_score = row[1]
     if (abs(score - old_score) > 0.5):
-        logger.debug('significant diff')
         try:
             send_emails(ticker, score)
         except:
@@ -264,34 +256,29 @@ def get_sentiment_score(request):
     return JsonResponse(response)
 
 def send_emails(ticker, score):
-    logger.debug('send_emails')
     EC2_ENDPOINT = "http://ec2-174-129-79-166.compute-1.amazonaws.com/send_emails/"
 
     # Find all users' emails subscribed to this stock
     cursor = connection.cursor()
-    cusor.execute('SELECT email FROM users u LEFT JOIN subscriptions s ON s.userid = u.userid WHERE ticker = %s;', (ticker,))
+    cusor.execute('SELECT email FROM users u LEFT JOIN subscriptions s ON u.userid = s.userid WHERE s.ticker = %s;', (ticker,))
     rows = cursor.fetchall()
 
     if rows == None:
         return
 
-    logger.debug('found subscribed emails')
     # For testing purposes adding email we can all access
     emails = ['sentimentstock@gmail.com']
     for row in rows:
         if row[0] is not None:
             emails.append(row[0])
 
-    logger.debug('Subscribed emails: ' + emails)
-
-    payload = {
-        'emails': emails,
-        'stock': ticker,
-        'score': str(score)
+    payload = "{\r\n  \"emails\": " + str(emails) + ",\r\n  \"stock\": \"" + ticker + "\",\r\n  \"score\": \"" + str(score) + "\"\r\n}"
+    payload = payload.replace("'", '"')
+    headers = {
+        'Content-Type': 'application/json'
     }
 
-    response = requests.post(EC2_ENDPOINT, data = payload)
-    logger.debug('response: ' + response)
+    response = requests.request("POST", EC2_ENDPOINT, headers=headers, data=payload)
     # check response
 
 def delete_old_sentiment(request):
