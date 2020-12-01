@@ -260,7 +260,7 @@ def send_emails(ticker, score):
 
     # Find all users' emails subscribed to this stock
     cursor = connection.cursor()
-    cusor.execute('SELECT email FROM users u LEFT JOIN subscriptions s ON u.userid = s.userid WHERE s.ticker = %s;', (ticker,))
+    cursor.execute('SELECT email FROM users u LEFT JOIN subscriptions s ON u.userid = s.userid WHERE s.ticker = %s;', (ticker,))
     rows = cursor.fetchall()
 
     if rows == None:
