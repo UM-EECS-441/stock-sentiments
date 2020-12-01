@@ -11,6 +11,7 @@
 		1BE4AD3FD5E1CFE8E91A023B /* Pods_stockSentiments_stockSentimentsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87503539D9553F3D2C6E742B /* Pods_stockSentiments_stockSentimentsUITests.framework */; };
 		4E7FDC4D257443BF00B1919D /* stock_sentiments_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7FDC4C257443BF00B1919D /* stock_sentiments_logo.png */; };
 		567C37A48C8C39245B9B1031 /* Pods_stockSentimentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3485AF0C43BA419C4782AA1A /* Pods_stockSentimentsTests.framework */; };
+		8D1080312576EA4F001D377E /* RequestToggleNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1080302576EA4F001D377E /* RequestToggleNotifications.swift */; };
 		8D1A608E2559CF27003207C2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1A608D2559CF27003207C2 /* CustomButton.swift */; };
 		8D3635512560BDAA00B785BD /* RequestSignin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3635502560BDAA00B785BD /* RequestSignin.swift */; };
 		8D40675025434492002760B1 /* Watchlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40674F25434492002760B1 /* Watchlist.storyboard */; };
@@ -86,6 +87,7 @@
 		617D1C69C3267E1F49315168 /* Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments-stockSentimentsUITests/Pods-stockSentiments-stockSentimentsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		81A4B60C87A8FB0ADB87D2EE /* Pods-stockSentiments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockSentiments.debug.xcconfig"; path = "Target Support Files/Pods-stockSentiments/Pods-stockSentiments.debug.xcconfig"; sourceTree = "<group>"; };
 		87503539D9553F3D2C6E742B /* Pods_stockSentiments_stockSentimentsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stockSentiments_stockSentimentsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1080302576EA4F001D377E /* RequestToggleNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToggleNotifications.swift; sourceTree = "<group>"; };
 		8D1A608D2559CF27003207C2 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8D3635502560BDAA00B785BD /* RequestSignin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignin.swift; sourceTree = "<group>"; };
 		8D40674F25434492002760B1 /* Watchlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Watchlist.storyboard; sourceTree = "<group>"; };
@@ -232,10 +234,10 @@
 				8D7EDB872543480600A59F10 /* WatchlistVC.swift */,
 				8D7EDB8C2543481300A59F10 /* SearchVC.swift */,
 				8D7EDB912543481C00A59F10 /* SentimentVC.swift */,
+				8D51C663255B80D900DC1BE0 /* SigninVC.swift */,
 				8D7EDB962543482600A59F10 /* SettingsVC.swift */,
 				8D7EDB9B2543483200A59F10 /* SubscribeVC.swift */,
 				DCEBBDE925637FD500159B93 /* pickerView.swift */,
-				8D51C663255B80D900DC1BE0 /* SigninVC.swift */,
 				DCDAB21B2575C47F00138D76 /* UserVC.swift */,
 			);
 			path = ViewControllers;
@@ -277,6 +279,7 @@
 				DC7761EE257198570064E626 /* RequestSentiment.swift */,
 				8D3635502560BDAA00B785BD /* RequestSignin.swift */,
 				8D998A012571F1DB0007031A /* RequestRegisterDeviceId.swift */,
+				8D1080302576EA4F001D377E /* RequestToggleNotifications.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 				DC7761F425719F5C0064E626 /* Sentiment.swift in Sources */,
 				8D87D76B2547E66A00837DC1 /* TabBarController.swift in Sources */,
 				8D7517252545F7A30017D8CD /* SearchCell.swift in Sources */,
+				8D1080312576EA4F001D377E /* RequestToggleNotifications.swift in Sources */,
 				8D751731254604710017D8CD /* Requests.swift in Sources */,
 				8DE16D2F2534B4D300D5FBB8 /* AppDelegate.swift in Sources */,
 				8D7EDB882543480600A59F10 /* WatchlistVC.swift in Sources */,

@@ -16,36 +16,33 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCustomCell" rowHeight="104" id="lSQ-vi-3iU" customClass="MyCustomCell" customModule="stockSentiments" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="104"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCustomCell" rowHeight="81" id="lSQ-vi-3iU" customClass="MyCustomCell" customModule="stockSentiments" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lSQ-vi-3iU" id="v9n-1c-ATU">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYC-mc-zAL">
+                                            <rect key="frame" x="20" y="30" width="79" height="21.5"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="settingsLabel"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="suj-Cb-tdj">
-                                            <rect key="frame" x="327" y="36.5" width="51" height="31"/>
+                                            <rect key="frame" x="345" y="25" width="51" height="31"/>
                                             <accessibility key="accessibilityConfiguration" identifier="switchButton"/>
                                             <connections>
                                                 <action selector="switchToggled:" destination="lSQ-vi-3iU" eventType="valueChanged" id="FUf-RA-G8q"/>
                                             </connections>
                                         </switch>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYC-mc-zAL">
-                                            <rect key="frame" x="32" y="36" width="106" height="37"/>
-                                            <accessibility key="accessibilityConfiguration" identifier="settingsLabel"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="cYC-mc-zAL" firstAttribute="leading" secondItem="v9n-1c-ATU" secondAttribute="leadingMargin" id="10w-jW-3Je"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="suj-Cb-tdj" secondAttribute="trailing" constant="18" id="1uY-vV-wgB"/>
-                                        <constraint firstItem="cYC-mc-zAL" firstAttribute="top" secondItem="v9n-1c-ATU" secondAttribute="topMargin" constant="25" id="3On-TO-n4a"/>
-                                        <constraint firstItem="cYC-mc-zAL" firstAttribute="leading" secondItem="v9n-1c-ATU" secondAttribute="leadingMargin" constant="12" id="FC1-nf-iiA"/>
-                                        <constraint firstItem="cYC-mc-zAL" firstAttribute="top" secondItem="v9n-1c-ATU" secondAttribute="topMargin" constant="10" id="GJa-uq-SLG"/>
-                                        <constraint firstItem="suj-Cb-tdj" firstAttribute="centerY" secondItem="v9n-1c-ATU" secondAttribute="centerY" id="Z4A-S8-LCi"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="cYC-mc-zAL" secondAttribute="bottom" constant="20" id="fMM-wa-ILd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="suj-Cb-tdj" secondAttribute="trailing" id="NNm-jN-S7N"/>
+                                        <constraint firstItem="cYC-mc-zAL" firstAttribute="centerY" secondItem="v9n-1c-ATU" secondAttribute="centerY" id="aXS-YT-ZXB"/>
+                                        <constraint firstItem="cYC-mc-zAL" firstAttribute="leading" secondItem="v9n-1c-ATU" secondAttribute="leadingMargin" id="hNz-L3-eIg"/>
+                                        <constraint firstItem="suj-Cb-tdj" firstAttribute="centerY" secondItem="v9n-1c-ATU" secondAttribute="centerY" id="vcb-D7-LRu"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
