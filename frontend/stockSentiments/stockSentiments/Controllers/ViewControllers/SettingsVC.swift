@@ -82,15 +82,16 @@ class SettingsVC: UITableViewController, UITabBarDelegate {
             sharedUser.idToken = ""
             sharedUser.userId = ""
             // return to MainVC
-            guard let mainVC = mainStoryboard.instantiateViewController(identifier: "MainVC") as? MainVC else {
-                fatalError("Failed to load MainVC")
-            }
+//            guard let mainVC = mainStoryboard.instantiateViewController(identifier: "MainVC") as? MainVC else {
+//                fatalError("Failed to load MainVC")
+//            }
             //mainVC.pVC = self
 
 
             // call GID sign out function
             GIDSignIn.sharedInstance()?.signOut()
-            self.present(mainVC, animated: true, completion: nil)
+//            self.present(mainVC, animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
             break
         case 2:
             // View Profile
