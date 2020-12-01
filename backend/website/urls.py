@@ -29,4 +29,5 @@ urlpatterns = [
     path('get_sentiment_score/', views.get_sentiment_score, name='get_sentiment_score'),
     path('sign_in/', views.sign_in, name='sign_in'),
     path('no_sign_in/', views.no_sign_in, name='no_sign_in'),
+    path('toggle_notifications/', views.toggle_notifications, name='toggle_notifications'),
 ]

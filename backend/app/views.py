@@ -80,29 +80,38 @@ def no_sign_in(request):
     row = cursor.fetchone()
 
     if row is None:
-        cursor.execute('INSERT INTO users (userid, notifications) VALUES (%s);', (userID, False))
+        cursor.execute('INSERT INTO users (userid, notifications) VALUES (%s, %s);', (userID, False))
 
     # Return userID
     return JsonResponse({'userID': userID})
 
-def set_notifications(request):
+@csrf_exempt
+def toggle_notifications(request):
     if request.method != 'POST':
         return HttpResponse(status=404)
 
     json_data = json.loads(request.body)
-    userID = json_data['userID']                # String unique id of user
-    notifications = json_data['notifications']  # Boolean if user sets notifications
+    userID = json_data['userID']                    # String unique id of user
+    str_notifications = json_data['notifications']  # String True or False if user sets notifications
+    notifications = False
+    if str_notifications == 'true':
+        notifications = True
+    elif str_notifications != 'false':
+        return HttpResponse(status=400)
 
     cursor = connection.cursor()
-    
+
     # Check if this account has an email (signed in user)
-    cursor.execute('SELECT email FROM users WHERE userid = %s;', (userid,))
-    email = cursor.fetchall()[0]
+    cursor.execute('SELECT email FROM users WHERE userid = %s;', (userID,))
+    email = cursor.fetchall()
+    if email is None:
+        return HttpResponse(status=400)
+    email = email[0]
     if email is None:
         return HttpResponse(status=403)
-    
+
     # Set user notification settings to the notifications specified
-    cursor.execute('UPDATE TABLE users SET notifications = %s WHERE userid = %s;', (notifications, userid,))
+    cursor.execute('UPDATE users SET notifications = %s WHERE userid = %s;', (notifications, userID,))
 
     # Return only 200
     return HttpResponse(status=200)
@@ -283,7 +292,7 @@ def send_emails(ticker, score):
 
     # Find all users' emails subscribed to this stock
     cursor = connection.cursor()
-    cursor.execute('SELECT email FROM users u LEFT JOIN subscriptions s ON u.userid = s.userid WHERE s.ticker = %s;', (ticker,))
+    cursor.execute('SELECT email, notifications FROM users u LEFT JOIN subscriptions s ON u.userid = s.userid WHERE s.ticker = %s;', (ticker,))
     rows = cursor.fetchall()
 
     if rows == None:
@@ -293,7 +302,8 @@ def send_emails(ticker, score):
     emails = ['sentimentstock@gmail.com']
     for row in rows:
         if row[0] is not None:
-            emails.append(row[0])
+            if row[1] == True:
+                emails.append(row[0])
 
     payload = "{\r\n  \"emails\": " + str(emails) + ",\r\n  \"stock\": \"" + ticker + "\",\r\n  \"score\": \"" + str(score) + "\"\r\n}"
     payload = payload.replace("'", '"')
