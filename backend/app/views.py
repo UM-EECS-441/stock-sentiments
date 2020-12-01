@@ -51,21 +51,22 @@ def sign_in(request):
     cursor = connection.cursor()
     # Temp: using email as unique identifier becaues idtoken seems to change
     # cursor.execute("SELECT userid FROM users WHERE idtoken='"+ tokenhash +"';")
-    cursor.execute("SELECT userid FROM users WHERE email='"+ userEmail +"';")
+    cursor.execute("SELECT userid, notifications FROM users WHERE email='"+ userEmail +"';")
 
-    userID = cursor.fetchone()
-    if userID is not None:
+    row = cursor.fetchone()
+    if row is not None:
         # if we've already seen the token, return associated userID
-        return JsonResponse({'userID': userID[0]})
+        return JsonResponse({'userID': row[0], 'notifications': row[1]})
 
     # Compute userID and add to database
     hashable = idToken + str(currentTimeStamp) + backendSecret
     userID = hashlib.sha256(hashable.strip().encode('utf-8')).hexdigest()
-    cursor.execute('INSERT INTO users (userid, idtoken, email) VALUES '
-                   '(%s, %s, %s);', (userID, tokenhash, userEmail,))
+    notifications = False
+    cursor.execute('INSERT INTO users (userid, idtoken, email, notifications) VALUES '
+                   '(%s, %s, %s, %s);', (userID, tokenhash, userEmail, notifications,))
 
     # Return userID
-    return JsonResponse({'userID': userID})
+    return JsonResponse({'userID': userID, 'notifications': notifications})
 
 def no_sign_in(request):
     if request.method != 'GET':
@@ -79,10 +80,32 @@ def no_sign_in(request):
     row = cursor.fetchone()
 
     if row is None:
-        cursor.execute('INSERT INTO users (userid) VALUES (%s);', (userID,))
+        cursor.execute('INSERT INTO users (userid, notifications) VALUES (%s);', (userID, False))
 
     # Return userID
     return JsonResponse({'userID': userID})
+
+def set_notifications(request):
+    if request.method != 'POST':
+        return HttpResponse(status=404)
+
+    json_data = json.loads(request.body)
+    userID = json_data['userID']                # String unique id of user
+    notifications = json_data['notifications']  # Boolean if user sets notifications
+
+    cursor = connection.cursor()
+    
+    # Check if this account has an email (signed in user)
+    cursor.execute('SELECT email FROM users WHERE userid = %s;', (userid,))
+    email = cursor.fetchall()[0]
+    if email is None:
+        return HttpResponse(status=403)
+    
+    # Set user notification settings to the notifications specified
+    cursor.execute('UPDATE TABLE users SET notifications = %s WHERE userid = %s;', (notifications, userid,))
+
+    # Return only 200
+    return HttpResponse(status=200)
 
 def get_tickers(request):
     if request.method != 'GET':
