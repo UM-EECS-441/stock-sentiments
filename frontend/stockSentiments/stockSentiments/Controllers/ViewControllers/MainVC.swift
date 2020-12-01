@@ -8,16 +8,18 @@
 import UIKit
 import GoogleSignIn
 
+let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+
+
 
 class MainVC: UIViewController/*, ReturnDelegate */{
-    
+
     @IBOutlet weak var signinButton: CustomButton!
     @IBOutlet weak var appTitleLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
         signinButton.tintColor = .systemBlue
         appTitleLabel.textColor = .label
     }
@@ -32,7 +34,7 @@ class MainVC: UIViewController/*, ReturnDelegate */{
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-    
+
     @IBAction func signinButtonTapped(_ sender: Any) {
 //        GIDSignIn.sharedInstance()?.signOut() // TODO: del
         if (GIDSignIn.sharedInstance()?.currentUser == nil) {
@@ -42,7 +44,7 @@ class MainVC: UIViewController/*, ReturnDelegate */{
                 return
             }
             signinVC.pVC = self
-            
+
             present(signinVC, animated: true, completion: nil)
         } else {
             guard let userEmail = GIDSignIn.sharedInstance()?.currentUser.profile.email else {
@@ -59,7 +61,7 @@ class MainVC: UIViewController/*, ReturnDelegate */{
             }
         }
     }
-    
+
     @IBAction func guestTapped() {
         print("Continue without sign in tapped")
         requestRegisterDeviceId { (success) in
@@ -72,9 +74,9 @@ class MainVC: UIViewController/*, ReturnDelegate */{
                 fatalError("Failed to register deviceID in the backend")
             }
         }
-        
+
     }
-    
+
     func presentSignedIn() {
         guard let tabBarController = tabBarStoryboard.instantiateViewController(identifier: "TabBarController") as? TabBarController else {
             fatalError("failed to load TabBarController")
@@ -83,4 +85,3 @@ class MainVC: UIViewController/*, ReturnDelegate */{
         self.navigationController?.pushViewController(tabBarController, animated: true)
     }
 }
-

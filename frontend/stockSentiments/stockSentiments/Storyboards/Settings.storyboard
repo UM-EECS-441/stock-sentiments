@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXy-f6-JqA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXy-f6-JqA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17506"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,18 +11,56 @@
         <scene sceneID="fej-ca-CER">
             <objects>
                 <viewController storyboardIdentifier="SettingsVC" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jXy-f6-JqA" customClass="SettingsVC" customModule="stockSentiments" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GEA-FN-gpt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="emC-3r-BkA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="iO0-4Q-tJZ"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCustomCell" rowHeight="104" id="lSQ-vi-3iU" customClass="MyCustomCell" customModule="stockSentiments" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="104"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lSQ-vi-3iU" id="v9n-1c-ATU">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="suj-Cb-tdj">
+                                            <rect key="frame" x="327" y="36.5" width="51" height="31"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="switchButton"/>
+                                            <connections>
+                                                <action selector="switchToggled:" destination="lSQ-vi-3iU" eventType="valueChanged" id="FUf-RA-G8q"/>
+                                            </connections>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYC-mc-zAL">
+                                            <rect key="frame" x="32" y="36" width="106" height="37"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="settingsLabel"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cYC-mc-zAL" firstAttribute="leading" secondItem="v9n-1c-ATU" secondAttribute="leadingMargin" id="10w-jW-3Je"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="suj-Cb-tdj" secondAttribute="trailing" constant="18" id="1uY-vV-wgB"/>
+                                        <constraint firstItem="cYC-mc-zAL" firstAttribute="top" secondItem="v9n-1c-ATU" secondAttribute="topMargin" constant="25" id="3On-TO-n4a"/>
+                                        <constraint firstItem="cYC-mc-zAL" firstAttribute="leading" secondItem="v9n-1c-ATU" secondAttribute="leadingMargin" constant="12" id="FC1-nf-iiA"/>
+                                        <constraint firstItem="cYC-mc-zAL" firstAttribute="top" secondItem="v9n-1c-ATU" secondAttribute="topMargin" constant="10" id="GJa-uq-SLG"/>
+                                        <constraint firstItem="suj-Cb-tdj" firstAttribute="centerY" secondItem="v9n-1c-ATU" secondAttribute="centerY" id="Z4A-S8-LCi"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="cYC-mc-zAL" secondAttribute="bottom" constant="20" id="fMM-wa-ILd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="settingsLabel" destination="cYC-mc-zAL" id="aTn-9d-pA1"/>
+                                    <outlet property="switchButton" destination="suj-Cb-tdj" id="BJ7-9K-HDx"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="d1l-1O-Ub3"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2R-pS-jHD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="241" y="149"/>
+            <point key="canvasLocation" x="240.57971014492756" y="148.66071428571428"/>
         </scene>
     </scenes>
     <resources>

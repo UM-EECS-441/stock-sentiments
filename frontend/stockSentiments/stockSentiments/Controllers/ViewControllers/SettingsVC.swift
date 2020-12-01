@@ -6,15 +6,111 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 let settingsStoryboard: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
-class SettingsVC: UIViewController {
+class SettingsVC: UITableViewController, UITabBarDelegate {
+
+    let settings: [String] = ["Receive Email Notifications", "Log Out", "View Profile"]
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-    
+
+    /*Table View */
+    // number of rows in table view
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+           return self.settings.count
+       }
+
+       // create a cell for each table view row
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+           let cell:MyCustomCell = self.tableView.dequeueReusableCell(withIdentifier: "MyCustomCell") as! MyCustomCell
+        //
+            switch (indexPath.row) {
+            case 0:
+                // receive notifications
+                cell.settingsLabel.text = settings[indexPath.row]
+                cell.settingsLabel.sizeToFit()
+                cell.switchButton.isHidden = false
+                cell.switchButton.sizeToFit()
+                break
+            case 1:
+                // LogOut
+                cell.settingsLabel.text = settings[indexPath.row]
+                cell.settingsLabel.sizeToFit()
+                cell.switchButton.isHidden = true
+                cell.switchButton.sizeToFit()
+                break
+            case 2:
+                // View Profile
+                cell.settingsLabel.text = settings[indexPath.row]
+                cell.settingsLabel.sizeToFit()
+                cell.switchButton.isHidden = true
+                cell.switchButton.sizeToFit()
+                break
+
+            default:
+                cell.settingsLabel.text = settings[indexPath.row]
+                cell.settingsLabel.sizeToFit()
+                cell.switchButton.isHidden = true
+                cell.switchButton.sizeToFit()
+                break
+            }
+
+            return cell
+        }
+
+       // method to run when table view cell is tapped
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           print("You tapped cell number \(indexPath.row).")
+        switch (indexPath.row) {
+        case 0:
+            // receive notifications
+
+            break
+        case 1:
+            // LogOut
+            // clear sharedUser instance
+            sharedUser.deviceID = ""
+            sharedUser.email = ""
+            sharedUser.idToken = ""
+            sharedUser.userId = ""
+            // return to MainVC
+            guard let mainVC = mainStoryboard.instantiateViewController(identifier: "MainVC") as? MainVC else {
+                fatalError("Failed to load MainVC")
+            }
+            //mainVC.pVC = self
+
+
+            // call GID sign out function
+            GIDSignIn.sharedInstance()?.signOut()
+            self.present(mainVC, animated: true, completion: nil)
+            break
+        case 2:
+            // View Profile
+            guard let userVC = userStoryboard.instantiateViewController(withIdentifier: "UserVC") as? UserVC else {
+                fatalError("Failed to load UserVC")
+            }
+
+            userVC.user_id = "user id: " + sharedUser.userId
+            userVC.email_id = "email: " + sharedUser.email
+            userVC.pVC = self
+            self.present(userVC, animated: true, completion: nil)
+            break
+
+        default:
+
+            break
+        }
+            tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+       }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
