@@ -19,6 +19,10 @@ class UserVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userId.text = user_id
-        self.email.text = email_id
+        if (email_id == "Email: ") {
+            self.email.text = "Email: N/A"
+        } else {
+            self.email.text = email_id
+        }
     }
 }
