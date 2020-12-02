@@ -16,17 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3i-Xu-yp9">
-                                <rect key="frame" x="40" y="146" width="195" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3i-Xu-yp9">
+                                <rect key="frame" x="20" y="144" width="374" height="21"/>
                                 <accessibility key="accessibilityConfiguration" identifier="userId"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whB-Z3-9rT">
-                                <rect key="frame" x="40" y="200" width="354" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whB-Z3-9rT">
+                                <rect key="frame" x="20" y="190" width="374" height="21"/>
                                 <accessibility key="accessibilityConfiguration" identifier="email"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -35,6 +33,17 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pVj-HV-1tC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="whB-Z3-9rT" firstAttribute="centerX" secondItem="rOy-C4-8vE" secondAttribute="centerX" id="29Y-cM-GXQ"/>
+                            <constraint firstItem="N3i-Xu-yp9" firstAttribute="top" secondItem="pVj-HV-1tC" secondAttribute="top" constant="100" id="3oy-dI-95O"/>
+                            <constraint firstItem="pVj-HV-1tC" firstAttribute="trailing" secondItem="whB-Z3-9rT" secondAttribute="trailing" constant="20" id="5tv-cQ-qeN" userLabel="Safe Area.trailing = Email.trailing + 20"/>
+                            <constraint firstItem="whB-Z3-9rT" firstAttribute="leading" secondItem="pVj-HV-1tC" secondAttribute="leading" constant="20" id="A3U-wh-a4O" userLabel="Email.leading = Safe Area.leading + 20"/>
+                            <constraint firstItem="pVj-HV-1tC" firstAttribute="trailing" secondItem="N3i-Xu-yp9" secondAttribute="trailing" constant="20" id="Cmi-XV-JAK"/>
+                            <constraint firstItem="whB-Z3-9rT" firstAttribute="top" secondItem="N3i-Xu-yp9" secondAttribute="bottom" constant="25" id="EgW-y1-mqp"/>
+                            <constraint firstItem="N3i-Xu-yp9" firstAttribute="leading" secondItem="pVj-HV-1tC" secondAttribute="leading" constant="20" id="QbO-lO-cy3"/>
+                            <constraint firstItem="N3i-Xu-yp9" firstAttribute="top" secondItem="pVj-HV-1tC" secondAttribute="top" constant="100" id="fvS-PS-XYB"/>
+                            <constraint firstItem="N3i-Xu-yp9" firstAttribute="centerX" secondItem="rOy-C4-8vE" secondAttribute="centerX" id="u79-mw-Pgm"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="email" destination="whB-Z3-9rT" id="f62-5Q-8Hn"/>

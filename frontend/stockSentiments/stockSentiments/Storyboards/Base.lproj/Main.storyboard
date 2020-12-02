@@ -31,11 +31,8 @@
                                     <action selector="guestTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="sMx-LZ-4bJ"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stock_sentiments_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pX4-7V-aQU" userLabel="appLogo">
-                                <rect key="frame" x="121" y="318.5" width="172" height="259"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="o1F-Av-oUl" userLabel="titleLabel">
-                                <rect key="frame" x="20" y="185.5" width="374" height="66"/>
+                                <rect key="frame" x="20" y="137" width="374" height="66"/>
                                 <attributedString key="attributedText">
                                     <fragment content="STOCK">
                                         <attributes>
@@ -64,6 +61,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stock_sentiments_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pX4-7V-aQU" userLabel="appLogo">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Q3i-PA-RSO"/>
+                                    <constraint firstAttribute="height" constant="250" id="ZKg-0m-OkP"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -79,7 +83,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o1F-Av-oUl" secondAttribute="trailing" constant="20" id="dbx-g6-1QP"/>
                             <constraint firstItem="SNG-Qe-3Xz" firstAttribute="top" secondItem="1mb-5u-XJ1" secondAttribute="bottom" constant="25" id="ego-oY-FAM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SNG-Qe-3Xz" secondAttribute="trailing" constant="20" id="f9K-m4-qZQ"/>
-                            <constraint firstItem="o1F-Av-oUl" firstAttribute="centerY" secondItem="pX4-7V-aQU" secondAttribute="top" constant="-100" id="foU-Z2-i1Z"/>
+                            <constraint firstItem="o1F-Av-oUl" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="foU-Z2-i1Z"/>
                             <constraint firstItem="1mb-5u-XJ1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tF2-S9-RLk"/>
                             <constraint firstItem="u7l-c9-3hJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vDF-Wf-xd8"/>
                         </constraints>
@@ -114,7 +118,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="stock_sentiments_logo.png" width="172" height="259"/>
+        <image name="stock_sentiments_logo.png" width="1024" height="1024"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
