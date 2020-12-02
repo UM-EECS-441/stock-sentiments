@@ -96,8 +96,8 @@ class SettingsVC: UITableViewController, UITabBarDelegate {
                 fatalError("Failed to load UserVC")
             }
 
-            userVC.user_id = "user id: " + sharedUser.userId
-            userVC.email_id = "email: " + sharedUser.email
+            userVC.user_id = "User ID: " + sharedUser.userId
+            userVC.email_id = "Email: " + sharedUser.email
             userVC.pVC = self
             self.present(userVC, animated: true, completion: nil)
             break

@@ -12,15 +12,14 @@ let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
 
 
-class MainVC: UIViewController/*, ReturnDelegate */{
+class MainVC: UIViewController, GIDSignInDelegate {
 
-    @IBOutlet weak var signinButton: CustomButton!
     @IBOutlet weak var appTitleLabel: UILabel!
+    @IBOutlet weak var noSignInButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        signinButton.tintColor = .systemBlue
         appTitleLabel.textColor = .label
         appTitleLabel.center.x = view.center.x // Place it in the center x of the view.
         appTitleLabel.center.x -= view.bounds.width // Place it on the left of the view with the width = the bounds'width of the view.
@@ -31,31 +30,9 @@ class MainVC: UIViewController/*, ReturnDelegate */{
         }, completion: nil)
     }
 
-    @IBAction func signinButtonTapped(_ sender: Any) {
-//        GIDSignIn.sharedInstance()?.signOut() // TODO: del
-        if (GIDSignIn.sharedInstance()?.currentUser == nil) {
-            // user is not signed in
-            guard let signinVC = signinStoryboard.instantiateViewController(identifier: "SigninVC") as? SigninVC else {
-                print("failed to load signinVC")
-                return
-            }
-            signinVC.pVC = self
-
-            present(signinVC, animated: true, completion: nil)
-        } else {
-            guard let userEmail = GIDSignIn.sharedInstance()?.currentUser.profile.email else {
-                fatalError("Failed to retrieve user's email")
-            }
-            sharedUser.email = userEmail
-            requestSignin(token: GIDSignIn.sharedInstance().currentUser.authentication.idToken!, email: sharedUser.email) { (successfullySignedIn) in
-                if !successfullySignedIn {
-                    fatalError("Failed to sign in user")
-                }
-                DispatchQueue.main.async {
-                    self.presentSignedIn()
-                }
-            }
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupSignIn()
     }
 
     @IBAction func guestTapped() {
@@ -64,7 +41,7 @@ class MainVC: UIViewController/*, ReturnDelegate */{
             if success {
                 print("userId is set to after continuing without sign in:", sharedUser.userId)
                 DispatchQueue.main.async {
-                    self.presentSignedIn()
+                    self.presentSignedInView()
                 }
             } else {
                 fatalError("Failed to register deviceID in the backend")
@@ -73,7 +50,49 @@ class MainVC: UIViewController/*, ReturnDelegate */{
 
     }
 
-    func presentSignedIn() {
+    func setupSignIn() {
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+
+        // Automatically sign in the user, which triggers
+        // the sign(_:didSignInFor:withError:) delegate method
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+    }
+
+    // GIDSignIn delegate function that checks if past signin can be restored, else renders button
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                // This means no previous SignIn could be restored; user has disconnected()?
+                // Add a Google Sign-in button centered on your screen
+                let signInButton = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+                view.addSubview(signInButton)
+                signInButton.centerXToSuperview()
+                signInButton.bottomToTop(of: noSignInButton, offset: -25, isActive: true)
+            } else {
+                print("\(error.localizedDescription)")
+            }
+        } else {
+            guard let userEmail = GIDSignIn.sharedInstance()?.currentUser.profile.email else {
+                fatalError("Failed to retrieve user's email")
+            }
+            sharedUser.email = userEmail
+            sharedUser.idToken = user.authentication.idToken
+            requestSignin(token: sharedUser.idToken, email: sharedUser.email) { (successfullySignedIn) in
+                if !successfullySignedIn {
+                    fatalError("Failed to sign in user")
+                }
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true) {
+                        self.presentSignedInView()
+                    }
+                }
+            }
+        }
+        return
+    }
+
+    func presentSignedInView() {
         guard let tabBarController = tabBarStoryboard.instantiateViewController(identifier: "TabBarController") as? TabBarController else {
             fatalError("failed to load TabBarController")
         }

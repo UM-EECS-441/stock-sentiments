@@ -16,14 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7l-c9-3hJ" userLabel="signIn" customClass="CustomButton" customModule="stockSentiments" customModuleProvider="target">
-                                <rect key="frame" x="140.5" y="710.5" width="133" height="30"/>
-                                <accessibility key="accessibilityConfiguration" identifier="signinButton"/>
-                                <state key="normal" title="Sign In with Google"/>
-                                <connections>
-                                    <action selector="signinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4o2-0i-7LT"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mb-5u-XJ1" userLabel="noSignIn">
                                 <rect key="frame" x="112.5" y="765.5" width="189" height="30"/>
                                 <state key="normal" title="Continue without Signing In"/>
@@ -72,7 +64,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="u7l-c9-3hJ" firstAttribute="bottom" secondItem="1mb-5u-XJ1" secondAttribute="top" constant="-25" id="3DN-Qh-Moh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SNG-Qe-3Xz" secondAttribute="bottom" constant="20" id="5Va-RI-TaX" userLabel="Safe Area.bottom = disclaimerLabel.bottom + 10"/>
                             <constraint firstItem="o1F-Av-oUl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8yn-xP-TWa"/>
                             <constraint firstItem="pX4-7V-aQU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="VZh-tY-GrD"/>
@@ -85,13 +76,12 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SNG-Qe-3Xz" secondAttribute="trailing" constant="20" id="f9K-m4-qZQ"/>
                             <constraint firstItem="o1F-Av-oUl" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="foU-Z2-i1Z"/>
                             <constraint firstItem="1mb-5u-XJ1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tF2-S9-RLk"/>
-                            <constraint firstItem="u7l-c9-3hJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vDF-Wf-xd8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bGI-w5-n9v"/>
                     <connections>
                         <outlet property="appTitleLabel" destination="o1F-Av-oUl" id="Bs7-qp-K7x"/>
-                        <outlet property="signinButton" destination="u7l-c9-3hJ" id="gQk-Wn-61Q"/>
+                        <outlet property="noSignInButton" destination="1mb-5u-XJ1" id="Peh-2Y-oxB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
