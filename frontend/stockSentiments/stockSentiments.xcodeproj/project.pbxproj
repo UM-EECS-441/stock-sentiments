@@ -53,8 +53,6 @@
 		DC7761EF257198570064E626 /* RequestSentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7761EE257198570064E626 /* RequestSentiment.swift */; };
 		DC7761F425719F5C0064E626 /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7761F325719F5C0064E626 /* Sentiment.swift */; };
 		DCDAB1FF25759CEB00138D76 /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAB1FE25759CEB00138D76 /* MyCustomCell.swift */; };
-		DCDAB2172575C39300138D76 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCDAB2162575C39300138D76 /* User.storyboard */; };
-		DCDAB21C2575C47F00138D76 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAB21B2575C47F00138D76 /* UserVC.swift */; };
 		DCEBBDE525637EE900159B93 /* pickerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCEBBDE425637EE900159B93 /* pickerView.storyboard */; };
 		DCEBBDEA25637FD500159B93 /* pickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBBDE925637FD500159B93 /* pickerView.swift */; };
 /* End PBXBuildFile section */
@@ -135,8 +133,6 @@
 		DC7761EE257198570064E626 /* RequestSentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSentiment.swift; sourceTree = "<group>"; };
 		DC7761F325719F5C0064E626 /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
 		DCDAB1FE25759CEB00138D76 /* MyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
-		DCDAB2162575C39300138D76 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
-		DCDAB21B2575C47F00138D76 /* UserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
 		DCEBBDE425637EE900159B93 /* pickerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = pickerView.storyboard; sourceTree = "<group>"; };
 		DCEBBDE925637FD500159B93 /* pickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,7 +201,6 @@
 				8D4067672543455F002760B1 /* Subscribe.storyboard */,
 				DCEBBDE425637EE900159B93 /* pickerView.storyboard */,
 				8D58C5BF25609ECC00DD0AD0 /* TabBar.storyboard */,
-				DCDAB2162575C39300138D76 /* User.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -232,7 +227,6 @@
 				8D7EDB962543482600A59F10 /* SettingsVC.swift */,
 				8D7EDB9B2543483200A59F10 /* SubscribeVC.swift */,
 				DCEBBDE925637FD500159B93 /* pickerView.swift */,
-				DCDAB21B2575C47F00138D76 /* UserVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -453,7 +447,6 @@
 				8D4067682543455F002760B1 /* Subscribe.storyboard in Resources */,
 				8D406758254344A3002760B1 /* Search.storyboard in Resources */,
 				DCEBBDE525637EE900159B93 /* pickerView.storyboard in Resources */,
-				DCDAB2172575C39300138D76 /* User.storyboard in Resources */,
 				8D40676325434501002760B1 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,7 +623,6 @@
 				8D751731254604710017D8CD /* Requests.swift in Sources */,
 				8DE16D2F2534B4D300D5FBB8 /* AppDelegate.swift in Sources */,
 				8D7EDB882543480600A59F10 /* WatchlistVC.swift in Sources */,
-				DCDAB21C2575C47F00138D76 /* UserVC.swift in Sources */,
 				DC7761EF257198570064E626 /* RequestSentiment.swift in Sources */,
 				DCDAB1FF25759CEB00138D76 /* MyCustomCell.swift in Sources */,
 				8D71A3A4254530AD00F1B7EC /* GetTickers.swift in Sources */,
