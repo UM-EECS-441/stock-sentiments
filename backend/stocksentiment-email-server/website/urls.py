@@ -19,6 +19,6 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('send_email/', views.send_email, name='send_email'),
+    path('send_emails/', views.send_emails, name='send_emails'),
     path('test/', views.test, name='test'),
 ]
