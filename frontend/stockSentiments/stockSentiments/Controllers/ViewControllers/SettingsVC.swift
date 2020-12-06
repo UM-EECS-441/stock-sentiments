@@ -11,7 +11,10 @@ import GoogleSignIn
 let settingsStoryboard: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
 class SettingsVC: UITableViewController, UITabBarDelegate {
 
-    let settings: [String] = ["Receive Email Notifications", "Log Out", "View Profile"]
+//    @IBOutlet weak var emailLabel: UILabel!
+    
+    
+    let settings: [String] = ["Signed in with ", "Receive Email Notifications", "Log Out"]
 
 
     override func viewDidLoad() {
@@ -33,39 +36,38 @@ class SettingsVC: UITableViewController, UITabBarDelegate {
        let cell:MyCustomCell = self.tableView.dequeueReusableCell(withIdentifier: "MyCustomCell") as! MyCustomCell
     //
         switch (indexPath.row) {
-            case 0:
-                // receive notifications
-                if sharedUser.email != "" { // only show this cell if the user is signed in
-                    cell.settingsLabel.text = settings[indexPath.row]
-                    cell.settingsLabel.sizeToFit()
-                    cell.switchButton.isHidden = false
-                    cell.switchButton.sizeToFit()
-                } else {
-                    cell.isHidden = true
-                }
-                break
-            case 1:
-                // LogOut
+        case 0:
+            let account = sharedUser.email != "" ? sharedUser.email : "guest"
+            cell.settingsLabel.text = settings[indexPath.row] + account
+            cell.settingsLabel.sizeToFit()
+            cell.switchButton.isHidden = true
+            cell.switchButton.sizeToFit()
+        case 1:
+            // receive notifications
+            if sharedUser.email != "" { // only show this cell if the user is signed in
                 cell.settingsLabel.text = settings[indexPath.row]
                 cell.settingsLabel.sizeToFit()
-                cell.switchButton.isHidden = true
+                cell.switchButton.isHidden = false
                 cell.switchButton.sizeToFit()
-                break
-            case 2:
-                // View Profile
-                cell.settingsLabel.text = settings[indexPath.row]
-                cell.settingsLabel.sizeToFit()
-                cell.switchButton.isHidden = true
-                cell.switchButton.sizeToFit()
-                break
-
-            default:
-                cell.settingsLabel.text = settings[indexPath.row]
-                cell.settingsLabel.sizeToFit()
-                cell.switchButton.isHidden = true
-                cell.switchButton.sizeToFit()
-                break
-        }
+            } else {
+                cell.isHidden = true
+            }
+            break
+        case 2:
+            // LogOut
+            cell.settingsLabel.text = settings[indexPath.row]
+            cell.settingsLabel.sizeToFit()
+            cell.switchButton.isHidden = true
+            cell.switchButton.sizeToFit()
+            break
+        
+        default:
+            cell.settingsLabel.text = settings[indexPath.row]
+            cell.settingsLabel.sizeToFit()
+            cell.switchButton.isHidden = true
+            cell.switchButton.sizeToFit()
+            break
+    }
 
         return cell
     }
@@ -76,9 +78,11 @@ class SettingsVC: UITableViewController, UITabBarDelegate {
         switch (indexPath.row) {
         case 0:
             // receive notifications
-
             break
         case 1:
+            // receive notifications
+            break
+        case 2:
             // LogOut
             // clear sharedUser instance besides deviceID
             sharedUser.email = ""
@@ -88,26 +92,12 @@ class SettingsVC: UITableViewController, UITabBarDelegate {
             // call GID sign out function
             GIDSignIn.sharedInstance()?.signOut()
             self.navigationController?.popViewController(animated: true)
-            
             break
-        case 2:
-            // View Profile
-            guard let userVC = userStoryboard.instantiateViewController(withIdentifier: "UserVC") as? UserVC else {
-                fatalError("Failed to load UserVC")
-            }
-
-            userVC.user_id = "User ID: " + sharedUser.userId
-            userVC.email_id = "Email: " + sharedUser.email
-            userVC.pVC = self
-            self.present(userVC, animated: true, completion: nil)
-            break
-
         default:
-
             break
         }
-            tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-       }
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+   }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
