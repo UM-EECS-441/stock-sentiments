@@ -10,15 +10,13 @@ CONFIGURATION_SET = "ConfigSet"
 AWS_REGION = "us-east-1"
 
 @csrf_exempt
-def send_email(request):
+def send_emails(request):
     if request.method != 'POST':
         return HttpResponse(status=404)
     json_data = json.loads(request.body)
-    email = json_data['email']
+    emails = json_data['emails']
     stock = json_data['stock']
     score = json_data['score']
-    #percent_change = json_data['percent_change']
-    #posts
 
     SUBJECT = "Sentiment Alert"
 
@@ -28,6 +26,7 @@ def send_email(request):
     <head></head>
     <body>
       <p>The sentiment of {stock} has significantly changed and is now {score}.</p>
+      <p>We analyzed the latest Twitter and Reddit posts about {stock}, and classified each post as either positive (+1) or negative (-1) using our trained classification sentiment analysis model. The live sentiment score is the mean of the assigned binary labels.
     </body>
     </html>
     """.format(stock=stock, score=score)
@@ -36,41 +35,45 @@ def send_email(request):
 
     client = boto3.client('ses',region_name=AWS_REGION)
 
-    # Try to send the email.
-    try:
-        #Provide the contents of the email.
-        response = client.send_email(
-            Destination={
-                'ToAddresses': [
-                    email,
-                ],
-            },
-            Message={
-                'Body': {
-                    'Html': {
-                        'Charset': CHARSET,
-                        'Data': BODY_HTML,
+    # Try to send the emails.
+    response = {}
+    for email in emails:
+        try:
+            #Provide the contents of the email.
+            response = client.send_email(
+                Destination={
+                    'ToAddresses': [
+                        email,
+                    ],
+                },
+                Message={
+                    'Body': {
+                        'Html': {
+                            'Charset': CHARSET,
+                            'Data': BODY_HTML,
+                        },
+                        'Text': {
+                            'Charset': CHARSET,
+                            'Data': BODY_TEXT,
+                        },
                     },
-                    'Text': {
+                    'Subject': {
                         'Charset': CHARSET,
-                        'Data': BODY_TEXT,
+                        'Data': SUBJECT,
                     },
                 },
-                'Subject': {
-                    'Charset': CHARSET,
-                    'Data': SUBJECT,
-                },
-            },
-            Source=SENDER,
-            # If you are not using a configuration set, comment or delete the
-            # following line
-            #ConfigurationSetName=CONFIGURATION_SET,
-        )
-    # Display an error if something goes wrong.
-    except ClientError as e:
-        return HttpResponse(status=500)
-    else:
-        return JsonResponse({})
+                Source=SENDER,
+                # If you are not using a configuration set, comment or delete the
+                # following line
+                #ConfigurationSetName=CONFIGURATION_SET,
+            )
+        # Display an error if something goes wrong.
+        except ClientError as e:
+            response[email] = False
+        else:
+            response[email] = True
+
+    return JsonResponse(response)
 
 
 def test(request):
