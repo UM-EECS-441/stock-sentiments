@@ -257,7 +257,7 @@ def update_sentiment(request):
 
     # send email if significant change in sentiment
     old_score = row[1]
-    if (abs(score - old_score) > 0.5):
+    if (abs(score - old_score) >= 1.0):
         try:
             send_emails(ticker, score)
         except:
