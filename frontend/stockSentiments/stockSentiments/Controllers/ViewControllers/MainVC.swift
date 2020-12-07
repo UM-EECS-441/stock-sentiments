@@ -32,6 +32,7 @@ class MainVC: UIViewController, GIDSignInDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("vieewDidAppear")
         setupSignIn()
     }
 
@@ -83,9 +84,7 @@ class MainVC: UIViewController, GIDSignInDelegate {
                     fatalError("Failed to sign in user")
                 }
                 DispatchQueue.main.async {
-                    self.dismiss(animated: true) {
-                        self.presentSignedInView()
-                    }
+                    self.presentSignedInView()
                 }
             }
         }

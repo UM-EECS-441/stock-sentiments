@@ -9,7 +9,6 @@ import Foundation
 
 
 func requestSignin(token idToken: String, email userEmail: String, success: @escaping (Bool) -> Void) {
-    
     /**/
     print(sharedUser.userId)
     if sharedUser.userId == "" {
