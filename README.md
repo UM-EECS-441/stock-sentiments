@@ -1,4 +1,6 @@
-# UM EEC S441 F20 iOS devs
+# UM EEC S441 F20 iOS devs - Stock Sentiments
+
+Stock Sentiments is an iOS app which serves as a tool for investors to be notified of market movements in the context of social media sentiment analysis. It supports a set of stocks which users can subscribe to in order to receive notifications when sentiment of a stock increases or decreases by a certain threshold.
 
 | Demo  |  Wiki |  Trello  |
 |:-----:|:-----:|:--------:|
